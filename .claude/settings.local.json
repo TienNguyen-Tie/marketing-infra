@@ -30,7 +30,13 @@
       "Bash(node -e \"const p = require\\('./node_modules/next-auth/package.json'\\); console.log\\(p.version\\)\")",
       "Bash(npx ts-node *)",
       "Bash(npx tsx *)",
-      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/auth/\\\\[...nextauth\\\\] /Users/tienvnguyen/eco_mkt_infra/app/api/settings/api-key /Users/tienvnguyen/eco_mkt_infra/app/api/settings/users/\\\\[id\\\\])"
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/auth/\\\\[...nextauth\\\\] /Users/tienvnguyen/eco_mkt_infra/app/api/settings/api-key /Users/tienvnguyen/eco_mkt_infra/app/api/settings/users/\\\\[id\\\\])",
+      "Bash(gh run *)",
+      "Bash(npx vercel *)",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",
