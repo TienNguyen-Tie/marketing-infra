@@ -1,9 +1,15 @@
 import crypto from 'crypto';
 
 const ALGORITHM = 'aes-256-gcm';
-const KEY = Buffer.from(process.env.ENCRYPTION_KEY!, 'hex');
+
+function getKey(): Buffer {
+  const raw = process.env.ENCRYPTION_KEY;
+  if (!raw) throw new Error('ENCRYPTION_KEY environment variable is not set');
+  return Buffer.from(raw, 'hex');
+}
 
 export function encrypt(text: string): { encrypted: string; iv: string; tag: string } {
+  const KEY = getKey();
   const iv = crypto.randomBytes(16);
   const cipher = crypto.createCipheriv(ALGORITHM, KEY, iv);
   const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
@@ -15,6 +21,7 @@ export function encrypt(text: string): { encrypted: string; iv: string; tag: str
 }
 
 export function decrypt(encrypted: string, iv: string, tag: string): string {
+  const KEY = getKey();
   const decipher = crypto.createDecipheriv(ALGORITHM, KEY, Buffer.from(iv, 'hex'));
   decipher.setAuthTag(Buffer.from(tag, 'hex'));
   return Buffer.concat([
