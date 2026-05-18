@@ -34,19 +34,20 @@ export function getAccountSummaryStats(account: PortfolioAccount): {
   patternsTotal: number;
   servicesUsed: ServiceCode[];
 } {
-  const fullCases = account.projects.filter(p => p.type === 'full-case');
+  const fullCaseProjects = account.projects.filter(p => p.type === 'full-case');
   const adhocCount = account.projects.filter(p => p.type === 'adhoc').length;
   const serviceSet = new Set<ServiceCode>();
   for (const p of account.projects) {
     for (const s of p.services) serviceSet.add(s);
   }
-  const patternsTotal =
-    fullCases.reduce((sum, p) => sum + (p.type === 'full-case' ? p.patterns.length : 0), 0) +
-    account.accountPatterns.length;
+  const patternsTotal = fullCaseProjects.reduce(
+    (sum, p) => sum + (p.type === 'full-case' ? p.patterns.length : 0),
+    0,
+  );
 
   return {
     totalProjects: account.projects.length,
-    fullCases: fullCases.length,
+    fullCases: fullCaseProjects.length,
     adhocCount,
     brandCount: account.brands.length,
     patternsTotal,
@@ -102,7 +103,6 @@ export function getPortfolioStats(): {
         totalPatterns += p.patterns.length;
       }
     }
-    totalPatterns += account.accountPatterns.length;
   }
 
   return {

@@ -53,6 +53,39 @@ _2026-05-19_
 
 ---
 
+## D-007 — Marketing dossier is the portfolio detail page
+_2026-05-19_
+
+**Decision**: The portfolio detail page is a 14-section marketing intelligence dossier in 7 groups (A–G), not a CRM/CSM record. All sales-process fields (stakeholder depth, approval workflow, brand safety, working style, risks) are excluded. Every section that feeds a marketing activity is present; every section that serves only account management is absent.
+
+**Rationale**: The tool's audience is the marketing team. The data structure should reflect what they need to brief campaigns, find creator matches, write PR pitches, and plan co-marketing — not what a CSM needs to manage a commercial relationship.
+
+**Consequence**: `accountPatterns` removed (replaced by `contentAngles` which are marketing-framed). `businessIntelligence`, `workingStyleNorms`, `operatingCalendar`, `approvalWorkflow`, `brandSafetyCompliance`, `risks`, and `opportunities` were not added despite prior consideration.
+
+---
+
+## D-008 — Empty sections always render ("aspirational frame")
+_2026-05-19_
+
+**Decision**: All 14 sections render on every portfolio detail page, even when their data is absent. Missing sections show a "Not yet captured" placeholder, not a hidden section.
+
+**Rationale**: The page is the aspirational frame that teaches the team what to capture over time. If sections only appear when data exists, new portfolios look empty and broken rather than structured and in-progress. The empty state communicates "this is where X goes" — which is itself valuable.
+
+**Consequence**: `loreal-vn-consumer` shows full content; `loreal-vn-active` and all general portfolios show placeholders for Groups B, D, E, F. The page feels structurally complete regardless of data density.
+
+---
+
+## D-009 — General-category accounts use categoryName='General'
+_2026-05-19_
+
+**Decision**: Accounts where the parent only operates in one category use `isGeneralCategory: true`, `categoryName: 'General'`, `categorySlug: 'general'`. The existing `category: ClientCategory` field is kept for filter compatibility.
+
+**Rationale**: For Cocoon, Pampers, Bobby etc., naming a category adds no analytical value — they are single-portfolio parents. Using "General" signals this clearly in the UI and avoids false precision (e.g. Pampers is "Mom & Kid" but it's also just… Pampers).
+
+**Consequence**: `getPortfoliosByCategory('general')` returns all 6 smaller accounts. The listing page filter still works via `account.category` (the `ClientCategory` enum). Sibling portfolios never appear for general accounts (D-005 still holds).
+
+---
+
 ## D-006 — Section numbering on detail page
 _2026-05-19_
 

@@ -5,8 +5,11 @@ export type BU = 'direct-brand' | 'affiliate' | 'creator-acq';
 export type ServiceCode = 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6' | 'P7';
 export type TagClusterCategory = 'industry' | 'geography' | 'size-type' | 'service-combo' | 'outcome-type' | 'bu-coverage';
 export type LinkedEntityKind = 'icp' | 'persona' | 'service' | 'case' | 'account';
+export type BrandStatus = 'active' | 'prospect' | 'pitched' | 'lapsed' | 'paused';
+export type MarketPosition = 'leader' | 'challenger' | 'niche' | 'emerging';
+export type CoPromoType = 'event' | 'platform' | 'co-content' | 'industry-presence';
 
-export type BrandStatus = 'active' | 'prospect' | 'lapsed';
+/* ── Brand ───────────────────────────────────────────────── */
 
 export interface Brand {
   id: string;
@@ -20,13 +23,17 @@ export interface Brand {
   gmvLabel?: string;
 }
 
+/* ── Contacts ────────────────────────────────────────────── */
+
 export interface AccountContact {
   name: string;
   role: string;
-  personaSlug: string;
-  personaLabel: string;
+  personaSlug?: string;
+  personaLabel?: string;
   isPrimary?: boolean;
 }
+
+/* ── Project types ───────────────────────────────────────── */
 
 export interface DeployedService {
   code: ServiceCode;
@@ -133,17 +140,88 @@ export interface AdhocProject extends ProjectBase {
 
 export type Project = FullCaseProject | AdhocProject;
 
+/* ── Marketing dossier sections ──────────────────────────── */
+
+export interface CategoryMarketIntelligence {
+  categorySize?: string;
+  categoryGrowth?: string;
+  marketPosition?: MarketPosition;
+  keyCompetitors?: string[];
+  marketDynamicsNotes?: string;
+}
+
+export interface AudienceInsights {
+  demographics?: string;
+  psychographics?: string;
+  purchaseBehavior?: string;
+  channelPreferences?: string;
+  notes?: string;
+}
+
+export interface StoryWorthyMoment {
+  date?: string;
+  label: string;
+  description?: string;
+}
+
+export interface StoryCapital {
+  definingNarrative?: string;
+  storyWorthyMoments?: StoryWorthyMoment[];
+  quotableMaterial?: string;
+  uniqueAngles?: string;
+}
+
+export interface TopPerformer {
+  name: string;
+  handle?: string;
+  notes?: string;
+}
+
+export interface CreatorStrategy {
+  creatorProfile?: string;
+  audienceMatch?: string;
+  contentStyleNeeds?: string;
+  topPerformers?: TopPerformer[];
+  notes?: string;
+}
+
+export interface ContentAngle {
+  id: string;
+  angle: string;
+  why: string;
+  exampleProject?: string;
+}
+
+export interface CoPromotionOpportunity {
+  id: string;
+  type: CoPromoType;
+  title: string;
+  description?: string;
+  timing?: string;
+}
+
+/* ── Portfolio account ───────────────────────────────────── */
+
 export interface PortfolioAccount {
+  // Identity
   slug: string;
   name: string;
   initials: string;
+  version: string;
+  lastVerified: string;
+
+  // Portfolio = Parent × Category
   parentCompany: string;
   parentSlug: string;
   categoryName: string;
   categorySlug: string;
   isGeneralCategory: boolean;
+
+  // Legacy category (kept for filter compatibility)
   category: ClientCategory;
   categoryLabel: string;
+
+  // Profile
   industry: string;
   market: string;
   sizeTier: SizeTier;
@@ -155,19 +233,38 @@ export interface PortfolioAccount {
   icpLabel: string;
   icpVerified: boolean;
   icpRationale: string;
+  totalGmvLabel?: string;
+
+  // Brands & contacts
   keyContacts: AccountContact[];
   brands: Brand[];
   projects: Project[];
-  totalGmvLabel?: string;
-  accountPatterns: Pattern[];
+
+  // Reference tags
   tagClusters: TagCluster[];
   linkedEntities: LinkedEntity[];
-  version: string;
-  lastVerified: string;
+
+  // GROUP C — Engagement
   accountBrief?: AccountBrief;
   accountSolution?: AccountSolution;
   accountOutcomes?: AccountOutcome;
+
+  // GROUP B — Market & Audience
+  categoryMarketIntelligence?: CategoryMarketIntelligence;
+  audienceInsights?: AudienceInsights;
+
+  // GROUP D — Story Capital
+  storyCapital?: StoryCapital;
+
+  // GROUP E — Creator Strategy
+  creatorStrategy?: CreatorStrategy;
+
+  // GROUP F — Marketing Playbook
+  contentAngles?: ContentAngle[];
+  coPromotionOpportunities?: CoPromotionOpportunity[];
 }
+
+/* ── Lookup tables ───────────────────────────────────────── */
 
 export const SERVICE_NAMES: Record<ServiceCode, string> = {
   P1: 'Livestream Commerce',
@@ -205,4 +302,18 @@ export const BU_LABELS: Record<BU, string> = {
   'direct-brand': 'Direct Brand',
   affiliate: 'Affiliate',
   'creator-acq': 'Creator Acq.',
+};
+
+export const MARKET_POSITION_LABELS: Record<MarketPosition, string> = {
+  leader: 'Category Leader',
+  challenger: 'Challenger',
+  niche: 'Niche',
+  emerging: 'Emerging',
+};
+
+export const COPROMO_TYPE_LABELS: Record<CoPromoType, string> = {
+  event: 'Event',
+  platform: 'Platform',
+  'co-content': 'Co-content',
+  'industry-presence': 'Industry Presence',
 };

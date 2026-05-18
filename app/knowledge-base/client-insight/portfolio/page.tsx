@@ -3,15 +3,25 @@
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import { PORTFOLIO_ACCOUNTS } from '@/data/portfolio/accounts';
-import { getPortfolioStats, getDisplayName } from '@/data/portfolio/helpers';
+import { getPortfolioStats } from '@/data/portfolio/helpers';
 import { CATEGORY_LABELS } from '@/data/portfolio/types';
 import type { ClientCategory } from '@/data/portfolio/types';
 import styles from '../portfolio.module.css';
 
 const stats = getPortfolioStats();
 
+function portfolioStatus(account: (typeof PORTFOLIO_ACCOUNTS)[number]): 'engaged' | 'pitched' | 'inactive' {
+  if (account.brands.some(b => b.status === 'active')) return 'engaged';
+  if (account.brands.some(b => b.status === 'pitched' || b.status === 'prospect')) return 'pitched';
+  return 'inactive';
+}
+
 const ALL_PARENTS = Array.from(
-  new Map(PORTFOLIO_ACCOUNTS.map(a => [a.parentSlug, a.parentCompany])).entries(),
+  new Map(
+    [...PORTFOLIO_ACCOUNTS]
+      .sort((a, b) => a.parentCompany.localeCompare(b.parentCompany))
+      .map(a => [a.parentSlug, a.parentCompany]),
+  ).entries(),
 ).map(([slug, label]) => ({ slug, label }));
 
 const ALL_CATEGORIES: { value: ClientCategory | 'all'; label: string }[] = [
@@ -21,27 +31,42 @@ const ALL_CATEGORIES: { value: ClientCategory | 'all'; label: string }[] = [
   ),
 ];
 
+const STATUS_OPTIONS = [
+  { value: 'all', label: 'All statuses' },
+  { value: 'engaged', label: 'Engaged' },
+  { value: 'pitched', label: 'Pitched' },
+  { value: 'inactive', label: 'Inactive' },
+];
+
+const SORTED = [...PORTFOLIO_ACCOUNTS].sort((a, b) => {
+  const pc = a.parentCompany.localeCompare(b.parentCompany);
+  return pc !== 0 ? pc : a.categoryName.localeCompare(b.categoryName);
+});
+
 export default function ClientPortfolioPage() {
   const [search, setSearch] = useState('');
   const [filterCategory, setFilterCategory] = useState<ClientCategory | 'all'>('all');
-  const [filterParent, setFilterParent] = useState<string>('all');
+  const [filterParent, setFilterParent] = useState('all');
+  const [filterStatus, setFilterStatus] = useState('all');
 
   const filtered = useMemo(() => {
-    return PORTFOLIO_ACCOUNTS.filter(a => {
+    return SORTED.filter(a => {
       if (filterCategory !== 'all' && a.category !== filterCategory) return false;
       if (filterParent !== 'all' && a.parentSlug !== filterParent) return false;
+      if (filterStatus !== 'all' && portfolioStatus(a) !== filterStatus) return false;
       if (search) {
         const q = search.toLowerCase();
-        if (
-          !a.parentCompany.toLowerCase().includes(q) &&
-          !a.categoryName.toLowerCase().includes(q) &&
-          !a.name.toLowerCase().includes(q) &&
-          !a.brands.some(b => b.name.toLowerCase().includes(q))
-        ) return false;
+        return (
+          a.parentCompany.toLowerCase().includes(q) ||
+          a.categoryName.toLowerCase().includes(q) ||
+          a.brands.some(b => b.name.toLowerCase().includes(q))
+        );
       }
       return true;
     });
-  }, [search, filterCategory, filterParent]);
+  }, [search, filterCategory, filterParent, filterStatus]);
+
+  const isFiltered = search || filterCategory !== 'all' || filterParent !== 'all' || filterStatus !== 'all';
 
   return (
     <div className={styles.page}>
@@ -64,7 +89,7 @@ export default function ClientPortfolioPage() {
       <div className={styles.statsBanner}>
         <div className={styles.statItem}>
           <span className={styles.statNum}>{stats.totalAccounts}</span>
-          <span className={styles.statLabel}>Portfolios locked</span>
+          <span className={styles.statLabel}>Portfolios</span>
         </div>
         <div className={styles.statItem}>
           <span className={styles.statNum}>{stats.categoryCount}</span>
@@ -72,7 +97,7 @@ export default function ClientPortfolioPage() {
         </div>
         <div className={styles.statItem}>
           <span className={styles.statNum}>{stats.totalProjects}</span>
-          <span className={styles.statLabel}>Projects logged</span>
+          <span className={styles.statLabel}>Projects</span>
         </div>
         <div className={styles.statItem}>
           <span className={styles.statNum}>{stats.totalFullCases}</span>
@@ -80,7 +105,7 @@ export default function ClientPortfolioPage() {
         </div>
         <div className={styles.statItem}>
           <span className={styles.statNum}>{stats.totalPatterns}</span>
-          <span className={styles.statLabel}>Patterns extracted</span>
+          <span className={styles.statLabel}>Patterns</span>
         </div>
       </div>
 
@@ -90,7 +115,7 @@ export default function ClientPortfolioPage() {
           <span className={`material-icons-round ${styles.pfSearchIcon}`}>search</span>
           <input
             className={styles.pfSearchInput}
-            placeholder="Search portfolios, brands…"
+            placeholder="Search portfolios or brands…"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
@@ -100,39 +125,38 @@ export default function ClientPortfolioPage() {
             </button>
           )}
         </div>
-
         <select
           className={styles.pfSelect}
           value={filterCategory}
           onChange={e => setFilterCategory(e.target.value as ClientCategory | 'all')}
         >
-          {ALL_CATEGORIES.map(c => (
-            <option key={c.value} value={c.value}>{c.label}</option>
-          ))}
+          {ALL_CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
         </select>
-
         <select
           className={styles.pfSelect}
           value={filterParent}
           onChange={e => setFilterParent(e.target.value)}
         >
           <option value="all">All parents</option>
-          {ALL_PARENTS.map(p => (
-            <option key={p.slug} value={p.slug}>{p.label}</option>
-          ))}
+          {ALL_PARENTS.map(p => <option key={p.slug} value={p.slug}>{p.label}</option>)}
         </select>
-
-        {(search || filterCategory !== 'all' || filterParent !== 'all') && (
+        <select
+          className={styles.pfSelect}
+          value={filterStatus}
+          onChange={e => setFilterStatus(e.target.value)}
+        >
+          {STATUS_OPTIONS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+        </select>
+        {isFiltered && (
           <button
             className={styles.pfClearAll}
-            onClick={() => { setSearch(''); setFilterCategory('all'); setFilterParent('all'); }}
+            onClick={() => { setSearch(''); setFilterCategory('all'); setFilterParent('all'); setFilterStatus('all'); }}
           >
             Clear filters
           </button>
         )}
       </div>
 
-      {/* Portfolio grid */}
       {filtered.length === 0 ? (
         <div className={styles.pfEmpty}>
           <span className={`material-icons-round ${styles.pfEmptyIcon}`}>search_off</span>
@@ -141,13 +165,10 @@ export default function ClientPortfolioPage() {
       ) : (
         <div className={styles.pfGrid}>
           {filtered.map(a => {
-            const fullCases = a.projects.filter(p => p.type === 'full-case');
-            const allPatterns =
-              fullCases.reduce((n, p) => n + (p.type === 'full-case' ? p.patterns.length : 0), 0) +
-              a.accountPatterns.length;
-            const topProject = fullCases[0];
-            const displayName = getDisplayName(a);
-
+            const displayTitle = a.isGeneralCategory ? a.parentCompany : a.categoryName;
+            const fullCases = a.projects.filter(p => p.type === 'full-case').length;
+            const topProject = a.projects.find(p => p.type === 'full-case');
+            const status = portfolioStatus(a);
             return (
               <Link
                 key={a.slug}
@@ -157,19 +178,15 @@ export default function ClientPortfolioPage() {
                 <div className={styles.pfCardTop}>
                   <div className={styles.pfCardMeta}>
                     <p className={styles.pfCardParent}>{a.parentCompany}</p>
-                    <p className={styles.pfCardTitle}>{displayName}</p>
+                    <p className={styles.pfCardTitle}>{displayTitle}</p>
                     {!a.isGeneralCategory && (
                       <p className={styles.pfCardSubtitle}>{CATEGORY_LABELS[a.category]}</p>
                     )}
                   </div>
-                  <div className={styles.pfCardBadges}>
-                    <span className={styles.pfCatPill}>{CATEGORY_LABELS[a.category]}</span>
-                  </div>
+                  <span className={styles.pfCatPill}>{a.isGeneralCategory ? CATEGORY_LABELS[a.category] : a.categoryName}</span>
                 </div>
 
-                <p className={styles.pfCardBrands}>
-                  {a.brands.map(b => b.name).join(' · ')}
-                </p>
+                <p className={styles.pfCardBrands}>{a.brands.map(b => b.name).join(' · ')}</p>
 
                 {topProject && (
                   <div className={styles.pfCardOutcome}>
@@ -180,12 +197,12 @@ export default function ClientPortfolioPage() {
 
                 <div className={styles.pfCardFooter}>
                   <span className={styles.pfCardStat}>
-                    <span className={`material-icons-round ${styles.pfCardStatIcon}`}>folder</span>
-                    {a.projects.length} projects
+                    <span className={`material-icons-round ${styles.pfCardStatIcon}`}>inventory_2</span>
+                    {a.brands.length} brand{a.brands.length !== 1 ? 's' : ''}
                   </span>
                   <span className={styles.pfCardStat}>
-                    <span className={`material-icons-round ${styles.pfCardStatIcon}`}>merge</span>
-                    {allPatterns} patterns
+                    <span className={`material-icons-round ${styles.pfCardStatIcon}`}>folder</span>
+                    {a.projects.length} projects · {fullCases} full case{fullCases !== 1 ? 's' : ''}
                   </span>
                   {a.totalGmvLabel && (
                     <span className={styles.pfCardStat}>
@@ -193,12 +210,12 @@ export default function ClientPortfolioPage() {
                       {a.totalGmvLabel}
                     </span>
                   )}
+                  <span className={`${styles.pfStatusDot} ${styles[`pfStatus--${status}`]}`} />
+                  <span className={styles.pfCardSince}>Since {a.engagedSince}</span>
                 </div>
               </Link>
             );
           })}
-
-          {/* Empty state card */}
           <div className={styles.acardEmpty}>
             <span className={`material-icons-round ${styles.acardEmptyIcon}`}>archive</span>
             <span className={styles.acardEmptyText}>Lock new account</span>

@@ -1,102 +1,97 @@
-# Last Build — Portfolio Data Model Restructuring
+# Last Build — Marketing Dossier (13-section, Groups A–G)
 _2026-05-19_
 
 ## Summary
 
-Restructured client portfolio data model to use **Portfolio = Parent × Category** as the unit. L'Oréal Vietnam split into two portfolios (Consumer Products, Active Cosmetics). Unilever Vietnam renamed to unilever-vn-beauty. Six smaller accounts updated with new fields. Listing page rewritten as flat list with filter bar. Detail page updated: parent/category hero, sibling callout, new Brand Portfolio section (§03), sections renumbered. `npx tsc --noEmit` clean. `npm run build` succeeds (94 pages, up from 93 — L'Oréal split added a net +1 static route).
+Replaced the portfolio detail page with a full 14-section marketing dossier in 7 groups (A–G). Added 6 new marketing-focused data sections to `PortfolioAccount`: `categoryMarketIntelligence`, `audienceInsights`, `storyCapital`, `creatorStrategy`, `contentAngles`, `coPromotionOpportunities`. Removed all sales/CSM-oriented sections (`accountPatterns`, `businessIntelligence`, `workingStyleNorms`, `approvalWorkflow` etc.). `loreal-vn-consumer` is the showcase portfolio with full seed data across all dossier sections. All other portfolios render with "Not yet captured" empty states. Listing page updated with status filter. `npx tsc --noEmit` clean. `npm run build` succeeds (94 pages, 0 errors).
 
 ---
 
 ## Files modified
 
 ```
-data/portfolio/types.ts          — Brand.slug renamed to Brand.id; Brand.status (required)
-                                   + optional: subCategory, targetConsumer, brandManager,
-                                   pitchSolution, contractedServices, gmvLabel added;
-                                   AccountContact.isPrimary?: boolean added;
-                                   PortfolioAccount: parentCompany, parentSlug, categoryName,
-                                   categorySlug, isGeneralCategory fields added;
-                                   BrandStatus type added
+data/portfolio/types.ts          — BrandStatus expanded to 5 values (active/prospect/pitched/lapsed/paused);
+                                   AccountContact.personaSlug + personaLabel made optional;
+                                   accountPatterns REMOVED from PortfolioAccount;
+                                   6 new interfaces: CategoryMarketIntelligence, AudienceInsights,
+                                   StoryCapital (+ StoryWorthyMoment), CreatorStrategy (+ TopPerformer),
+                                   ContentAngle, CoPromotionOpportunity;
+                                   2 new types: MarketPosition, CoPromoType;
+                                   2 new lookup tables: MARKET_POSITION_LABELS, COPROMO_TYPE_LABELS;
+                                   6 new optional fields on PortfolioAccount
 
-data/portfolio/accounts.ts       — REPLACED entirely: loreal-vietnam split into
-                                   loreal-vn-consumer + loreal-vn-active; unilever-vietnam
-                                   renamed unilever-vn-beauty; dove-dry-serum-ugc project
-                                   moved from loreal-vn-consumer to unilever-vn-beauty (under
-                                   dove brand, not loreal-paris); all 6 smaller accounts updated
-                                   with parentCompany/parentSlug/categoryName/categorySlug/
-                                   isGeneralCategory; Brand.slug → Brand.id throughout;
-                                   linkedEntities updated to new slugs
+data/portfolio/accounts.ts       — REPLACED entirely:
+                                   loreal-vn-consumer: full 13-section dossier seed data;
+                                   loreal-vn-active: minimal seed (marketPosition: 'niche' only);
+                                   unilever-vn-beauty: minimal seed;
+                                   cocoon/pampers/friso/bobby/sunhouse/comet: categoryName/categorySlug
+                                   changed to 'General'/'general'; accountPatterns removed everywhere;
+                                   parentSlug corrected (loreal-vn → loreal-vietnam, 
+                                   unilever-vn → unilever-vietnam);
+                                   categorySlug corrected (consumer-products → consumer,
+                                   active-cosmetics → active);
+                                   Garnier status: active → pitched;
+                                   Sunsilk, Pond's status: active → prospect
 
-data/portfolio/helpers.ts        — brand.slug → brand.id in getProjectsByBrand;
-                                   AccountContact imported; 5 new exports added:
-                                   getPortfoliosByParent, getPortfoliosByCategory,
-                                   getDisplayName, getFullDisplayName, getPrimaryContact,
-                                   getSiblingPortfolios
+data/portfolio/helpers.ts        — accountPatterns removed from patternsTotal + totalPatterns
+                                   calculations in getAccountSummaryStats + getPortfolioStats
 
 app/knowledge-base/client-insight/portfolio/page.tsx
-                                 — REPLACED entirely: flat portfolio grid with filter bar
-                                   (search + category dropdown + parent dropdown + clear);
-                                   pfCard layout with parent label, category title, brands,
-                                   top outcome, footer stats; now a 'use client' component
+                                 — Status filter added (engaged/pitched/inactive derived from
+                                   brand statuses); sorted A→Z by parent then category;
+                                   status dot + "Since" in card footer; removed accountPatterns ref
 
 app/knowledge-base/client-insight/portfolio/[accountSlug]/page.tsx
-                                 — Hero: accountHeroParentRow (parent + category pill) above
-                                   account name; breadcrumb shows parent › category;
-                                   siblingStrip callout (if siblings exist);
-                                   §03 Brand Portfolio cards added (status pill, contracted
-                                   services, stats); sections renumbered 03→09;
-                                   brand.slug → brand.id; getSiblingPortfolios + getDisplayName
-                                   imported
+                                 — REPLACED entirely: 14-section marketing dossier in Groups A–G;
+                                   GroupDivider + SectionHeader + FieldEmpty + SectionEmpty 
+                                   helper components; all 9 existing sections reorganised;
+                                   accountPatterns section removed
 
 app/knowledge-base/client-insight/portfolio.module.css
-                                 — New classes: pfFilterBar, pfSearchWrap, pfSearchInput,
-                                   pfSelect, pfClearAll, pfGrid, pfCard (+ sub-classes);
-                                   pfEmpty, pfEmptyIcon, pfEmptyText;
-                                   accountHeroParentRow, accountHeroParent, accountHeroParentSep,
-                                   accountHeroCatPill; siblingStrip, siblingSLabel, siblingChip,
-                                   siblingChipArrow; crPrimaryBadge;
-                                   brandPortfolioGrid, brandPortfolioCard, bpcHead, bpcName,
-                                   bpcStatusPill + bpcStatus--{active,prospect,lapsed},
-                                   bpcSub, bpcMeta, bpcServices, bpcServicePill,
-                                   bpcStat, bpcGmv, bpcPitch
-
-app/knowledge-base/client-insight/portfolio/[accountSlug]/[projectSlug]/page.tsx
-                                 — brand.slug → brand.id (1 reference)
+                                 — ~450 new CSS lines appended:
+                                   Status dot + pfCardSince (listing);
+                                   dossPage, dossHero, dossHeroEyebrow/H1/Meta/Right;
+                                   dossCatBadge, dossLockBadge; dossStats strip;
+                                   groupDivider + groupEyebrow + groupDividerLine;
+                                   dossSection, dossSectionHeader/Num/Title/Subtitle;
+                                   fieldEmpty, sectionEmpty, sectionEmptyIcon/Text;
+                                   profileGrid, profileRow, profileLabel/Value, profileRationale;
+                                   bpcRows, bpcRow, bpcRowLabel/Val, bpcServicesMuted;
+                                   icpContactList; cmiCard, cmiGrid, cmiRow, cmiLabel/Val,
+                                   mktPosPill + leader/challenger/niche/emerging variants,
+                                   competitorPill(s), cmiNotes; audienceCard, audienceBlock;
+                                   storyCard, storyBlock, storyTimeline + items;
+                                   creatorCard, creatorProfileTop/Block, topPerformerGrid/Card,
+                                   tpAvatar/Info/Name/Handle/Notes; anglesList/Card/Title/Why/Ref;
+                                   coPromoList/Row, coPromoTypePill + event/platform/co-content/
+                                   industry-presence variants; brandDividerGmv, brandNoProjects
 ```
 
 ---
 
-## Portfolio roster (after restructuring)
+## Dossier structure (Groups A–G)
 
-| Slug | Parent Company | Category | isGeneral |
-|---|---|---|---|
-| `loreal-vn-consumer` | L'Oréal Vietnam | Consumer Products | false |
-| `loreal-vn-active` | L'Oréal Vietnam | Active Cosmetics | false |
-| `unilever-vn-beauty` | Unilever Vietnam | Beauty & Wellbeing | false |
-| `cocoon` | Cocoon | Beauty & Personal Care | true |
-| `pampers` | Pampers | Mom & Kid | true |
-| `friso` | Friso | Mom & Kid | true |
-| `bobby` | Bobby | Mom & Kid | true |
-| `sunhouse` | Sunhouse | Home Care | true |
-| `comet` | Comet | Home Care | true |
-
-## Project move
-
-`dove-dry-serum-ugc` was incorrectly attached to `loreal-vn-consumer` under the `loreal-paris` brand. Moved to `unilever-vn-beauty` under `dove` brand. brandSlug updated `loreal-paris` → `dove`; brandName updated `L'Oréal Paris` → `Dove`; linkedEntities updated to reference `unilever-vn-beauty`.
+| Group | Sections | Status for loreal-vn-consumer |
+|---|---|---|
+| A · Portfolio Identity | 01 Profile · 02 Brands · 03 ICP & Persona | Full |
+| B · Market & Audience | 04 CMI · 05 Audience | Full |
+| C · Engagement | 06 Brief · 07 Solution · 08 Outcomes | Full |
+| D · Story Capital | 09 Story Capital | Full (4 milestones) |
+| E · Creator Strategy | 10 Creator Match | Full (3 performers) |
+| F · Marketing Playbook | 11 Content Angles · 12 Co-promo | Full (4 each) |
+| G · Archive & Reference | 13 Projects · 14 Reference Index | Full |
 
 ---
 
-## Design decisions
+## Data changes
 
-1. **Brand.slug → Brand.id** — `ProjectBase.brandSlug` still references `brand.id` values (no change to project data). Only the Brand interface property name changed, plus all map lookups in helpers and JSX.
-
-2. **Listing page → `'use client'`** — filter bar requires useState/useMemo. All filtering is in-memory over the static PORTFOLIO_ACCOUNTS array; no server fetches needed.
-
-3. **Display name logic** — `getDisplayName` returns `parentCompany` for isGeneralCategory portfolios (e.g., "Cocoon"), or `categoryName` for split portfolios (e.g., "Consumer Products"). `getFullDisplayName` returns `"L'Oréal Vietnam — Consumer Products"` form for non-general.
-
-4. **Sibling callout** — only rendered when `getSiblingPortfolios` finds siblings by matching `parentSlug`. For general-category accounts (which each have a unique parentSlug = their own slug), no strip appears.
-
-5. **§03 Brand Portfolio** — always rendered (all accounts have at least one brand). Shows status pill (active/prospect/lapsed), contracted services, project count. Fields are optional — cards degrade gracefully when pitchSolution, gmvLabel etc. are absent.
+- `parentSlug` for L'Oréal portfolios: 'loreal-vn' → 'loreal-vietnam'
+- `parentSlug` for Unilever: 'unilever-vn' → 'unilever-vietnam'
+- `categorySlug` for loreal-vn-consumer: 'consumer-products' → 'consumer'
+- `categorySlug` for loreal-vn-active: 'active-cosmetics' → 'active'
+- All 6 general accounts: `categoryName` → 'General', `categorySlug` → 'general'
+- Garnier: status 'active' → 'pitched'
+- Sunsilk, Pond's: status 'active' → 'prospect'
 
 ---
 
