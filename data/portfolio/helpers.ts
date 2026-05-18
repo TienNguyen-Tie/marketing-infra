@@ -1,6 +1,6 @@
 import { PORTFOLIO_ACCOUNTS } from './accounts';
 import { CATEGORY_ORDER } from './types';
-import type { ClientCategory, PortfolioAccount, Project, ServiceCode } from './types';
+import type { AccountContact, ClientCategory, PortfolioAccount, Project, ServiceCode } from './types';
 
 export function getAccountBySlug(slug: string): PortfolioAccount | undefined {
   return PORTFOLIO_ACCOUNTS.find(a => a.slug === slug);
@@ -17,7 +17,7 @@ export function getAccountsByCategory(): Record<ClientCategory, PortfolioAccount
 export function getProjectsByBrand(account: PortfolioAccount): Record<string, Project[]> {
   const map: Record<string, Project[]> = {};
   for (const brand of account.brands) {
-    map[brand.slug] = account.projects.filter(p => p.brandSlug === brand.slug);
+    map[brand.id] = account.projects.filter(p => p.brandSlug === brand.id);
   }
   return map;
 }
@@ -52,6 +52,34 @@ export function getAccountSummaryStats(account: PortfolioAccount): {
     patternsTotal,
     servicesUsed: Array.from(serviceSet),
   };
+}
+
+export function getPortfoliosByParent(parentSlug: string): PortfolioAccount[] {
+  return PORTFOLIO_ACCOUNTS.filter(a => a.parentSlug === parentSlug);
+}
+
+export function getPortfoliosByCategory(categorySlug: string): PortfolioAccount[] {
+  return PORTFOLIO_ACCOUNTS.filter(a => a.categorySlug === categorySlug);
+}
+
+export function getDisplayName(account: PortfolioAccount): string {
+  return account.isGeneralCategory ? account.parentCompany : account.categoryName;
+}
+
+export function getFullDisplayName(account: PortfolioAccount): string {
+  return account.isGeneralCategory
+    ? account.parentCompany
+    : `${account.parentCompany} — ${account.categoryName}`;
+}
+
+export function getPrimaryContact(account: PortfolioAccount): AccountContact | undefined {
+  return account.keyContacts.find(c => c.isPrimary) ?? account.keyContacts[0];
+}
+
+export function getSiblingPortfolios(account: PortfolioAccount): PortfolioAccount[] {
+  return PORTFOLIO_ACCOUNTS.filter(
+    a => a.parentSlug === account.parentSlug && a.slug !== account.slug,
+  );
 }
 
 export function getPortfolioStats(): {

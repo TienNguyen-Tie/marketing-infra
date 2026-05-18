@@ -41,11 +41,18 @@
       "Bash(curl -s -I --max-time 5 http://localhost:3001/)",
       "Bash(curl -s -I --max-time 10 http://localhost:3000/login)",
       "Read(//tmp/**)",
-      "Bash(curl -s -I --max-time 8 http://localhost:3000/)"
+      "Bash(curl -s -I --max-time 8 http://localhost:3000/)",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/vision-companion *)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(kill -9 48596 55635 55636)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(curl -sv http://localhost:3000/)",
+      "Bash(curl -sv http://localhost:3000/login)"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",
-      "/Users/tienvnguyen/eco_mkt_infra/app/api/auth"
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/auth",
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/suggestions"
     ]
   }
 }

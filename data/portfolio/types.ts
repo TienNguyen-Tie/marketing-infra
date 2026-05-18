@@ -6,9 +6,18 @@ export type ServiceCode = 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6' | 'P7';
 export type TagClusterCategory = 'industry' | 'geography' | 'size-type' | 'service-combo' | 'outcome-type' | 'bu-coverage';
 export type LinkedEntityKind = 'icp' | 'persona' | 'service' | 'case' | 'account';
 
+export type BrandStatus = 'active' | 'prospect' | 'lapsed';
+
 export interface Brand {
-  slug: string;
+  id: string;
   name: string;
+  status: BrandStatus;
+  subCategory?: string;
+  targetConsumer?: string;
+  brandManager?: string;
+  pitchSolution?: string;
+  contractedServices?: ServiceCode[];
+  gmvLabel?: string;
 }
 
 export interface AccountContact {
@@ -16,6 +25,7 @@ export interface AccountContact {
   role: string;
   personaSlug: string;
   personaLabel: string;
+  isPrimary?: boolean;
 }
 
 export interface DeployedService {
@@ -127,6 +137,11 @@ export interface PortfolioAccount {
   slug: string;
   name: string;
   initials: string;
+  parentCompany: string;
+  parentSlug: string;
+  categoryName: string;
+  categorySlug: string;
+  isGeneralCategory: boolean;
   category: ClientCategory;
   categoryLabel: string;
   industry: string;

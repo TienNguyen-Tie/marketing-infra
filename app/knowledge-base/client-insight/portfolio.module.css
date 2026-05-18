@@ -493,6 +493,196 @@
 
 .accountHeroBadgeIcon { font-size: 13px !important; }
 
+/* Hero parent / category row */
+.accountHeroParentRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.accountHeroParent {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+}
+
+.accountHeroParentSep {
+  font-size: 11px;
+  color: var(--gray-400);
+}
+
+.accountHeroCatPill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #3C3489;
+  background: #EEEDFE;
+  border: 0.5px solid #C4C2F7;
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* Sibling portfolios strip */
+.siblingStrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--gray-50);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.siblingSLabel {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-right: 4px;
+}
+
+.siblingChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 4px;
+  padding: 3px 8px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.siblingChip:hover { border-color: var(--gray-400); }
+
+.siblingChipArrow { font-size: 12px !important; color: var(--gray-400); }
+
+/* Primary contact badge */
+.crPrimaryBadge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #0F6E56;
+  background: #ECFDF5;
+  border: 0.5px solid #A7F3D0;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* Brand Portfolio section */
+.brandPortfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.brandPortfolioCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.bpcHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.bpcName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.bpcStatusPill {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+
+.bpcStatus--active {
+  color: #0F6E56;
+  background: #ECFDF5;
+  border: 0.5px solid #A7F3D0;
+}
+
+.bpcStatus--prospect {
+  color: #854F0B;
+  background: #FFFBEB;
+  border: 0.5px solid #FDE68A;
+}
+
+.bpcStatus--lapsed {
+  color: var(--gray-400);
+  background: var(--gray-100);
+  border: 0.5px solid var(--gray-200);
+}
+
+.bpcSub {
+  font-size: 11px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.bpcMeta {
+  font-size: 11px;
+  color: var(--gray-400);
+}
+
+.bpcServices {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.bpcServicePill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  color: #993C1D;
+  background: var(--red-pale);
+  border: 0.5px solid var(--red-light);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.bpcStat {
+  font-size: 10px;
+  color: var(--gray-400);
+}
+
+.bpcGmv {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.bpcPitch {
+  font-size: 11px;
+  color: var(--gray-400);
+  font-style: italic;
+  line-height: 1.4;
+}
+
 /* Account stats strip */
 .accountStats {
   display: flex;
@@ -1675,4 +1865,231 @@
   border: 0.5px solid #FDE68A;
   border-radius: 10px;
   padding: 2px 8px;
+}
+
+/* ─── Portfolio filter bar ───────────────────────────────────── */
+
+.pfFilterBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.pfSearchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.pfSearchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px !important;
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+.pfSearchInput {
+  width: 100%;
+  padding: 7px 32px 7px 34px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  color: var(--black);
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.pfSearchInput:focus { border-color: var(--gray-400); }
+
+.pfSearchInput::placeholder { color: var(--gray-400); }
+
+.pfSearchClear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-400);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.pfSelect {
+  padding: 7px 10px;
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--black);
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.pfSelect:focus { border-color: var(--gray-400); }
+
+.pfClearAll {
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pfClearAll:hover { color: var(--black); }
+
+/* ─── Portfolio flat grid ────────────────────────────────────── */
+
+.pfGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.pfCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.pfCard:hover {
+  border-color: #D3D3D3;
+  box-shadow: var(--shadow);
+}
+
+.pfCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pfCardMeta { flex: 1; min-width: 0; }
+
+.pfCardParent {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+  margin-bottom: 2px;
+}
+
+.pfCardTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.pfCardSubtitle {
+  font-size: 10px;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+
+.pfCardBadges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.pfCatPill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  color: #3C3489;
+  background: #EEEDFE;
+  border: 0.5px solid #C4C2F7;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.pfCardBrands {
+  font-size: 10px;
+  color: var(--gray-400);
+  line-height: 1.4;
+}
+
+.pfCardOutcome {
+  flex: 1;
+}
+
+.pfCardOutcomeLabel {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+  margin-bottom: 2px;
+}
+
+.pfCardOutcomeText {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.4;
+}
+
+.pfCardFooter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 0.5px solid var(--gray-200);
+  padding-top: 8px;
+}
+
+.pfCardStat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--gray-400);
+}
+
+.pfCardStatIcon { font-size: 12px !important; }
+
+/* ─── Empty state ────────────────────────────────────────────── */
+
+.pfEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 0;
+  color: var(--gray-400);
+}
+
+.pfEmptyIcon { font-size: 32px !important; }
+
+.pfEmptyText {
+  font-size: 13px;
+  color: var(--gray-400);
 }

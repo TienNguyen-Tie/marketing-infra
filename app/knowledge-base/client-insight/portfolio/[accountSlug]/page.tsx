@@ -5,8 +5,10 @@ import {
   getAccountBySlug,
   getProjectsByBrand,
   getAccountSummaryStats,
+  getSiblingPortfolios,
+  getDisplayName,
 } from '@/data/portfolio/helpers';
-import { SERVICE_NAMES } from '@/data/portfolio/types';
+import { SERVICE_NAMES, CATEGORY_LABELS } from '@/data/portfolio/types';
 import styles from '../../portfolio.module.css';
 
 export async function generateStaticParams() {
@@ -24,6 +26,7 @@ export default async function AccountPage({
 
   const stats = getAccountSummaryStats(account);
   const projectsByBrand = getProjectsByBrand(account);
+  const siblings = getSiblingPortfolios(account);
 
   function contactInitials(name: string): string {
     const parts = name.trim().split(/\s+/);
@@ -39,17 +42,27 @@ export default async function AccountPage({
         <Link href="/knowledge-base/client-insight/portfolio" style={{ color: 'inherit', textDecoration: 'none' }}>
           Client Portfolio
         </Link>{' '}
-        › {account.name}
+        › {account.parentCompany}
+        {!account.isGeneralCategory && <> › {account.categoryName}</>}
       </p>
 
       {/* Hero */}
       <div className={styles.accountHero}>
         <div className={styles.accountHeroInitials}>{account.initials}</div>
         <div className={styles.accountHeroInfo}>
-          <h1 className={styles.accountHeroName}>{account.name}</h1>
+          <div className={styles.accountHeroParentRow}>
+            <span className={styles.accountHeroParent}>{account.parentCompany}</span>
+            {!account.isGeneralCategory && (
+              <>
+                <span className={styles.accountHeroParentSep}>›</span>
+                <span className={styles.accountHeroCatPill}>{account.categoryName}</span>
+              </>
+            )}
+          </div>
+          <h1 className={styles.accountHeroName}>{getDisplayName(account)}</h1>
           <p className={styles.accountHeroMeta}>
             <span>{account.sizeTierLabel}</span>
-            <span>{account.categoryLabel}</span>
+            <span>{CATEGORY_LABELS[account.category]}</span>
             <span>{account.market}</span>
             {account.parentEntity && <span>{account.parentEntity}</span>}
             <span>Since {account.engagedSince}</span>
@@ -60,6 +73,23 @@ export default async function AccountPage({
           {account.version}
         </span>
       </div>
+
+      {/* Sibling portfolios callout */}
+      {siblings.length > 0 && (
+        <div className={styles.siblingStrip}>
+          <span className={styles.siblingSLabel}>Other {account.parentCompany} portfolios</span>
+          {siblings.map(s => (
+            <Link
+              key={s.slug}
+              href={`/knowledge-base/client-insight/portfolio/${s.slug}`}
+              className={styles.siblingChip}
+            >
+              {getDisplayName(s)}
+              <span className={`material-icons-round ${styles.siblingChipArrow}`}>arrow_forward</span>
+            </Link>
+          ))}
+        </div>
+      )}
 
       {/* Stats strip */}
       <div className={styles.accountStats}>
@@ -126,7 +156,10 @@ export default async function AccountPage({
                 <div key={i} className={styles.contactRow}>
                   <span className={styles.contactAvatar}>{contactInitials(c.name)}</span>
                   <div className={styles.crInfo}>
-                    <p className={styles.crName}>{c.name}</p>
+                    <p className={styles.crName}>
+                      {c.name}
+                      {c.isPrimary && <span className={styles.crPrimaryBadge}>Primary</span>}
+                    </p>
                     <p className={styles.crRole}>{c.role}</p>
                   </div>
                   <span className={styles.personaPill}>{c.personaLabel}</span>
@@ -137,11 +170,57 @@ export default async function AccountPage({
         </div>
       </div>
 
-      {/* Section 03 — The Brief */}
+      {/* Section 03 — Brand Portfolio */}
+      <div className={styles.sectionBlock}>
+        <div className={styles.secHeader}>
+          <span className={styles.secNum}>03</span>
+          Brand Portfolio
+        </div>
+        <div className={styles.brandPortfolioGrid}>
+          {account.brands.map(brand => {
+            const bProjects = projectsByBrand[brand.id] ?? [];
+            const bFullCases = bProjects.filter(p => p.type === 'full-case').length;
+            return (
+              <div key={brand.id} className={styles.brandPortfolioCard}>
+                <div className={styles.bpcHead}>
+                  <span className={styles.bpcName}>{brand.name}</span>
+                  <span className={`${styles.bpcStatusPill} ${styles[`bpcStatus--${brand.status}`]}`}>
+                    {brand.status}
+                  </span>
+                </div>
+                {brand.subCategory && (
+                  <p className={styles.bpcSub}>{brand.subCategory}</p>
+                )}
+                {brand.targetConsumer && (
+                  <p className={styles.bpcMeta}>{brand.targetConsumer}</p>
+                )}
+                {brand.contractedServices && brand.contractedServices.length > 0 && (
+                  <div className={styles.bpcServices}>
+                    {brand.contractedServices.map(s => (
+                      <span key={s} className={styles.bpcServicePill}>{s}</span>
+                    ))}
+                  </div>
+                )}
+                <p className={styles.bpcStat}>
+                  {bProjects.length} project{bProjects.length !== 1 ? 's' : ''} · {bFullCases} full case{bFullCases !== 1 ? 's' : ''}
+                </p>
+                {brand.gmvLabel && (
+                  <p className={styles.bpcGmv}>{brand.gmvLabel}</p>
+                )}
+                {brand.pitchSolution && (
+                  <p className={styles.bpcPitch}>{brand.pitchSolution}</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Section 04 — The Brief */}
       {account.accountBrief && (
         <div className={styles.sectionBlock}>
           <div className={styles.secHeader}>
-            <span className={styles.secNum}>03</span>
+            <span className={styles.secNum}>04</span>
             The Brief
           </div>
           <div className={styles.briefTwoCol}>
@@ -175,11 +254,11 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Section 04 — Our Solution */}
+      {/* Section 05 — Our Solution */}
       {account.accountSolution && (
         <div className={styles.sectionBlock}>
           <div className={styles.secHeader}>
-            <span className={styles.secNum}>04</span>
+            <span className={styles.secNum}>05</span>
             Our Solution
           </div>
           <div className={styles.solutionBlock}>
@@ -194,11 +273,11 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Section 05 — Outcomes & Proof */}
+      {/* Section 06 — Outcomes & Proof */}
       {account.accountOutcomes && (
         <div className={styles.sectionBlock}>
           <div className={styles.secHeader}>
-            <span className={styles.secNum}>05</span>
+            <span className={styles.secNum}>06</span>
             Outcomes &amp; Proof
           </div>
           {account.accountOutcomes.metrics.length > 0 && (
@@ -221,11 +300,11 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Section 06 — Account Patterns */}
+      {/* Section 07 — Account Patterns */}
       {account.accountPatterns.length > 0 && (
         <div className={styles.sectionBlock}>
           <div className={styles.secHeader}>
-            <span className={styles.secNum}>06</span>
+            <span className={styles.secNum}>07</span>
             Account Pattern Library
           </div>
           <div className={styles.apGrid}>
@@ -243,11 +322,11 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Section 07 — Reference Index */}
+      {/* Section 08 — Reference Index */}
       {(account.tagClusters.length > 0 || account.linkedEntities.length > 0) && (
         <div className={styles.sectionBlock}>
           <div className={styles.secHeader}>
-            <span className={styles.secNum}>07</span>
+            <span className={styles.secNum}>08</span>
             Reference Index
           </div>
           {account.tagClusters.length > 0 && (
@@ -277,20 +356,20 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Section 08 — Projects */}
+      {/* Section 09 — Projects */}
       <div className={styles.sectionBlock}>
         <div className={styles.secHeader}>
-          <span className={styles.secNum}>08</span>
+          <span className={styles.secNum}>09</span>
           Projects
         </div>
         {account.brands.map(brand => {
-          const projects = projectsByBrand[brand.slug] ?? [];
+          const projects = projectsByBrand[brand.id] ?? [];
           if (!projects.length) return null;
           const gridCols = 3;
           const slotsInRow = projects.length % gridCols;
           const showAddCard = slotsInRow !== 0 || projects.length === 0;
           return (
-            <div key={brand.slug} className={styles.brandGroup}>
+            <div key={brand.id} className={styles.brandGroup}>
               <div className={styles.brandDivider}>
                 <span className={styles.brandDividerName}>{brand.name}</span>
                 <span className={styles.brandDividerLine} />

@@ -9,7 +9,7 @@ import type { Session } from 'next-auth';
 
 type FlyoutLeaf = { label: string; href: string };
 
-type NavLeaf = { kind: 'leaf'; label: string; href: string };
+type NavLeaf = { kind: 'leaf'; label: string; href: string; icon?: string };
 type NavFlyout = { kind: 'flyout'; label: string; href: string; items: FlyoutLeaf[] };
 type NavBranch = { kind: 'branch'; label: string; href: string; children: Array<NavLeaf | NavFlyout> };
 
@@ -114,7 +114,8 @@ const navTree: NavItem[] = [
 ];
 
 const settingsTree: NavItem[] = [
-  { kind: 'leaf', label: 'User Management', href: '/settings/users' },
+  { kind: 'leaf', label: 'User Management',   href: '/settings/users'       },
+  { kind: 'leaf', label: 'Vision Suggestions', href: '/settings/suggestions' },
 ];
 
 /* ── HELPERS ────────────────────────────────────────────────── */
@@ -180,7 +181,13 @@ export default function Sidebar({ session }: { session: Session | null }) {
           key={item.href}
           href={item.href}
           className={`nav-item ${cls}${active ? ' nav-item--active' : ''}`}
+          style={item.icon ? { display: 'flex', alignItems: 'center', gap: 8 } : undefined}
         >
+          {item.icon && (
+            <span className="material-icons-round" style={{ fontSize: 16, opacity: 0.75 }}>
+              {item.icon}
+            </span>
+          )}
           {item.label}
         </Link>
       );
@@ -225,7 +232,12 @@ export default function Sidebar({ session }: { session: Session | null }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__logo">
-        <span className="sidebar__logo-text">Ecomobi Marketing</span>
+        <Link href="/" className="sidebar__logo-link">
+          <img src="/LOGO_am-ban-2.png" alt="Ecomobi" className="sidebar__logo-img" />
+          {/* Fallback — drop logo.svg or logo.png into /public to replace:
+          <span className="sidebar__logo-mark">E</span>
+          <span className="sidebar__logo-text">Ecomobi</span> */}
+        </Link>
       </div>
       <nav className="sidebar__nav">
         {navTree.map(item => renderItem(item, 0))}

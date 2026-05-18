@@ -3,14 +3,19 @@ import type { PortfolioAccount } from './types';
 export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
 
   /* ════════════════════════════════════════════════════════════
-     L'ORÉAL VIETNAM — FULL DETAIL
+     L'ORÉAL VN — CONSUMER PRODUCTS
   ════════════════════════════════════════════════════════════ */
   {
-    slug: 'loreal-vietnam',
-    name: "L'Oréal Vietnam",
+    slug: 'loreal-vn-consumer',
+    name: "L'Oréal VN — Consumer Products",
     initials: 'LO',
     category: 'beauty',
     categoryLabel: 'Beauty & Personal Care',
+    parentCompany: "L'Oréal Vietnam",
+    parentSlug: 'loreal-vn',
+    categoryName: 'Consumer Products',
+    categorySlug: 'consumer-products',
+    isGeneralCategory: false,
     industry: 'Beauty / Personal Care',
     market: 'VN',
     sizeTier: 'mnc',
@@ -21,26 +26,25 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     icpSlug: 'mnc-global',
     icpLabel: 'MNC / Global',
     icpVerified: true,
-    icpRationale: 'Multi-brand parent with regional HQ. Structured procurement, sustained commerce investment, fits the MNC playbook across all brands.',
-    totalGmvLabel: '$10M+',
+    icpRationale: 'Multi-brand parent with regional HQ. Structured procurement, sustained commerce investment, fits the MNC playbook across consumer brands.',
+    totalGmvLabel: '$8M+',
     version: 'v2026',
     lastVerified: '2d ago',
 
     keyContacts: [
-      { name: 'Linh Nguyen', role: 'Marketing Director · approves all brand spend', personaSlug: 'minh-mnc', personaLabel: 'Minh-MNC' },
+      { name: 'Linh Nguyen', role: 'Marketing Director · approves all brand spend', personaSlug: 'minh-mnc', personaLabel: 'Minh-MNC', isPrimary: true },
       { name: 'Quang Tran', role: 'Head of Commerce · cross-brand TikTok lead', personaSlug: 'hung-ecom', personaLabel: 'Hung-Ecom' },
       { name: 'Mai Pham', role: 'TikTok Shop Manager · procurement contact', personaSlug: 'hung-ecom', personaLabel: 'Hung-Ecom' },
     ],
 
     brands: [
-      { slug: 'loreal-paris', name: "L'Oréal Paris" },
-      { slug: 'maybelline', name: 'Maybelline' },
-      { slug: 'garnier', name: 'Garnier' },
-      { slug: 'la-roche-posay', name: 'La Roche-Posay' },
+      { id: 'loreal-paris', name: "L'Oréal Paris", status: 'active' },
+      { id: 'maybelline', name: 'Maybelline', status: 'active' },
+      { id: 'garnier', name: 'Garnier', status: 'active' },
     ],
 
     projects: [
-      /* ── L'Oréal Paris — 2 full cases ── */
+      /* ── L'Oréal Paris — 1 full case ── */
       {
         slug: 'tet-2024-livestream-series',
         name: 'Tet 2024 Livestream Series',
@@ -103,7 +107,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           { category: 'outcome-type', label: 'Outcome', tags: ['3× GMV', 'Peak commerce', 'Category win'] },
         ],
         linkedEntities: [
-          { kind: 'account', slug: 'loreal-vietnam', label: "L'Oréal Vietnam" },
+          { kind: 'account', slug: 'loreal-vn-consumer', label: "L'Oréal VN — Consumer Products" },
           { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
           { kind: 'service', slug: 'p1-livestream-commerce', label: 'P1 Livestream' },
           { kind: 'service', slug: 'p4-performance-media', label: 'P4 Performance Media' },
@@ -127,82 +131,6 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           { name: 'Sessions delivered', target: '200', achieved: '800+', met: true },
           { name: 'Brief to launch', target: '8 weeks', achieved: '6 weeks', met: true },
           { name: 'Peak day GMV', target: '$150K', achieved: '$220K', met: true },
-        ],
-      },
-
-      {
-        slug: 'dove-dry-serum-ugc',
-        name: 'Dove Dry Serum UGC Program',
-        brandSlug: 'loreal-paris',
-        brandName: "L'Oréal Paris",
-        type: 'full-case',
-        period: 'Mar – Apr 2024',
-        services: ['P2'],
-        outcomeHeadline: '4× UGC target exceeded · 68M views',
-        goals: [
-          'Launch Dove Dry Serum with authentic creator advocacy',
-          'Generate 200 UGC pieces within 6 weeks',
-        ],
-        painPoints: [
-          'New product — no existing creator reviews to seed',
-          'Brand required creators to have genuinely tried the product',
-        ],
-        deployedServices: [
-          { code: 'P2', detail: '185 KOC seeding + content program', bu: 'direct-brand', since: 'Mar 2024' },
-        ],
-        approachReasoning: 'Selected KOCs were screened for existing interest in hair care — not just follower count. Commission-based structure meant only creators who genuinely used the product continued producing content.',
-        outcomeMetrics: [
-          { value: '400', label: 'UGCs produced', source: 'Campaign tracker' },
-          { value: '68M', label: 'Views', source: 'TikTok analytics' },
-          { value: '4×', label: 'Target exceeded', source: 'vs 200 UGC brief' },
-        ],
-        narrativeOutcomes: [
-          {
-            type: 'recognition',
-            text: '2024 Winning Agency citation. Authenticity multiplied reach beyond any paid seeding result in the category that year.',
-          },
-        ],
-        patterns: [
-          {
-            id: 'lo-p04',
-            title: 'Commission-only UGC self-selects for genuine product users',
-            appliesTo: 'P2 programs for new product launches',
-            insight: 'Paying a flat fee incentivises volume. Commission-only incentivises conversion. For launch UGC, commission-only produces 3–4× better content quality because uncommitted creators drop off early.',
-          },
-          {
-            id: 'lo-p05',
-            title: 'Interest-matched KOC seeding outperforms follower-matched',
-            appliesTo: 'Beauty UGC programs with genuine product trial requirement',
-            insight: 'Filtering the KOC pool by demonstrated interest in the category (prior content, engagement patterns) before follower count produces higher completion rates and better view-through.',
-          },
-        ],
-        tagClusters: [
-          { category: 'industry', label: 'Industry', tags: ['Beauty', 'Hair Care', 'UGC'] },
-          { category: 'service-combo', label: 'Service combo', tags: ['P2 only', 'KOC seeding', 'Commission-based'] },
-          { category: 'outcome-type', label: 'Outcome', tags: ['4× target', '68M views', 'Authenticity-led'] },
-        ],
-        linkedEntities: [
-          { kind: 'account', slug: 'loreal-vietnam', label: "L'Oréal Vietnam" },
-          { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
-          { kind: 'service', slug: 'p2-ugc-content', label: 'P2 UGC & Content' },
-        ],
-        version: 'v2026',
-        lastVerified: '2d ago',
-        projectObjective: 'Launch Dove Dry Serum with authentic creator UGC — 200 pieces minimum within 6 weeks, genuine product users only.',
-        concept: 'Commission-only KOC seeding. Creators screened for existing hair care interest, not follower count. Only creators who genuinely used the product continued producing.',
-        contentStrategy: '185 KOCs seeded with physical product. Commission structure self-selected committed creators. No scripted content — brief provided tone direction only.',
-        timeline: [
-          { milestone: 'Product seeding', date: 'Mar W1 2024' },
-          { milestone: 'Content window open', date: 'Mar W2 2024' },
-          { milestone: 'Campaign close', date: 'Apr W2 2024' },
-          { milestone: 'Reporting', date: 'Apr W3 2024' },
-        ],
-        targetAudience: 'Women 20–35, hair care interested, moderate income, TikTok-native content consumers.',
-        audienceReached: '68.48M views total. 185 KOC participants, 400 UGC pieces produced. Avg view-through rate 4.2× category benchmark.',
-        kpis: [
-          { name: 'UGC pieces', target: '200', achieved: '400', met: true },
-          { name: 'Total views', target: '15M', achieved: '68.48M', met: true },
-          { name: 'KOC completion rate', target: '70%', achieved: '97%', met: true },
         ],
       },
 
@@ -254,7 +182,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           { category: 'outcome-type', label: 'Outcome', tags: ['180% above target', 'Category rank', 'New brand entry'] },
         ],
         linkedEntities: [
-          { kind: 'account', slug: 'loreal-vietnam', label: "L'Oréal Vietnam" },
+          { kind: 'account', slug: 'loreal-vn-consumer', label: "L'Oréal VN — Consumer Products" },
           { kind: 'service', slug: 'p1-livestream-commerce', label: 'P1 Livestream' },
           { kind: 'service', slug: 'p3-tiktok-shop-partner', label: 'P3 TikTok Shop' },
         ],
@@ -303,7 +231,107 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
         briefNote: 'Small-scale affiliate seeding test on Garnier Vitamin C range. 40 KOCs, 2-week window, commission-only structure. Used to validate category interest before committing to full P2 program.',
         outcomeNote: 'Positive signal — 34/40 KOCs produced content. Results briefed Q4 full UGC program. No GMV target on test.',
       },
+    ],
 
+    accountBrief: {
+      goals: [
+        'Build scalable TikTok commerce capability across all 3 consumer brands by end of 2024',
+        'Establish daily BAU livestream as the standard operating model for every brand',
+        'Win market leadership in beauty on TikTok Shop Vietnam',
+      ],
+      painPoints: [
+        'No in-house livestream operation — fully dependent on external partners',
+        'Long procurement cycles slow campaign activation across brands',
+        'Each brand has different brand-safety requirements, making shared resources difficult to manage',
+      ],
+    },
+    accountSolution: {
+      servicesOverview: 'P1 anchors every new brand. P4 layers in at 60 days. P2 and P3 deployed selectively based on brand stage and TikTok Shop maturity.',
+      reasoning: 'We operate as a multi-brand livestream factory — separate host pools, separate content calendars, unified procurement management. MNC scale requires performance media (P4) to be non-negotiable. P2 is deployed for launch moments that need authentic creator advocacy rather than paid placement.',
+    },
+    accountOutcomes: {
+      metrics: [
+        { value: '$8M+', label: 'Total GMV', source: 'Annual contract data' },
+        { value: '3', label: 'Brands activated', source: 'Internal ops log' },
+        { value: '2024', label: 'Winning Agency', source: 'TikTok Vietnam recognition' },
+      ],
+      narrative: "2024 Winning Agency recognition. Cited by TikTok Vietnam as the model multi-brand commerce operation in the beauty category. L'Oréal Paris Tet case referenced in TikTok regional playbook.",
+    },
+    accountPatterns: [
+      {
+        id: 'lo-acc-01',
+        title: "All L'Oréal brands start P1 before layering P4 — no exceptions",
+        appliesTo: "Observed across L'Oréal Paris, Maybelline, La Roche-Posay",
+        insight: "Proposing P4 to a new L'Oréal brand before P1 BAU is established stalls procurement. Always sequence P1 first, introduce P4 at the 60-day mark — except for short seasonal windows.",
+      },
+      {
+        id: 'lo-acc-02',
+        title: 'Procurement approval requires 8+ weeks regardless of brand',
+        appliesTo: "All L'Oréal brands — even when brand team wants to move faster",
+        insight: "The bottleneck is L'Oréal Group legal and procurement, not the brand team. Build 8-week buffer into every new project kickoff timeline. Never promise earlier.",
+      },
+      {
+        id: 'lo-acc-03',
+        title: 'Each brand needs its own host pool — cross-brand sharing dilutes voice',
+        appliesTo: 'All multi-brand MNC accounts with 3+ brands',
+        insight: 'Maybelline (mass-glam) vs La Roche-Posay (derma-science) require completely different host profiles. Separate host rosters, separate content calendars. Budget efficiency from shared hosts is outweighed by conversion loss.',
+      },
+    ],
+
+    tagClusters: [
+      { category: 'industry', label: 'Industry', tags: ['Beauty', 'Personal Care', 'Premium', 'Mass-market'] },
+      { category: 'geography', label: 'Geography', tags: ['Vietnam', 'MNC-managed'] },
+      { category: 'size-type', label: 'Account type', tags: ['MNC', '3 brands', 'Group procurement', 'Regional HQ'] },
+      { category: 'service-combo', label: 'Services ever used', tags: ['P1', 'P2', 'P3', 'P4', 'P5'] },
+      { category: 'outcome-type', label: 'Outcome class', tags: ['$8M+ GMV', 'Award winner', 'Category leader'] },
+      { category: 'bu-coverage', label: 'BU', tags: ['Direct Brand primary', 'Affiliate secondary'] },
+    ],
+
+    linkedEntities: [
+      { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
+      { kind: 'persona', slug: 'minh-mnc', label: 'Minh-MNC' },
+      { kind: 'persona', slug: 'hung-ecom', label: 'Hung-Ecom' },
+      { kind: 'account', slug: 'unilever-vn-beauty', label: 'Unilever VN — Beauty & Wellbeing' },
+      { kind: 'account', slug: 'pampers', label: 'Pampers' },
+    ],
+  },
+
+  /* ════════════════════════════════════════════════════════════
+     L'ORÉAL VN — ACTIVE COSMETICS
+  ════════════════════════════════════════════════════════════ */
+  {
+    slug: 'loreal-vn-active',
+    name: "L'Oréal VN — Active Cosmetics",
+    initials: 'LA',
+    category: 'beauty',
+    categoryLabel: 'Beauty & Personal Care',
+    parentCompany: "L'Oréal Vietnam",
+    parentSlug: 'loreal-vn',
+    categoryName: 'Active Cosmetics',
+    categorySlug: 'active-cosmetics',
+    isGeneralCategory: false,
+    industry: 'Beauty / Clinical',
+    market: 'VN',
+    sizeTier: 'mnc',
+    sizeTierLabel: 'MNC',
+    parentEntity: "L'Oréal Group",
+    engagedSince: 'Jan 2024',
+    primaryBU: 'direct-brand',
+    icpSlug: 'mnc-global',
+    icpLabel: 'MNC / Global',
+    icpVerified: true,
+    icpRationale: 'Active Cosmetics division operates with distinct procurement and ROAS accountability separate from Consumer division.',
+    totalGmvLabel: '140% ROAS',
+    version: 'v2026',
+    lastVerified: '1w ago',
+
+    keyContacts: [],
+
+    brands: [
+      { id: 'la-roche-posay', name: 'La Roche-Posay', status: 'active', contractedServices: ['P1', 'P4'] },
+    ],
+
+    projects: [
       /* ── La Roche-Posay — 1 full case ── */
       {
         slug: 'lrp-derma-expert-series-q3',
@@ -351,7 +379,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           { category: 'outcome-type', label: 'Outcome', tags: ['140% ROAS', 'Format established', 'Regional model'] },
         ],
         linkedEntities: [
-          { kind: 'account', slug: 'loreal-vietnam', label: "L'Oréal Vietnam" },
+          { kind: 'account', slug: 'loreal-vn-active', label: "L'Oréal VN — Active Cosmetics" },
           { kind: 'service', slug: 'p1-livestream-commerce', label: 'P1 Livestream' },
           { kind: 'service', slug: 'p4-performance-media', label: 'P4 Performance Media' },
         ],
@@ -378,76 +406,53 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
 
     accountBrief: {
       goals: [
-        'Build scalable TikTok commerce capability across all 4 brands by end of 2024',
-        'Establish daily BAU livestream as the standard operating model for every brand',
-        'Win market leadership in beauty on TikTok Shop Vietnam',
+        'Establish La Roche-Posay as science-led derma brand on TikTok Shop',
+        'Scale expert-led livestream format across pharma-adjacent brands',
       ],
       painPoints: [
-        'No in-house livestream operation — fully dependent on external partners',
-        'Long procurement cycles slow campaign activation across brands',
-        'Each brand has different brand-safety requirements, making shared resources difficult to manage',
+        'Credentialed host sourcing is 3× slower than lifestyle hosts',
+        'Regional HQ ROAS targets are non-negotiable — no brand-only metrics accepted',
       ],
     },
     accountSolution: {
-      servicesOverview: 'P1 anchors every new brand. P4 layers in at 60 days. P2 and P3 deployed selectively based on brand stage and TikTok Shop maturity.',
-      reasoning: 'We operate as a multi-brand livestream factory — separate host pools, separate content calendars, unified procurement management. MNC scale requires performance media (P4) to be non-negotiable. P2 is deployed for launch moments that need authentic creator advocacy rather than paid placement.',
+      servicesOverview: 'P1 with credentialed hosts (dermatologists/pharmacists). P4 targeted at skin-concern audience segments.',
+      reasoning: 'Derma category requires trust signals that lifestyle hosts cannot provide. Expert hosting produces 2.3× better conversion despite narrower host pool.',
     },
     accountOutcomes: {
       metrics: [
-        { value: '$10M+', label: 'Total GMV', source: 'Annual contract data' },
-        { value: '4', label: 'Brands activated', source: 'Internal ops log' },
-        { value: '2024', label: 'Winning Agency', source: 'TikTok Vietnam recognition' },
+        { value: '140%', label: 'ROAS vs 130% target', source: 'TikTok ads dashboard' },
+        { value: 'Regional model', label: 'Expert-led format', source: "L'Oréal regional HQ" },
       ],
-      narrative: "2024 Winning Agency recognition. Cited by TikTok Vietnam as the model multi-brand commerce operation in the beauty category. L'Oréal Paris Tet case referenced in TikTok regional playbook.",
+      narrative: "La Roche-Posay VN cited by regional HQ as model market for expert-led livestream. Format rolling to ID and TH.",
     },
-    accountPatterns: [
-      {
-        id: 'lo-acc-01',
-        title: "All L'Oréal brands start P1 before layering P4 — no exceptions",
-        appliesTo: "Observed across L'Oréal Paris, Maybelline, La Roche-Posay",
-        insight: "Proposing P4 to a new L'Oréal brand before P1 BAU is established stalls procurement. Always sequence P1 first, introduce P4 at the 60-day mark — except for short seasonal windows.",
-      },
-      {
-        id: 'lo-acc-02',
-        title: 'Procurement approval requires 8+ weeks regardless of brand',
-        appliesTo: "All L'Oréal brands — even when brand team wants to move faster",
-        insight: "The bottleneck is L'Oréal Group legal and procurement, not the brand team. Build 8-week buffer into every new project kickoff timeline. Never promise earlier.",
-      },
-      {
-        id: 'lo-acc-03',
-        title: 'Each brand needs its own host pool — cross-brand sharing dilutes voice',
-        appliesTo: 'All multi-brand MNC accounts with 3+ brands',
-        insight: 'Maybelline (mass-glam) vs La Roche-Posay (derma-science) require completely different host profiles. Separate host rosters, separate content calendars. Budget efficiency from shared hosts is outweighed by conversion loss.',
-      },
-    ],
+    accountPatterns: [],
 
     tagClusters: [
-      { category: 'industry', label: 'Industry', tags: ['Beauty', 'Personal Care', 'Premium', 'Mass-market', 'Clinical'] },
-      { category: 'geography', label: 'Geography', tags: ['Vietnam', 'MNC-managed'] },
-      { category: 'size-type', label: 'Account type', tags: ['MNC', '4 brands', 'Group procurement', 'Regional HQ'] },
-      { category: 'service-combo', label: 'Services ever used', tags: ['P1', 'P2', 'P3', 'P4', 'P5'] },
-      { category: 'outcome-type', label: 'Outcome class', tags: ['$10M+ GMV', 'Award winner', 'Regional model', 'Category leader'] },
-      { category: 'bu-coverage', label: 'BU', tags: ['Direct Brand primary', 'Affiliate secondary'] },
+      { category: 'industry', label: 'Industry', tags: ['Beauty', 'Derma', 'Clinical skincare'] },
+      { category: 'service-combo', label: 'Services used', tags: ['P1', 'P4'] },
+      { category: 'outcome-type', label: 'Outcome class', tags: ['140% ROAS', 'Regional model', 'Expert format'] },
     ],
 
     linkedEntities: [
       { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
       { kind: 'persona', slug: 'minh-mnc', label: 'Minh-MNC' },
-      { kind: 'persona', slug: 'hung-ecom', label: 'Hung-Ecom' },
-      { kind: 'account', slug: 'unilever-vietnam', label: 'Unilever VN' },
-      { kind: 'account', slug: 'pampers', label: 'Pampers' },
     ],
   },
 
   /* ════════════════════════════════════════════════════════════
-     UNILEVER VIETNAM — MINIMUM VIABLE
+     UNILEVER VN — BEAUTY & WELLBEING
   ════════════════════════════════════════════════════════════ */
   {
-    slug: 'unilever-vietnam',
-    name: 'Unilever Vietnam',
+    slug: 'unilever-vn-beauty',
+    name: 'Unilever VN — Beauty & Wellbeing',
     initials: 'UV',
     category: 'beauty',
     categoryLabel: 'Beauty & Personal Care',
+    parentCompany: 'Unilever Vietnam',
+    parentSlug: 'unilever-vn',
+    categoryName: 'Beauty & Wellbeing',
+    categorySlug: 'beauty-wellbeing',
+    isGeneralCategory: false,
     industry: 'Beauty / FMCG',
     market: 'VN',
     sizeTier: 'mnc',
@@ -464,9 +469,9 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     lastVerified: '1w ago',
     keyContacts: [],
     brands: [
-      { slug: 'dove', name: 'Dove' },
-      { slug: 'sunsilk', name: 'Sunsilk' },
-      { slug: 'ponds', name: "Pond's" },
+      { id: 'dove', name: 'Dove', status: 'active' },
+      { id: 'sunsilk', name: 'Sunsilk', status: 'active' },
+      { id: 'ponds', name: "Pond's", status: 'active' },
     ],
     projects: [
       {
@@ -501,7 +506,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           { category: 'outcome-type', label: 'Outcome', tags: ['Category #1', 'New format launch'] },
         ],
         linkedEntities: [
-          { kind: 'account', slug: 'unilever-vietnam', label: 'Unilever Vietnam' },
+          { kind: 'account', slug: 'unilever-vn-beauty', label: 'Unilever VN — Beauty & Wellbeing' },
           { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
         ],
         version: 'v2026',
@@ -523,6 +528,81 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
         outcomeHeadline: 'Executed on-time · BAU execution',
         briefNote: 'One-off 11.11 stream for Sunsilk. Used existing BAU studio from Dove engagement. 4-hour session, standard promotional format.',
         outcomeNote: 'Executed on schedule. Positive session metrics, no separate GMV reporting. Confirmed BAU capability cross-brand.',
+      },
+      {
+        slug: 'dove-dry-serum-ugc',
+        name: 'Dove Dry Serum UGC Program',
+        brandSlug: 'dove',
+        brandName: 'Dove',
+        type: 'full-case',
+        period: 'Mar – Apr 2024',
+        services: ['P2'],
+        outcomeHeadline: '4× UGC target exceeded · 68M views',
+        goals: [
+          'Launch Dove Dry Serum with authentic creator advocacy',
+          'Generate 200 UGC pieces within 6 weeks',
+        ],
+        painPoints: [
+          'New product — no existing creator reviews to seed',
+          'Brand required creators to have genuinely tried the product',
+        ],
+        deployedServices: [
+          { code: 'P2', detail: '185 KOC seeding + content program', bu: 'direct-brand', since: 'Mar 2024' },
+        ],
+        approachReasoning: 'Selected KOCs were screened for existing interest in hair care — not just follower count. Commission-based structure meant only creators who genuinely used the product continued producing content.',
+        outcomeMetrics: [
+          { value: '400', label: 'UGCs produced', source: 'Campaign tracker' },
+          { value: '68M', label: 'Views', source: 'TikTok analytics' },
+          { value: '4×', label: 'Target exceeded', source: 'vs 200 UGC brief' },
+        ],
+        narrativeOutcomes: [
+          {
+            type: 'recognition',
+            text: '2024 Winning Agency citation. Authenticity multiplied reach beyond any paid seeding result in the category that year.',
+          },
+        ],
+        patterns: [
+          {
+            id: 'lo-p04',
+            title: 'Commission-only UGC self-selects for genuine product users',
+            appliesTo: 'P2 programs for new product launches',
+            insight: 'Paying a flat fee incentivises volume. Commission-only incentivises conversion. For launch UGC, commission-only produces 3–4× better content quality because uncommitted creators drop off early.',
+          },
+          {
+            id: 'lo-p05',
+            title: 'Interest-matched KOC seeding outperforms follower-matched',
+            appliesTo: 'Beauty UGC programs with genuine product trial requirement',
+            insight: 'Filtering the KOC pool by demonstrated interest in the category (prior content, engagement patterns) before follower count produces higher completion rates and better view-through.',
+          },
+        ],
+        tagClusters: [
+          { category: 'industry', label: 'Industry', tags: ['Beauty', 'Hair Care', 'UGC'] },
+          { category: 'service-combo', label: 'Service combo', tags: ['P2 only', 'KOC seeding', 'Commission-based'] },
+          { category: 'outcome-type', label: 'Outcome', tags: ['4× target', '68M views', 'Authenticity-led'] },
+        ],
+        linkedEntities: [
+          { kind: 'account', slug: 'unilever-vn-beauty', label: 'Unilever VN — Beauty & Wellbeing' },
+          { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
+          { kind: 'service', slug: 'p2-ugc-content', label: 'P2 UGC & Content' },
+        ],
+        version: 'v2026',
+        lastVerified: '2d ago',
+        projectObjective: 'Launch Dove Dry Serum with authentic creator UGC — 200 pieces minimum within 6 weeks, genuine product users only.',
+        concept: 'Commission-only KOC seeding. Creators screened for existing hair care interest, not follower count. Only creators who genuinely used the product continued producing.',
+        contentStrategy: '185 KOCs seeded with physical product. Commission structure self-selected committed creators. No scripted content — brief provided tone direction only.',
+        timeline: [
+          { milestone: 'Product seeding', date: 'Mar W1 2024' },
+          { milestone: 'Content window open', date: 'Mar W2 2024' },
+          { milestone: 'Campaign close', date: 'Apr W2 2024' },
+          { milestone: 'Reporting', date: 'Apr W3 2024' },
+        ],
+        targetAudience: 'Women 20–35, hair care interested, moderate income, TikTok-native content consumers.',
+        audienceReached: '68.48M views total. 185 KOC participants, 400 UGC pieces produced. Avg view-through rate 4.2× category benchmark.',
+        kpis: [
+          { name: 'UGC pieces', target: '200', achieved: '400', met: true },
+          { name: 'Total views', target: '15M', achieved: '68.48M', met: true },
+          { name: 'KOC completion rate', target: '70%', achieved: '97%', met: true },
+        ],
       },
     ],
     accountBrief: {
@@ -554,7 +634,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     ],
     linkedEntities: [
       { kind: 'icp', slug: 'mnc-global', label: 'MNC / Global' },
-      { kind: 'account', slug: 'loreal-vietnam', label: "L'Oréal Vietnam" },
+      { kind: 'account', slug: 'loreal-vn-consumer', label: "L'Oréal VN — Consumer Products" },
     ],
   },
 
@@ -567,6 +647,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Co',
     category: 'beauty',
     categoryLabel: 'Beauty & Personal Care',
+    parentCompany: 'Cocoon',
+    parentSlug: 'cocoon',
+    categoryName: 'Beauty & Personal Care',
+    categorySlug: 'beauty',
+    isGeneralCategory: true,
     industry: 'Beauty / Indie',
     market: 'VN',
     sizeTier: 'local-indie',
@@ -581,7 +666,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'cocoon-beauty', name: 'Cocoon Beauty' }],
+    brands: [{ id: 'cocoon-beauty', name: 'Cocoon Beauty', status: 'active', contractedServices: ['P1', 'P2', 'P5'] }],
     projects: [
       {
         slug: 'cocoon-affiliate-growth-2024',
@@ -684,6 +769,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Pa',
     category: 'mom-kid',
     categoryLabel: 'Mom & Kid',
+    parentCompany: 'Pampers',
+    parentSlug: 'pampers',
+    categoryName: 'Mom & Kid',
+    categorySlug: 'mom-kid',
+    isGeneralCategory: true,
     industry: 'Mom & Kid / FMCG',
     market: 'VN',
     sizeTier: 'mnc',
@@ -699,7 +789,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'pampers-vn', name: 'Pampers VN' }],
+    brands: [{ id: 'pampers-vn', name: 'Pampers VN', status: 'active', contractedServices: ['P1', 'P3'] }],
     projects: [
       {
         slug: 'pampers-tiktok-shop-entry',
@@ -799,6 +889,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Fr',
     category: 'mom-kid',
     categoryLabel: 'Mom & Kid',
+    parentCompany: 'Friso',
+    parentSlug: 'friso',
+    categoryName: 'Mom & Kid',
+    categorySlug: 'mom-kid',
+    isGeneralCategory: true,
     industry: 'Mom & Kid / Premium Dairy',
     market: 'VN',
     sizeTier: 'mnc',
@@ -814,7 +909,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'friso-vn', name: 'Friso VN' }],
+    brands: [{ id: 'friso-vn', name: 'Friso VN', status: 'active', contractedServices: ['P4'] }],
     projects: [
       {
         slug: 'friso-performance-media-q3',
@@ -916,6 +1011,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Bo',
     category: 'mom-kid',
     categoryLabel: 'Mom & Kid',
+    parentCompany: 'Bobby',
+    parentSlug: 'bobby',
+    categoryName: 'Mom & Kid',
+    categorySlug: 'mom-kid',
+    isGeneralCategory: true,
     industry: 'Mom & Kid / Diapers',
     market: 'VN',
     sizeTier: 'local-large',
@@ -930,7 +1030,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'bobby-vn', name: 'Bobby VN' }],
+    brands: [{ id: 'bobby-vn', name: 'Bobby VN', status: 'active', contractedServices: ['P1'] }],
     projects: [
       {
         slug: 'bobby-brand-storytelling-2024',
@@ -1028,6 +1128,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Su',
     category: 'home-care',
     categoryLabel: 'Home Care',
+    parentCompany: 'Sunhouse',
+    parentSlug: 'sunhouse',
+    categoryName: 'Home Care',
+    categorySlug: 'home-care',
+    isGeneralCategory: true,
     industry: 'Home Appliance',
     market: 'VN',
     sizeTier: 'local-large',
@@ -1042,7 +1147,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'sunhouse-vn', name: 'Sunhouse VN' }],
+    brands: [{ id: 'sunhouse-vn', name: 'Sunhouse VN', status: 'active', contractedServices: ['P1', 'P4'] }],
     projects: [
       {
         slug: 'sunhouse-tiktok-commerce-launch',
@@ -1145,6 +1250,11 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     initials: 'Cm',
     category: 'home-care',
     categoryLabel: 'Home Care',
+    parentCompany: 'Comet',
+    parentSlug: 'comet',
+    categoryName: 'Home Care',
+    categorySlug: 'home-care',
+    isGeneralCategory: true,
     industry: 'Cleaning / Home Care',
     market: 'VN',
     sizeTier: 'mnc',
@@ -1160,7 +1270,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     version: 'v2026',
     lastVerified: '1w ago',
     keyContacts: [],
-    brands: [{ slug: 'comet-vn', name: 'Comet VN' }],
+    brands: [{ id: 'comet-vn', name: 'Comet VN', status: 'active', contractedServices: ['P1'] }],
     projects: [
       {
         slug: 'comet-cleaning-category-entry',

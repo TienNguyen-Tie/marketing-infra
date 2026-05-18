@@ -23,7 +23,7 @@ export default async function ProjectPage({
   const project = getProjectBySlug(account, projectSlug);
   if (!project) notFound();
 
-  const brand = account.brands.find(b => b.slug === project.brandSlug);
+  const brand = account.brands.find(b => b.id === project.brandSlug);
 
   if (project.type === 'adhoc') {
     return (
