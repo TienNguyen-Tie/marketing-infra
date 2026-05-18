@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import type { Session } from 'next-auth';
 
 /* ── TYPES ─────────────────────────────────────────────────── */
 
@@ -128,9 +128,8 @@ function nameInitials(name: string): string {
 
 /* ── COMPONENT ──────────────────────────────────────────────── */
 
-export default function Sidebar() {
+export default function Sidebar({ session }: { session: Session | null }) {
   const pathname = usePathname();
-  const { data: session } = useSession();
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set(['/knowledge-base']));
   const [flyout, setFlyout] = useState<FlyoutState>(null);
   const flyoutRef = useRef<HTMLDivElement>(null);

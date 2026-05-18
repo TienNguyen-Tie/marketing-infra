@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, IBM_Plex_Serif } from "next/font/google";
-import SessionProvider from "@/components/SessionProvider";
-import Sidebar from "@/components/Sidebar";
+import ConditionalLayout from "@/components/ConditionalLayout";
+import { auth } from "@/lib/auth";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -23,11 +23,12 @@ export const metadata: Metadata = {
   description: "Internal knowledge-base tool for the Ecomobi marketing team",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en" className={`${dmSans.variable} ${ibmPlexSerif.variable}`}>
       <head>
@@ -37,12 +38,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <SessionProvider>
-          <div className="app-shell">
-            <Sidebar />
-            <main className="site-main">{children}</main>
-          </div>
-        </SessionProvider>
+        <ConditionalLayout session={session}>{children}</ConditionalLayout>
       </body>
     </html>
   );
