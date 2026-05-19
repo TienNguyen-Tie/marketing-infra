@@ -49,11 +49,14 @@ export async function POST(
         return NextResponse.json({ error: 'No PDF URL on source' }, { status: 400 });
       }
 
+      // Generate a 15-minute signed URL so Anthropic can fetch the PDF directly.
+      // The store is private; the signed URL embeds auth in query params so
+      // Anthropic's servers can reach it without credentials.
       const blobPathname = new URL(source.pdfUrl).pathname.replace(/^\//, '');
       const readToken = await issueSignedToken({
         pathname: blobPathname,
         operations: ['get'],
-        validUntil: Date.now() + 10 * 60 * 1000,
+        validUntil: Date.now() + 15 * 60 * 1000,
       });
       const { presignedUrl: signedGetUrl } = await presignUrl(readToken, {
         operation: 'get',
@@ -61,18 +64,6 @@ export async function POST(
         access: 'public',
       } as Parameters<typeof presignUrl>[1]);
 
-      const pdfRes = await fetch(signedGetUrl);
-      if (!pdfRes.ok) {
-        return NextResponse.json(
-          { error: `Failed to fetch PDF: ${pdfRes.status}` },
-          { status: 502 }
-        );
-      }
-      const pdfBuffer = await pdfRes.arrayBuffer();
-      const pdfBase64 = Buffer.from(pdfBuffer).toString('base64');
-
-      // TODO: remove `as any` cast and the `anthropic-beta: pdfs-2024-09-25` header
-      // when @anthropic-ai/sdk officially supports PDF input in messages.create.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const message = await (anthropic.messages as any).create(
         {
@@ -85,7 +76,7 @@ export async function POST(
               content: [
                 {
                   type: 'document',
-                  source: { type: 'base64', media_type: 'application/pdf', data: pdfBase64 },
+                  source: { type: 'url', url: signedGetUrl },
                 },
                 {
                   type: 'text',
