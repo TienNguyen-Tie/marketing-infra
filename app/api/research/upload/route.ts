@@ -1,10 +1,8 @@
-import { put } from '@vercel/blob';
+import { issueSignedToken, presignUrl, parseStoreIdFromDelegationToken } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 
-export const maxDuration = 60;
-
-export async function POST(request: Request): Promise<NextResponse> {
+export async function GET(request: Request): Promise<NextResponse> {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
@@ -12,12 +10,33 @@ export async function POST(request: Request): Promise<NextResponse> {
   const filename = searchParams.get('filename');
   if (!filename) return NextResponse.json({ error: 'filename is required' }, { status: 400 });
 
-  if (!request.body) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
+  const pathname = `${Date.now()}-${filename}`;
+  const validUntil = Date.now() + 5 * 60 * 1000;
 
-  const blob = await put(filename, request.body, {
-    access: 'public',
-    contentType: 'application/pdf',
-  });
+  try {
+    const issuedToken = await issueSignedToken({
+      pathname,
+      operations: ['put'],
+      validUntil,
+      allowedContentTypes: ['application/pdf'],
+      maximumSizeInBytes: 50 * 1024 * 1024,
+    });
 
-  return NextResponse.json({ url: blob.url });
+    const { presignedUrl: signedPutUrl } = await presignUrl(issuedToken, {
+      operation: 'put',
+      pathname,
+      access: 'public',
+      allowedContentTypes: ['application/pdf'],
+      maximumSizeInBytes: 50 * 1024 * 1024,
+      addRandomSuffix: false,
+      validUntil,
+    });
+
+    const storeId = parseStoreIdFromDelegationToken(issuedToken.delegationToken);
+    const blobUrl = `https://${storeId}.public.blob.vercel-storage.com/${pathname}`;
+
+    return NextResponse.json({ presignedUrl: signedPutUrl, blobUrl });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  }
 }

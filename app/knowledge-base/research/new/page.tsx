@@ -344,10 +344,23 @@ export default function NewSourcePage() {
       let pdfCompressedSize: number | undefined;
 
       if (sourceType === 'pdf' && pdfState.status === 'ready') {
+        // Phase 1: get a presigned PUT URL (no Authorization header needed for the upload)
+        const tokenRes = await fetch(
+          `/api/research/upload?filename=${encodeURIComponent(pdfState.file.name)}`,
+        );
+        if (!tokenRes.ok) {
+          const j = await tokenRes.json().catch(() => ({}));
+          throw new Error((j as { error?: string }).error ?? 'Failed to get upload URL');
+        }
+        const { presignedUrl, blobUrl } = (await tokenRes.json()) as {
+          presignedUrl: string;
+          blobUrl: string;
+        };
+
+        // Phase 2: PUT directly to Vercel Blob using the presigned URL
         pdfUrl = await new Promise<string>((resolve, reject) => {
           const xhr = new XMLHttpRequest();
-          const url = `/api/research/upload?filename=${encodeURIComponent(pdfState.file.name)}`;
-          xhr.open('POST', url);
+          xhr.open('PUT', presignedUrl);
           xhr.setRequestHeader('Content-Type', 'application/pdf');
           xhr.upload.addEventListener('progress', (e) => {
             if (e.lengthComputable) setUploadProgress(Math.round((e.loaded / e.total) * 100));
@@ -355,17 +368,9 @@ export default function NewSourcePage() {
           xhr.onload = () => {
             setUploadProgress(null);
             if (xhr.status >= 200 && xhr.status < 300) {
-              try {
-                resolve((JSON.parse(xhr.responseText) as { url: string }).url);
-              } catch {
-                reject(new Error('Invalid response from upload route'));
-              }
+              resolve(blobUrl);
             } else {
-              try {
-                reject(new Error((JSON.parse(xhr.responseText) as { error?: string }).error ?? `Upload failed (${xhr.status})`));
-              } catch {
-                reject(new Error(`Upload failed (${xhr.status})`));
-              }
+              reject(new Error(`Upload failed (${xhr.status}): ${xhr.responseText.slice(0, 200)}`));
             }
           };
           xhr.onerror = () => { setUploadProgress(null); reject(new Error('Network error during upload')); };
