@@ -8,6 +8,7 @@ import type { DraftInsight } from '@/lib/research/extraction-prompt';
 import type { UrlRef } from '@/lib/research/types';
 import Anthropic from '@anthropic-ai/sdk';
 import { EXTRACTION_MODEL } from '@/lib/ai-models';
+import { issueSignedToken, presignUrl } from '@vercel/blob';
 
 export const maxDuration = 60;
 
@@ -48,7 +49,19 @@ export async function POST(
         return NextResponse.json({ error: 'No PDF URL on source' }, { status: 400 });
       }
 
-      const pdfRes = await fetch(source.pdfUrl);
+      const blobPathname = new URL(source.pdfUrl).pathname.replace(/^\//, '');
+      const readToken = await issueSignedToken({
+        pathname: blobPathname,
+        operations: ['get'],
+        validUntil: Date.now() + 10 * 60 * 1000,
+      });
+      const { presignedUrl: signedGetUrl } = await presignUrl(readToken, {
+        operation: 'get',
+        pathname: blobPathname,
+        access: 'public',
+      } as Parameters<typeof presignUrl>[1]);
+
+      const pdfRes = await fetch(signedGetUrl);
       if (!pdfRes.ok) {
         return NextResponse.json(
           { error: `Failed to fetch PDF: ${pdfRes.status}` },
