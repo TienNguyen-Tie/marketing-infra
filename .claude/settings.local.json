@@ -47,12 +47,25 @@
       "Bash(kill -9 48596 55635 55636)",
       "Bash(echo \"Started PID $!\")",
       "Bash(curl -sv http://localhost:3000/)",
-      "Bash(curl -sv http://localhost:3000/login)"
+      "Bash(curl -sv http://localhost:3000/login)",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/portfolio/\\\\[accountSlug\\\\]/brand/\\\\[brandSlug\\\\] && ls /Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/portfolio/\\\\[accountSlug\\\\]/)",
+      "Bash(node -e \"const { PDFDocument } = require\\('pdf-lib'\\); console.log\\('pdf-lib ok'\\);\")",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/research/upload \\\\ *)",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/research/sources/\\\\[id\\\\])",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/\\\\[id\\\\]/extract)",
+      "Bash(kill %1)",
+      "Bash(wait)",
+      "Bash(xargs kill -9)",
+      "Bash(grep -v \"^$\")",
+      "Bash(git init *)"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",
       "/Users/tienvnguyen/eco_mkt_infra/app/api/auth",
-      "/Users/tienvnguyen/eco_mkt_infra/app/api/suggestions"
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/suggestions",
+      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/portfolio/[accountSlug]/brand",
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]",
+      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/research/sources"
     ]
   }
 }

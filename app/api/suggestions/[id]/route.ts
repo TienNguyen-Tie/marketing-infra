@@ -1,14 +1,12 @@
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
-import type { Session } from 'next-auth';
-
 export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const session = await auth() as Session | null;
-  if ((session?.user as { role?: string } | undefined)?.role !== 'ADMIN') {
+  const session = await auth();
+  if (session?.user?.role !== 'ADMIN') {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 

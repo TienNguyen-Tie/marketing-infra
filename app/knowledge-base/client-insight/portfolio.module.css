@@ -2931,3 +2931,33 @@
   border: 0.5px dashed var(--gray-200);
   flex-shrink: 0;
 }
+
+/* ─── Brand navigation links ─────────────────────────────── */
+
+/* "View brand →" footer link on §02 brand cards */
+.viewBrandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid #F5F5F5;
+}
+.viewBrandLink:hover { text-decoration: underline; text-underline-offset: 2px; }
+.viewBrandArrow { font-size: 13px !important; }
+
+/* Clickable brand name in §13 project group dividers */
+.brandDividerNameLink {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.brandDividerNameLink:hover { text-decoration: underline; text-underline-offset: 2px; }

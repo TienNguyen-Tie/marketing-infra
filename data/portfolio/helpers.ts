@@ -1,6 +1,6 @@
 import { PORTFOLIO_ACCOUNTS } from './accounts';
 import { CATEGORY_ORDER } from './types';
-import type { AccountContact, ClientCategory, PortfolioAccount, Project, ServiceCode } from './types';
+import type { AccountContact, Brand, ClientCategory, PortfolioAccount, Product, Project, ServiceCode } from './types';
 
 export function getAccountBySlug(slug: string): PortfolioAccount | undefined {
   return PORTFOLIO_ACCOUNTS.find(a => a.slug === slug);
@@ -81,6 +81,32 @@ export function getSiblingPortfolios(account: PortfolioAccount): PortfolioAccoun
   return PORTFOLIO_ACCOUNTS.filter(
     a => a.parentSlug === account.parentSlug && a.slug !== account.slug,
   );
+}
+
+function nameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/[éêè]/g, 'e')
+    .replace(/[àâ]/g, 'a')
+    .replace(/[ôó]/g, 'o')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+export function getBrandSlug(brand: Brand): string {
+  return brand.slug ?? nameToSlug(brand.name);
+}
+
+export function getBrandBySlug(accountSlug: string, brandSlug: string): Brand | undefined {
+  const account = getAccountBySlug(accountSlug);
+  if (!account) return undefined;
+  return account.brands.find(b => getBrandSlug(b) === brandSlug);
+}
+
+export function getProductsByBrand(accountSlug: string, brandSlug: string): Product[] {
+  const brand = getBrandBySlug(accountSlug, brandSlug);
+  return brand?.products ?? [];
 }
 
 export function getPortfolioStats(): {

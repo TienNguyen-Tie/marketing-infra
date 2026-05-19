@@ -1,0 +1,385 @@
+/*
+  ResearchCompanion.module.css
+  Component-specific palette (not in global tokens):
+    #FEF3F2  — red-pale background for AI messages
+    #353535  — AI message text
+    #D3D3D3  — empty state icon
+    #727272  — empty state / footer text
+    #F5F5F5  — user message bg, hover states
+    #10B981  — logged check green
+    rgba(0,0,0,0.4) — backdrop
+*/
+
+/* ── BACKDROP ─────────────────────────────────────────────────── */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.backdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── DRAWER ───────────────────────────────────────────────────── */
+
+.drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 480px;
+  height: 100vh;
+  background: white;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+@media (max-width: 640px) {
+  .drawer {
+    width: 100vw;
+  }
+}
+
+/* ── HEADER ───────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 0.5px solid var(--gray-200);
+  flex-shrink: 0;
+}
+
+.headerLeft { flex: 1; }
+
+.headerEyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--red);
+  margin: 0;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 2px 0 0;
+}
+
+.headerMeta {
+  font-size: 11px;
+  color: #727272;
+  margin: 3px 0 0;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-400);
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: #F5F5F5;
+  color: var(--black);
+}
+
+/* ── CONVERSATION ─────────────────────────────────────────────── */
+
+.conversation {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 200px;
+}
+
+.emptyText {
+  font-size: 13px;
+  color: #727272;
+  margin-top: 16px;
+  max-width: 280px;
+  text-align: center;
+  line-height: 1.55;
+}
+
+.exchange {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.userMsg {
+  align-self: flex-end;
+  max-width: 85%;
+  background: #F5F5F5;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  font-family: var(--font-sans);
+}
+
+.aiMsgWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aiMsg {
+  background: #FEF3F2;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  color: #353535;
+  line-height: 1.6;
+  font-family: var(--font-sans);
+}
+
+.citation {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--red);
+  background: #FEF3F2;
+  border: 0.5px solid var(--red);
+  border-radius: 4px;
+  padding: 1px 5px;
+  text-decoration: none;
+  margin: 0 1px;
+  vertical-align: middle;
+  transition: background 0.1s;
+  cursor: pointer;
+}
+
+.citation:hover {
+  background: var(--red);
+  color: white;
+}
+
+.loggedNote {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 4px;
+}
+
+.loggedText {
+  font-size: 11px;
+  color: #727272;
+  font-family: var(--font-sans);
+}
+
+/* ── LOADING DOTS ─────────────────────────────────────────────── */
+
+.loadingBubble {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #FEF3F2;
+  padding: 14px 18px;
+  border-radius: 12px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40%            { opacity: 1;   transform: scale(1);   }
+}
+
+/* ── ERROR ────────────────────────────────────────────────────── */
+
+.errorBanner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  background: #FEF3F2;
+  border: 0.5px solid var(--red);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.errorText {
+  font-size: 12px;
+  color: var(--red);
+  line-height: 1.5;
+  font-family: var(--font-sans);
+}
+
+.errorDismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--red);
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+/* ── INPUT AREA ───────────────────────────────────────────────── */
+
+.inputArea {
+  padding: 16px 24px;
+  border-top: 0.5px solid var(--gray-200);
+  flex-shrink: 0;
+}
+
+.inputRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.textarea {
+  flex: 1;
+  min-height: 40px;
+  max-height: 120px;
+  padding: 10px 14px;
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--black);
+  resize: none;
+  background: white;
+  transition: border-color 0.15s;
+  overflow-y: auto;
+}
+
+.textarea::placeholder {
+  color: var(--gray-400);
+}
+
+.textarea:focus {
+  outline: none;
+  border: 1.5px solid var(--red);
+}
+
+.textarea:disabled {
+  background: #FAFAFA;
+  color: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.sendBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.sendBtn:hover:not(:disabled) {
+  background: var(--red-dark);
+}
+
+.sendBtn:disabled {
+  background: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.inputFooter {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gray-400);
+  margin-top: 8px;
+  text-align: center;
+  font-family: var(--font-sans);
+}
+
+/* ── TRIGGER BUTTON ───────────────────────────────────────────── */
+
+.trigger {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 10px 14px;
+  background: var(--black);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.trigger:hover {
+  background: #2A2A2A;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.triggerDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+}

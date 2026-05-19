@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 import type { Session } from 'next-auth';
 
 function isAdmin(session: Session | null): boolean {
-  return (session?.user as { role?: string } | undefined)?.role === 'ADMIN';
+  return session?.user?.role === 'ADMIN';
 }
 
 export async function GET() {

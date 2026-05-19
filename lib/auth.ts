@@ -3,22 +3,6 @@ import Credentials from 'next-auth/providers/credentials';
 import { db } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { authConfig } from '@/lib/auth.config';
-import type { Role } from '@/lib/generated/prisma/client';
-
-declare module 'next-auth' {
-  interface User {
-    role?: Role;
-  }
-  interface Session {
-    user: {
-      id: string;
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-      role?: Role;
-    };
-  }
-}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,

@@ -8,6 +8,7 @@ import {
   getSiblingPortfolios,
   getDisplayName,
   getFullDisplayName,
+  getBrandSlug,
 } from '@/data/portfolio/helpers';
 import {
   SERVICE_NAMES,
@@ -16,6 +17,8 @@ import {
   COPROMO_TYPE_LABELS,
 } from '@/data/portfolio/types';
 import type { MarketPosition, CoPromoType } from '@/data/portfolio/types';
+import { getInsightsForPortfolio } from '@/lib/research/helpers';
+import RelevantResearchSection from '@/components/research/RelevantResearchSection';
 import styles from '../../portfolio.module.css';
 
 export async function generateStaticParams() {
@@ -105,6 +108,7 @@ export default async function AccountPage({
   const siblings = getSiblingPortfolios(account);
   const displayName = getDisplayName(account);
   const fullDisplayName = getFullDisplayName(account);
+  const relevantInsights = await getInsightsForPortfolio(accountSlug);
 
   return (
     <div className={styles.dossPage}>
@@ -254,6 +258,13 @@ export default async function AccountPage({
                   {bProjects.length} project{bProjects.length !== 1 ? 's' : ''} · {bFull} full case{bFull !== 1 ? 's' : ''}
                   {brand.gmvLabel ? ` · ${brand.gmvLabel}` : ''}
                 </p>
+                <Link
+                  href={`/knowledge-base/client-insight/portfolio/${account.slug}/brand/${getBrandSlug(brand)}`}
+                  className={styles.viewBrandLink}
+                >
+                  View brand
+                  <span className={`material-icons-round ${styles.viewBrandArrow}`}>arrow_forward</span>
+                </Link>
               </div>
             );
           })}
@@ -731,7 +742,12 @@ export default async function AccountPage({
           return (
             <div key={brand.id} className={styles.brandGroup}>
               <div className={styles.brandDivider}>
-                <span className={styles.brandDividerName}>{brand.name}</span>
+                <Link
+                  href={`/knowledge-base/client-insight/portfolio/${account.slug}/brand/${getBrandSlug(brand)}`}
+                  className={styles.brandDividerNameLink}
+                >
+                  {brand.name}
+                </Link>
                 {brand.gmvLabel && (
                   <span className={styles.brandDividerGmv}>{brand.gmvLabel}</span>
                 )}
@@ -828,6 +844,26 @@ export default async function AccountPage({
             ))}
           </div>
         )}
+      </div>
+
+      {/* ══════════════════════════════════════════════════════
+          GROUP H · RESEARCH FROM THE LIBRARY
+      ══════════════════════════════════════════════════════ */}
+      <GroupDivider label="GROUP H · RESEARCH FROM THE LIBRARY" />
+
+      {/* §15 · Relevant Research */}
+      <div className={styles.dossSection}>
+        <SectionHeader
+          num="15"
+          title="RELEVANT RESEARCH"
+          subtitle={`Insights from the research library that apply to this portfolio. Tagged via the applicability field on each insight.`}
+        />
+        <RelevantResearchSection
+          insights={relevantInsights}
+          entityType="portfolio"
+          entitySlug={accountSlug}
+          entityName={displayName}
+        />
       </div>
 
     </div>

@@ -94,3 +94,124 @@ _2026-05-19_
 **After**: §01 Account Profile / §02 ICP & Persona → **§03 Brand Portfolio** → §04 Brief → §05 Solution → §06 Outcomes → §07 Account Patterns → §08 Reference Index → §09 Projects
 
 **Rationale**: Brand Portfolio (§03) surfaces which brands are active/prospect/lapsed and what services they have contracted — this is decision-support data that belongs before the campaign history, not after it.
+
+---
+
+## D-010 — Brand detail page as a hierarchy layer between Portfolio and Project
+_2026-05-19_
+
+**Decision**: Added a Brand detail page at `/knowledge-base/client-insight/portfolio/{accountSlug}/brand/{brandSlug}`. It is a 11-section dossier in 5 groups (A–E): Group A (Brand Identity: §01 profile + §02 positioning/voice), Group B (Brand Audience: §03), Group C (Products: §04), Group D (Story Capital + Creator: §05 pitch/services + §06 story capital + §07 top creators + §08 content angles), Group E (Outcomes + Reference: §09 + §10 + §11). Same Pattern A/B empty-state approach as the portfolio page.
+
+**Rationale**: The portfolio dossier holds account-level intelligence; the project page holds campaign-level execution. Brand-specific data (positioning, audience, products, top creators) doesn't fit cleanly into either. A brand layer provides the right granularity for campaign briefing against a specific brand.
+
+**Consequence**: `Brand` interface in `types.ts` extended with `slug`, `positioning`, `voiceTone`, `messagingPillars`, `brandAudience`, `products`, `brandStoryCapital`, `brandTopCreators`, `brandContentAngles`, `brandOutcomes`, `brandReferenceIndex`. New `Product` interface and `ProductStatus`/`ProductMarketingRole` types added. Helpers: `getBrandSlug`, `getBrandBySlug`, `getProductsByBrand`. L'Oréal Paris has full dossier seed data; Maybelline, Dove, La Roche-Posay have medium seeds; all others have slug + minimal fields. Portfolio §02 brand cards now link "View brand →" to the brand page; §13 brand sub-headers link to the brand page.
+
+**URL generation**: `getBrandSlug(brand)` returns `brand.slug` if set, otherwise `nameToSlug(brand.name)` (lowercase, accent-stripped, non-alphanumeric → hyphen). Explicit `slug` fields set on all 13 brands in `accounts.ts` to lock URLs against future name changes.
+
+---
+
+## D-011 — Research & Insights uses Vercel Blob for PDF storage
+_2026-05-19_
+
+**Decision**: PDFs uploaded through the Research & Insights section are stored in Vercel Blob, not in the Neon database. The DB stores only the blob URL and file metadata. BLOB_READ_WRITE_TOKEN must be present in environment variables.
+
+**Rationale**: Neon PostgreSQL (free/starter tier) is unsuitable for binary file storage. Vercel Blob is the native storage solution for Vercel-hosted Next.js projects and integrates cleanly with the `@vercel/blob/client` upload pattern (client-side upload, server-side token generation).
+
+**Consequence**: PDF uploads require a live Vercel Blob configuration. URL Collection sources and manual insight entry work without Blob configured. BLOB_READ_WRITE_TOKEN is already set in .env.local.
+
+---
+
+## D-012 — prisma db push used instead of migrate dev (no migration history)
+_2026-05-19_
+
+**Decision**: The Research & Insights tables (ResearchSource, Insight) were added via `prisma db push` rather than `prisma migrate dev`, because the existing User/Session/Suggestion tables were created without any migration history.
+
+**Rationale**: Running `prisma migrate dev` on a database with existing tables and no migration files triggers a "drift detected" error that requires a full schema reset (data loss). `prisma db push` adds only the new tables without touching the existing schema or data. Migration files are absent from this project.
+
+**Consequence**: If migration history is needed in the future, baseline the existing schema first using `prisma migrate resolve`, then switch to `prisma migrate dev` for all subsequent changes.
+
+---
+
+## D-013 — Research & Insights: manual insight entry in Prompt 1; AI extraction in Prompt 2
+_2026-05-19_
+
+**Decision**: The Insights tab on the listing page is disabled ("Coming soon") in Prompt 1. Manual insight entry via modal is live. AI-powered extraction from PDF/URL content is deferred to Prompt 2.
+
+**Rationale**: The data model and UI scaffolding must be established before adding AI extraction, which requires additional API integration and extraction logic. This phased approach allows the team to start adding manual insights immediately while AI extraction is built separately.
+
+**Consequence**: The `AddInsightModal` accepts all insight fields manually. Applicability fields (portfolios, brands, ICPs) are free-text comma-separated in Phase 1; they will become proper multi-select dropdowns in Prompt 3.
+
+---
+
+## D-014 — AI extraction uses claude-opus-4-7; drafts held in localStorage until accepted
+_2026-05-19_
+
+**Decision**: Extraction POSTs to `/api/research/sources/[id]/extract` which calls `claude-opus-4-7`. Draft insights are held in client state + localStorage (`research-drafts-{sourceId}`) rather than written to the DB immediately. Each draft is reviewed, optionally edited inline, then accepted (POST to insights API) or rejected.
+
+**Rationale**: Extraction quality varies; accepting all insights blindly would pollute the insight library. Holding drafts in localStorage provides persistence across page refreshes without requiring a separate DB model. `claude-opus-4-7` balances extraction quality with the 60-second `maxDuration` serverless limit. A `hydrated` guard flag prevents the save effect from clearing localStorage before the load effect runs on mount.
+
+**Consequence**: PDF extraction sends the full PDF as base64 with the `anthropic-beta: pdfs-2024-09-25` header. URL extraction fetches each URL server-side (12s timeout, 10K char cap, HTML stripped) before sending. Drafts do not persist server-side — a full page reload after clearing browser storage loses unaccepted drafts.
+
+---
+
+## D-017 — Cross-linked research: read-only render on portfolio & brand pages, filtered by applicability slug
+_2026-05-19_
+
+**Decision**: Portfolio and brand detail pages fetch insights from the DB at render time using `getInsightsForPortfolio(slug)` / `getInsightsForBrand(slug)` and render them in a new "Relevant Research" section (§15 on portfolio, §12 on brand). The section is read-only — no modal, no edit. Each insight card links directly to the source detail page (new tab). Empty state shows 3 ghost cards and a CTA explaining how to populate. "View all in library →" routes to the Insights tab with the entity's slug pre-applied as the applicability filter.
+
+**Rationale**: Surfacing relevant research at the point of use (portfolio/brand dossier) closes the loop between the research library and the account intelligence. The applicability field is already on every insight; cross-linking is pure presentation with zero schema change. Ghost cards preserve the "aspirational frame" pattern (D-008) — the section always renders and teaches users what to populate.
+
+**Consequence**: Portfolio and brand detail pages now make a DB call at render time. Pages remain dynamic (`ƒ`). GIN indexes added on `Insight.applicabilityPortfolios`, `applicabilityBrands`, `applicabilityIcps` for query performance as the library grows. `InsightListItem` extended with `linkBehavior` prop — `'source-link'` wraps the whole card in a link (used on entity pages); `'modal'` preserves the existing click-to-open-modal behavior (used on the Insights tab).
+
+---
+
+## D-018 — NextAuth role typing via module augmentation in next-auth.d.ts
+_2026-05-19_
+
+**Decision**: NextAuth's `User`, `Session`, and `JWT` interfaces are augmented in a single `next-auth.d.ts` file at the project root. The `declare module 'next-auth'` block that was inline in `lib/auth.ts` has been removed and consolidated there.
+
+**Rationale**: Having augmentation in `lib/auth.ts` (a runtime file) and potentially also in `next-auth.d.ts` causes duplicate declaration conflicts in TypeScript. A dedicated `.d.ts` is the canonical location for module augmentation. This eliminates `as any` and `as { role?: string }` casts across all route files.
+
+**Consequence**: `session.user.role` is typed as `Role | undefined` throughout the app — no casts needed. In `lib/auth.config.ts`, `token.role` in the session callback is `unknown` (NextAuth v5 JWT callback limitation), so a narrow value cast `token.role as Role | undefined` is used instead of an object-level `as any`. `lib/auth.config.ts` defines `type Role = 'ADMIN' | 'EDITOR' | 'VIEWER'` locally to avoid Prisma imports in the edge-safe config.
+
+**Pattern for future role-gated routes:**
+```ts
+const session = await auth();
+if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+if (session.user.role !== 'ADMIN') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+```
+No casts needed.
+
+---
+
+## ✅ Research & Insights arc — COMPLETE
+
+```
+✅ Prompt 1 — Base section, schema, listing, source detail, manual insight entry
+✅ Prompt 2 — AI extraction for PDFs and URL collections, draft review UI
+✅ Prompt 3 — Insights tab with URL-state filters, insight detail modal
+✅ Prompt 4 — Research Companion drawer, citation linking, query log
+✅ Prompt 5 — Cross-linking to portfolio and brand pages
+```
+
+---
+
+## D-016 — Research Companion: single-shot Q&A, citations rendered client-side
+_2026-05-19_
+
+**Decision**: Each question to the Research Companion is independent — no message history is sent to the API. In-memory exchange history is displayed in the drawer but only the current question + full insight library JSON is sent per request. Citations `[#insightId]` are rendered by the client by parsing the answer text and mapping IDs to source URLs via a `citationMap` returned from the API. Queries are logged to `ResearchQuery` (non-critically — DB failure doesn't fail the request).
+
+**Rationale**: Single-shot is simpler and avoids growing context costs as exchanges accumulate. The full insight library is small enough to fit in a single API call (tested under 4K tokens for typical libraries). Citation rendering in the client means the API returns clean text that can be logged verbatim; the rendering layer handles display.
+
+**Consequence**: If a user asks follow-up questions that require context from prior answers, they must re-state the context in their next question. The drawer makes this friction low since prior exchanges are visible above.
+
+---
+
+## D-015 — Insights tab uses client-side fetch with URL filter state
+_2026-05-19_
+
+**Decision**: The Insights tab (`?tab=insights`) fetches from `/api/research/insights` on the client using `useEffect` + `useState`. All filter state lives in URL query params. Tab switching clears all params and navigates to `?tab=X`.
+
+**Rationale**: Filter state in URL makes views shareable and bookmarkable. Client-side fetch keeps the tab interactive (instant filter chip toggles, debounced text inputs) without full page reloads. Simple `useEffect` + `useState` is preferred over SWR to match the existing codebase pattern. Tab switch clears all params because Sources and Insights have entirely different filter sets; preserving cross-tab params adds complexity with no user benefit at this stage.
+
+**Consequence**: Slug autocomplete for applicability filters is Phase 2 (currently free-text input). The confidence sort is applied in JavaScript after DB fetch (not in SQL) because Prisma has no native confidence-priority ordering. `totalCount` reflects the unfiltered total — used for "Showing N of M" display.

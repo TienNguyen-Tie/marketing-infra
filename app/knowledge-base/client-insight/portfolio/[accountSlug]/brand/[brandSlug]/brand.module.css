@@ -1,0 +1,477 @@
+/*
+  Brand detail page — brand-specific styles.
+  Ghost utilities, section header, profile grid, story capital,
+  top performer grid, angles, project cards, and reference index
+  are imported from portfolio.module.css in the page component.
+
+  Palette notes (non-token):
+  #C42A23  dark red text on pale red
+  #993C1D  brown-red label on pale red
+  #535353  near-black body text
+  #727272  secondary muted text
+  #353535  near-black body copy
+  #EEEDFE  purple-pale (contact avatars)
+  #3C3489  indigo text
+  #C4C2F7  purple border
+*/
+
+/* ─── Page wrapper ───────────────────────────────────────── */
+
+.brandPage {
+  padding: 32px 48px 96px;
+  max-width: 1100px;
+  font-family: var(--font-sans);
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+
+.brandHero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.brandHeroLeft { flex: 1; }
+
+.brandHeroEyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+
+.brandHeroH1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.brandHeroMeta {
+  font-size: 13px;
+  color: #535353;
+}
+
+.brandHeroRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Status pill — large version (hero-level) */
+.brandHeroStatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 5px 12px;
+  border: 0.5px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.brandStatus--active   { color: #0F6E56; background: #ECFDF5; border-color: #A7F3D0; }
+.brandStatus--prospect { color: #1D4ED8; background: #EFF6FF; border-color: #BFDBFE; }
+.brandStatus--pitched  { color: #854F0B; background: #FFFBEB; border-color: #FDE68A; }
+.brandStatus--lapsed   { color: #6B7280; background: #F9FAFB; border-color: #E5E7EB; }
+.brandStatus--paused   { color: #6B7280; background: #F9FAFB; border-color: #E5E7EB; }
+
+/* ─── Stats strip ────────────────────────────────────────── */
+
+.brandStats {
+  display: flex;
+  gap: 0;
+  background: var(--red-pale);
+  border: 0.5px solid var(--red-light);
+  border-radius: 8px;
+  padding: 14px 24px;
+  margin-bottom: 0;
+}
+
+.brandStatItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.brandStatItem + .brandStatItem {
+  border-left: 0.5px solid var(--red-light);
+  padding-left: 20px;
+}
+
+.brandStatNum {
+  font-size: 14px;
+  font-weight: 700;
+  color: #C42A23;
+}
+
+.brandStatLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: #993C1D;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ─── §01 Brand Profile ──────────────────────────────────── */
+/* Uses profileGrid/profileRow/profileLabel/profileValue from portfolio.module.css */
+
+/* ─── §02 Positioning & Voice ────────────────────────────── */
+
+.posVoiceCard {
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.posVoiceBlock {
+  padding: 14px 16px;
+  border-bottom: 0.5px solid var(--gray-200);
+}
+
+.posVoiceBlock:last-child { border-bottom: none; }
+.posVoiceBlock:nth-child(odd) { background: var(--gray-50); }
+
+.posVoiceLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+
+.posVoiceBody {
+  font-size: 13px;
+  color: #353535;
+  line-height: 1.65;
+}
+
+/* Messaging pillars numbered list */
+.pillarsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pillarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.pillarNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red-pale);
+  border: 0.5px solid var(--red-light);
+  color: #C42A23;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pillarText {
+  font-size: 13px;
+  color: #353535;
+  line-height: 1.6;
+  padding-top: 1px;
+}
+
+/* Ghost pillar row */
+.ghostPillarNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: transparent;
+  border: 0.5px dashed var(--gray-200);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── §03 Brand Audience ─────────────────────────────────── */
+/* Uses audienceCard/audienceBlock/audienceBlockLabel/audienceBlockBody
+   from portfolio.module.css */
+
+/* ─── §04 Products We Work With ─────────────────────────── */
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.productCard {
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.productCardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+/* Product status pills */
+.productStatusPill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 7px;
+  border: 0.5px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.productStatus--hero       { color: #C42A23; background: var(--red-pale);  border-color: var(--red-light); }
+.productStatus--active     { color: #0F6E56; background: #ECFDF5; border-color: #A7F3D0; }
+.productStatus--upcoming   { color: #1D4ED8; background: #EFF6FF; border-color: #BFDBFE; }
+.productStatus--considered { color: #854F0B; background: #FFFBEB; border-color: #FDE68A; }
+.productStatus--sunset     { color: #6B7280; background: #F9FAFB; border-color: #E5E7EB; }
+
+.productSubLine {
+  font-size: 11px;
+  color: #727272;
+  margin-top: 3px;
+}
+
+.productFields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.productField {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.productFieldLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.productFieldVal {
+  font-size: 12px;
+  color: #535353;
+  line-height: 1.4;
+}
+
+.productServicePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.productServicePill {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--red);
+  background: var(--red-pale);
+  border: 0.5px solid var(--red-light);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.productFooter {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 0.5px solid #F5F5F5;
+}
+
+.productPerf {
+  font-size: 12px;
+  color: #535353;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ─── §05 Pitch & Services ───────────────────────────────── */
+/* Uses solutionBlock/solutionPill pattern from portfolio.module.css */
+
+.pitchServicesCard {
+  background: var(--white);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pitchServicesRow {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--gray-200);
+}
+
+.pitchServicesRow:last-child { border-bottom: none; }
+.pitchServicesRow:nth-child(odd) { background: var(--gray-50); }
+
+.pitchServicesLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gray-400);
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.pitchServicesVal {
+  font-size: 13px;
+  color: var(--black);
+  flex: 1;
+}
+
+.contractedPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.contractedPill {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--red);
+  background: var(--red-pale);
+  border: 0.5px solid var(--red-light);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+/* ─── §08 Brand Top Creators ─────────────────────────────── */
+
+.brandCreatorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.brandCreatorCard {
+  background: var(--gray-50);
+  border: 0.5px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brandCreatorTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandCreatorAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #EEEDFE;
+  color: #3C3489;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brandCreatorInfo { flex: 1; min-width: 0; }
+
+.brandCreatorName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.brandCreatorHandle {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 1px;
+}
+
+.brandCreatorAudienceLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-400);
+  margin-bottom: 3px;
+}
+
+.brandCreatorAudienceVal {
+  font-size: 12px;
+  color: #535353;
+  line-height: 1.5;
+}
+
+.brandCreatorNotes {
+  font-size: 12px;
+  color: #535353;
+  font-style: italic;
+  line-height: 1.5;
+  padding-top: 6px;
+  border-top: 0.5px solid var(--gray-200);
+}
+
+/* ─── View brand link (used in portfolio §02 brand cards) ── */
+
+.viewBrandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid #F5F5F5;
+}
+
+.viewBrandLink:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.viewBrandArrow { font-size: 13px !important; }

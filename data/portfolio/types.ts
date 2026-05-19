@@ -9,10 +9,30 @@ export type BrandStatus = 'active' | 'prospect' | 'pitched' | 'lapsed' | 'paused
 export type MarketPosition = 'leader' | 'challenger' | 'niche' | 'emerging';
 export type CoPromoType = 'event' | 'platform' | 'co-content' | 'industry-presence';
 
+/* ── Product ─────────────────────────────────────────────── */
+
+export type ProductStatus = 'hero' | 'active' | 'upcoming' | 'considered' | 'sunset';
+export type ProductMarketingRole = 'hero' | 'new-launch' | 'volume-driver' | 'portfolio-expansion' | 'heritage';
+
+export interface Product {
+  id: string;
+  slug?: string;
+  name: string;
+  productLine?: string;
+  categoryType?: string;
+  status: ProductStatus;
+  marketingRole?: ProductMarketingRole;
+  targetSubAudience?: string;
+  positioning?: string;
+  servicesDeployed?: string[];
+  performanceHighlight?: string;
+}
+
 /* ── Brand ───────────────────────────────────────────────── */
 
 export interface Brand {
   id: string;
+  slug?: string;
   name: string;
   status: BrandStatus;
   subCategory?: string;
@@ -21,6 +41,45 @@ export interface Brand {
   pitchSolution?: string;
   contractedServices?: ServiceCode[];
   gmvLabel?: string;
+
+  // Brand dossier fields (brand detail page)
+  positioning?: string;
+  voiceTone?: string;
+  messagingPillars?: string[];
+  brandAudience?: {
+    demographics?: string;
+    psychographics?: string;
+    channelPreferences?: string;
+    notes?: string;
+  };
+  products?: Product[];
+  brandStoryCapital?: {
+    definingNarrative?: string;
+    storyWorthyMoments?: StoryWorthyMoment[];
+    quotableMaterial?: string;
+    uniqueAngles?: string;
+  };
+  brandTopCreators?: Array<{
+    name: string;
+    handle?: string;
+    audienceMatch?: string;
+    notes?: string;
+  }>;
+  brandContentAngles?: Array<{
+    id: string;
+    angle: string;
+    why: string;
+    exampleProject?: string;
+  }>;
+  brandOutcomes?: {
+    metrics?: Array<{ value: string; label: string; source?: string }>;
+    narrative?: string;
+  };
+  brandReferenceIndex?: {
+    tagClusters?: Array<{ name: string; tags: string[] }>;
+    linkedEntities?: Array<{ name: string; type: string }>;
+    aiNote?: string;
+  };
 }
 
 /* ── Contacts ────────────────────────────────────────────── */

@@ -38,16 +38,85 @@ model AppSettings {
 }
 
 model Suggestion {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  mode        String
-  contextTag  String?
-  userPrompt  String
-  aiResponse  String
-  status      String   @default("new")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         String   @id @default(cuid())
+  userId     String
+  mode       String
+  contextTag String?
+  userPrompt String
+  aiResponse String
+  status     String   @default("new")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ResearchSource {
+  id                String    @id @default(cuid())
+  title             String
+  type              String
+  publisher         String?
+  publicationDate   DateTime?
+  collectedDate     DateTime  @default(now())
+  category          String?
+  tags              String[]
+  summary           String?   @db.Text
+  manualNotes       String?   @db.Text
+  pdfUrl            String?
+  pdfFilename       String?
+  pdfOriginalSize   Int?
+  pdfCompressedSize Int?
+  urls              Json?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  createdBy         String?
+  insights          Insight[]
+
+  @@index([type])
+  @@index([category])
+  @@index([collectedDate])
+}
+
+model Insight {
+  id                      String         @id @default(cuid())
+  sourceId                String
+  headline                String
+  detail                  String         @db.Text
+  evidence                String?        @db.Text
+  reference               String?
+  category                String
+  confidence              String         @default("medium")
+  applicabilityPortfolios String[]
+  applicabilityBrands     String[]
+  applicabilityIcps       String[]
+  tags                    String[]
+  collectedDate           DateTime       @default(now())
+  createdAt               DateTime       @default(now())
+  updatedAt               DateTime       @updatedAt
+  source                  ResearchSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@index([sourceId])
+  @@index([category])
+  @@index([confidence])
+  @@index([applicabilityPortfolios], type: Gin)
+  @@index([applicabilityBrands], type: Gin)
+  @@index([applicabilityIcps], type: Gin)
+}
+
+model ResearchQuery {
+  id                   String   @id @default(cuid())
+  question             String   @db.Text
+  answer               String   @db.Text
+  insightIdsReferenced String[]
+  insightsCount        Int
+  sourcesCount         Int
+  tokenUsageInput      Int?
+  tokenUsageOutput     Int?
+  userId               String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([userId])
+  @@index([createdAt])
 }
 
 enum Role {

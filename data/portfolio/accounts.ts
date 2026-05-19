@@ -43,24 +43,186 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     brands: [
       {
         id: 'loreal-paris',
+        slug: 'loreal-paris',
         name: "L'Oréal Paris",
         status: 'active',
         subCategory: 'Premium Mass',
         targetConsumer: 'Women 25-45, mid-to-premium income',
         contractedServices: ['P1', 'P4'],
         gmvLabel: '$5M+',
+        positioning: "Premium-aspirational beauty backed by science — accessible French elegance for women who care about results.",
+        voiceTone: "Confident and expert. Speaks like a knowledgeable friend, not a clinical brand. French elegance threaded through but never gatekeeping. 'You're worth it' is positioning, not a slogan to repeat.",
+        messagingPillars: [
+          "Science-backed efficacy (proof, not just claims)",
+          "Premium feel at accessible price",
+          "Empowerment without preachiness",
+        ],
+        brandAudience: {
+          demographics: "Women 25-45, mid-to-premium income, urban Vietnam, professional or aspiring",
+          psychographics: "Self-improvement-oriented, research-driven before purchase, values quality over trends, brand-loyal once trust is earned",
+          channelPreferences: "TikTok primary for discovery, YouTube/forums for research, premium product purchase via brand stores or D2C",
+          notes: "Older than the broader CPD audience. Higher income. More patient with content — will watch a 60-second product explanation; won't tolerate a 60-second ad.",
+        },
+        products: [
+          {
+            id: 'lp-revitalift-filler',
+            slug: 'revitalift-filler',
+            name: 'Revitalift Filler',
+            productLine: 'Revitalift',
+            categoryType: 'skincare',
+            status: 'hero',
+            marketingRole: 'hero',
+            targetSubAudience: 'Women 35-55 concerned with anti-aging signs',
+            positioning: 'Hyaluronic acid filler for plumping and firming — visible results in 4 weeks',
+            servicesDeployed: ['P1', 'P4'],
+            performanceHighlight: '#1 anti-aging product on TikTok Shop Beauty in VN, Q4 2024',
+          },
+          {
+            id: 'lp-excellence-creme',
+            slug: 'excellence-creme',
+            name: 'Excellence Crème Hair Color',
+            productLine: 'Excellence',
+            categoryType: 'haircare',
+            status: 'active',
+            marketingRole: 'volume-driver',
+            targetSubAudience: 'Women 30+ doing at-home hair color',
+            positioning: 'Salon-quality hair color, gentle on hair, easy application',
+            servicesDeployed: ['P1'],
+          },
+          {
+            id: 'lp-color-riche',
+            slug: 'color-riche-lipstick',
+            name: 'Color Riche Lipstick',
+            productLine: 'Color Riche',
+            categoryType: 'makeup',
+            status: 'active',
+            marketingRole: 'volume-driver',
+            targetSubAudience: 'Women 25-45, daily wear, mid-premium',
+            positioning: "Iconic lipstick range, rich pigment, classic L'Oréal premium feel",
+          },
+          {
+            id: 'lp-casting-creme',
+            slug: 'casting-creme-gloss',
+            name: 'Casting Crème Gloss',
+            productLine: 'Casting Crème',
+            categoryType: 'haircare',
+            status: 'considered',
+            marketingRole: 'heritage',
+            targetSubAudience: 'Women 25+ doing at-home hair color, gentler/temporary preference',
+            positioning: 'Ammonia-free hair color, conditioning gloss finish',
+          },
+        ],
+        brandStoryCapital: {
+          definingNarrative: "L'Oréal Paris was our first L'Oréal CPD brand activation in VN. The Tet 2024 livestream exceeded GMV target by 220%, becoming the regional case study that justified scaling the relationship to other CPD brands. The brand is our 'premium beauty hero' across Ecomobi marketing.",
+          storyWorthyMoments: [
+            { date: 'Feb 2024', label: 'Tet 2024 — 220% over target', description: 'Defined the format for premium beauty livestream in VN' },
+            { date: 'May 2024', label: "Featured in L'Oréal APAC regional review", description: 'Cross-market case study' },
+            { date: 'Oct 2024', label: 'Revitalift Filler became #1 anti-aging SKU on TikTok Shop VN', description: 'Sustained leadership through Q4' },
+          ],
+          quotableMaterial: "#1 anti-aging product on TikTok Shop Beauty Vietnam (Q4 2024). First L'Oréal CPD brand to use exclusive livestream commerce partner in VN.",
+          uniqueAngles: "Science-backed positioning lands harder than aspiration-only competitors. Expert creators outperform celebrity influencers 2-3x.",
+        },
+        brandTopCreators: [
+          {
+            name: 'Linh Skincare',
+            handle: '@linhskincare',
+            audienceMatch: 'Women 25-45, ingredient-led, skincare-fluent',
+            notes: 'Best repurchase driver for Revitalift line — audience trusts ingredient explanations. Outperforms aspirational creators 2.4x on premium skincare.',
+          },
+          {
+            name: 'Dr. Hà Beauty',
+            handle: '@drhabeauty',
+            audienceMatch: 'Women 30+, evidence-led, premium-aspirational',
+            notes: 'Dermatologist credential drives credibility for Revitalift. Higher AOV than non-expert creators.',
+          },
+        ],
+        brandContentAngles: [
+          {
+            id: 'lp-ca1',
+            angle: 'Science before aspiration',
+            why: 'Premium beauty audience wants ingredient education before lifestyle imagery. 60-second product science outperforms 30-second aspirational lifestyle 2-3x on conversion.',
+            exampleProject: 'Tet 2024 Livestream Series',
+          },
+          {
+            id: 'lp-ca2',
+            angle: 'Expert creator + visible result',
+            why: 'Pairing dermatologist or beauty-expert creators with 4-week visible-result claims drives higher AOV and lower return rate than influencer aspiration content.',
+          },
+          {
+            id: 'lp-ca3',
+            angle: "Heritage as proof, not nostalgia",
+            why: "L'Oréal heritage works when framed as 'trusted by 4 generations,' not 'since 1909.' Audience cares about reliability, not history.",
+          },
+        ],
+        brandOutcomes: {
+          metrics: [
+            { value: '220%', label: 'Tet 2024 vs target', source: 'Campaign close report' },
+            { value: '#1', label: 'Anti-aging on TikTok Shop VN', source: 'Q4 2024 category leadership' },
+            { value: '$3.2M', label: 'Brand-level GMV 2024', source: 'Annual rollup' },
+          ],
+          narrative: "L'Oréal Paris is the flagship brand within L'Oréal CPD VN. 2024 performance set the benchmark for premium beauty operations in market and triggered cross-brand expansion within the portfolio.",
+        },
+        brandReferenceIndex: {
+          tagClusters: [
+            { name: 'Audience', tags: ['Women 25-45', 'Premium beauty', 'Urban Vietnam'] },
+            { name: 'Categories', tags: ['Skincare', 'Haircare', 'Makeup'] },
+            { name: 'Marketing notes', tags: ['Hero brand', 'Premium-positioning', 'Expert creators preferred'] },
+          ],
+          linkedEntities: [
+            { name: 'Revitalift Filler', type: 'product-hero' },
+            { name: 'Tet 2024 Livestream Series', type: 'project' },
+            { name: 'Linh Skincare', type: 'creator' },
+          ],
+          aiNote: "L'Oréal Paris is the hero brand of L'Oréal CPD VN portfolio. Premium positioning with science-led messaging. Targets women 25-45 mid-premium. Best creators are expert/dermatologist types. Revitalift Filler is the standout product. Defining campaign: Tet 2024 livestream (220% over target).",
+        },
       },
       {
         id: 'maybelline',
+        slug: 'maybelline',
         name: 'Maybelline',
         status: 'active',
         subCategory: 'Mass Color',
         targetConsumer: 'Women 18-35, trend-driven, price-conscious',
         contractedServices: ['P1', 'P3'],
         gmvLabel: '$2.5M+',
+        positioning: "Mass-market color cosmetics for the everyday confident woman. Trend-forward but accessible.",
+        voiceTone: "Playful, accessible, 'girl-next-door' tone. Trend-aware without being trying-too-hard.",
+        brandAudience: {
+          demographics: "Women 18-25, mass-market, price-sensitive, urban VN",
+        },
+        products: [
+          {
+            id: 'mb-lash-sensational',
+            slug: 'lash-sensational',
+            name: 'Lash Sensational Mascara',
+            categoryType: 'makeup',
+            status: 'hero',
+            marketingRole: 'hero',
+            servicesDeployed: ['P1', 'P3'],
+          },
+          {
+            id: 'mb-superstay',
+            slug: 'superstay-lipstick',
+            name: 'Superstay Lipstick',
+            categoryType: 'makeup',
+            status: 'active',
+            marketingRole: 'volume-driver',
+            servicesDeployed: ['P1'],
+          },
+          {
+            id: 'mb-fit-me',
+            slug: 'fit-me-foundation',
+            name: 'Fit Me Foundation',
+            categoryType: 'makeup',
+            status: 'active',
+            marketingRole: 'new-launch',
+            servicesDeployed: ['P1', 'P2'],
+          },
+        ],
       },
       {
         id: 'garnier',
+        slug: 'garnier',
         name: 'Garnier',
         status: 'pitched',
         subCategory: 'Mass Skincare / Hair',
@@ -393,7 +555,36 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'la-roche-posay', name: 'La Roche-Posay', status: 'active', subCategory: 'Clinical Skincare', contractedServices: ['P1', 'P4'] },
+      {
+        id: 'la-roche-posay',
+        slug: 'la-roche-posay',
+        name: 'La Roche-Posay',
+        status: 'active',
+        subCategory: 'Clinical Skincare',
+        contractedServices: ['P1', 'P4'],
+        positioning: "The reference in dermo-cosmetics — dermatologist-tested, allergy-tested, recommended by healthcare professionals.",
+        products: [
+          {
+            id: 'lrp-anthelios',
+            slug: 'anthelios',
+            name: 'Anthelios Sunscreen',
+            categoryType: 'skincare',
+            status: 'hero',
+            marketingRole: 'hero',
+            servicesDeployed: ['P1', 'P4'],
+            performanceHighlight: 'Expert-presenter format: 2.3x vs lifestyle hosts (A/B test Q3)',
+          },
+          {
+            id: 'lrp-toleriane',
+            slug: 'toleriane',
+            name: 'Toleriane Sensitive Range',
+            categoryType: 'skincare',
+            status: 'active',
+            marketingRole: 'volume-driver',
+            servicesDeployed: ['P1'],
+          },
+        ],
+      },
     ],
 
     projects: [
@@ -543,9 +734,48 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'dove', name: 'Dove', status: 'active', contractedServices: ['P1', 'P2'] },
-      { id: 'sunsilk', name: 'Sunsilk', status: 'prospect' },
-      { id: 'ponds', name: "Pond's", status: 'prospect' },
+      {
+        id: 'dove',
+        slug: 'dove',
+        name: 'Dove',
+        status: 'active',
+        contractedServices: ['P1', 'P2'],
+        positioning: "Real beauty for real women. Skincare and haircare grounded in self-acceptance.",
+        brandAudience: {
+          demographics: "Women 18-35, mass-market, value-seeking, urban and semi-urban VN",
+        },
+        products: [
+          {
+            id: 'dove-dry-serum',
+            slug: 'dove-dry-serum',
+            name: 'Dove Dry Serum',
+            categoryType: 'haircare',
+            status: 'hero',
+            marketingRole: 'new-launch',
+            servicesDeployed: ['P2', 'P4'],
+            performanceHighlight: '68.48M views, 4× category benchmark on KOC seeding',
+          },
+          {
+            id: 'dove-dry-shampoo',
+            slug: 'dove-dry-shampoo',
+            name: 'Dove Dry Shampoo',
+            categoryType: 'haircare',
+            status: 'active',
+            marketingRole: 'volume-driver',
+            servicesDeployed: ['P1', 'P2'],
+            performanceHighlight: 'Category #1 dry shampoo on TikTok Shop VN',
+          },
+        ],
+        brandOutcomes: {
+          metrics: [
+            { value: '68.48M', label: 'Views — Dry Serum launch', source: 'UGC campaign analytics' },
+            { value: 'Cat. #1', label: 'Dry Shampoo on TikTok Shop', source: 'Category report' },
+          ],
+          narrative: "Dove Dry Serum UGC program set the benchmark for category education via KOC seeding. Dry Shampoo launch proved the P2→P1 sequencing model.",
+        },
+      },
+      { id: 'sunsilk', slug: 'sunsilk', name: 'Sunsilk', status: 'prospect' },
+      { id: 'ponds', slug: 'ponds', name: "Pond's", status: 'prospect' },
     ],
 
     projects: [
@@ -750,7 +980,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'cocoon-beauty', name: 'Cocoon Beauty', status: 'active', contractedServices: ['P1', 'P2', 'P5'] },
+      { id: 'cocoon-beauty', slug: 'cocoon-beauty', name: 'Cocoon Beauty', status: 'active', contractedServices: ['P1', 'P2', 'P5'] },
     ],
 
     projects: [
@@ -885,7 +1115,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'pampers-vn', name: 'Pampers VN', status: 'active', contractedServices: ['P1', 'P3'] },
+      { id: 'pampers-vn', slug: 'pampers-vn', name: 'Pampers VN', status: 'active', contractedServices: ['P1', 'P3'] },
     ],
 
     projects: [
@@ -1017,7 +1247,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'friso-vn', name: 'Friso VN', status: 'active', contractedServices: ['P4'] },
+      { id: 'friso-vn', slug: 'friso-vn', name: 'Friso VN', status: 'active', contractedServices: ['P4'] },
     ],
 
     projects: [
@@ -1150,7 +1380,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'bobby-vn', name: 'Bobby VN', status: 'active', contractedServices: ['P1'] },
+      { id: 'bobby-vn', slug: 'bobby-vn', name: 'Bobby VN', status: 'active', contractedServices: ['P1'] },
     ],
 
     projects: [
@@ -1279,7 +1509,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'sunhouse-vn', name: 'Sunhouse VN', status: 'active', contractedServices: ['P1', 'P4'] },
+      { id: 'sunhouse-vn', slug: 'sunhouse-vn', name: 'Sunhouse VN', status: 'active', contractedServices: ['P1', 'P4'] },
     ],
 
     projects: [
@@ -1414,7 +1644,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     keyContacts: [],
 
     brands: [
-      { id: 'comet-vn', name: 'Comet VN', status: 'active', contractedServices: ['P1'] },
+      { id: 'comet-vn', slug: 'comet-vn', name: 'Comet VN', status: 'active', contractedServices: ['P1'] },
     ],
 
     projects: [

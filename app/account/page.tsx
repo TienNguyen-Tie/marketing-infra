@@ -6,15 +6,14 @@ export default async function AccountPage() {
   const session = await auth();
   if (!session?.user) redirect('/login');
 
-  const user = session.user as { id: string; name?: string | null; email?: string | null; role?: string };
-  const isAdmin = user.role === 'ADMIN';
+  const isAdmin = session.user.role === 'ADMIN';
 
   return (
     <AccountClient
-      userId={user.id}
-      initialName={user.name ?? ''}
-      email={user.email ?? ''}
-      role={user.role ?? 'VIEWER'}
+      userId={session.user.id!}
+      initialName={session.user.name ?? ''}
+      email={session.user.email ?? ''}
+      role={session.user.role ?? 'VIEWER'}
       isAdmin={isAdmin}
     />
   );

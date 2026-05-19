@@ -1,5 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth';
 import { getAnthropicKey } from '@/lib/get-api-key';
 import type { BrandLayer } from '@/app/knowledge-base/brand-system/brand-foundation/foundation-data';
 
@@ -38,6 +39,11 @@ const MODE_INSTRUCTIONS: Record<string, string> = {
 };
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   let body: RequestBody;
   try {
     body = await request.json();

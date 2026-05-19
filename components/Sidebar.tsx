@@ -45,6 +45,11 @@ const navTree: NavItem[] = [
         ],
       },
       {
+        kind: 'leaf',
+        label: 'Research & Insights',
+        href: '/knowledge-base/research',
+      },
+      {
         kind: 'flyout',
         label: 'Creator Insight',
         href: '/knowledge-base/creator-insight',
@@ -114,8 +119,9 @@ const navTree: NavItem[] = [
 ];
 
 const settingsTree: NavItem[] = [
-  { kind: 'leaf', label: 'User Management',   href: '/settings/users'       },
-  { kind: 'leaf', label: 'Vision Suggestions', href: '/settings/suggestions' },
+  { kind: 'leaf', label: 'User Management',    href: '/settings/users'             },
+  { kind: 'leaf', label: 'Vision Suggestions', href: '/settings/suggestions'       },
+  { kind: 'leaf', label: 'Research Queries',   href: '/settings/research-queries'  },
 ];
 
 /* ── HELPERS ────────────────────────────────────────────────── */
