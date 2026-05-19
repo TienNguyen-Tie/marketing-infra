@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { upload } from '@vercel/blob/client';
 import { compressPDF, formatBytes } from '@/lib/research/compress-pdf';
 import { SOURCE_CATEGORY_LABELS, MAX_PDF_SIZE_BYTES, MAX_PDF_SIZE_MB } from '@/lib/research/constants';
 import type { SourceType, UrlRef } from '@/lib/research/types';
@@ -345,20 +344,35 @@ export default function NewSourcePage() {
       let pdfCompressedSize: number | undefined;
 
       if (sourceType === 'pdf' && pdfState.status === 'ready') {
-        const abortController = new AbortController();
-        const timeoutId = setTimeout(() => abortController.abort(), 3 * 60 * 1000);
-        try {
-          const blob = await upload(pdfState.file.name, pdfState.file, {
-            access: 'public',
-            handleUploadUrl: '/api/research/upload',
-            abortSignal: abortController.signal,
-            onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)),
+        pdfUrl = await new Promise<string>((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          const url = `/api/research/upload?filename=${encodeURIComponent(pdfState.file.name)}`;
+          xhr.open('POST', url);
+          xhr.setRequestHeader('Content-Type', 'application/pdf');
+          xhr.upload.addEventListener('progress', (e) => {
+            if (e.lengthComputable) setUploadProgress(Math.round((e.loaded / e.total) * 100));
           });
-          pdfUrl = blob.url;
-        } finally {
-          clearTimeout(timeoutId);
-          setUploadProgress(null);
-        }
+          xhr.onload = () => {
+            setUploadProgress(null);
+            if (xhr.status >= 200 && xhr.status < 300) {
+              try {
+                resolve((JSON.parse(xhr.responseText) as { url: string }).url);
+              } catch {
+                reject(new Error('Invalid response from upload route'));
+              }
+            } else {
+              try {
+                reject(new Error((JSON.parse(xhr.responseText) as { error?: string }).error ?? `Upload failed (${xhr.status})`));
+              } catch {
+                reject(new Error(`Upload failed (${xhr.status})`));
+              }
+            }
+          };
+          xhr.onerror = () => { setUploadProgress(null); reject(new Error('Network error during upload')); };
+          xhr.ontimeout = () => { setUploadProgress(null); reject(new Error('Upload timed out')); };
+          xhr.timeout = 3 * 60 * 1000;
+          xhr.send(pdfState.file);
+        });
         pdfFilename = pdfState.file.name;
         pdfOriginalSize = pdfState.originalSize;
         pdfCompressedSize = pdfState.compressedSize;

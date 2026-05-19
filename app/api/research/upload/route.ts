@@ -1,27 +1,23 @@
-import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
+import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 
+export const maxDuration = 60;
+
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
-  try {
-    const jsonResponse = await handleUpload({
-      body,
-      request,
-      onBeforeGenerateToken: async () => {
-        const session = await auth();
-        if (!session?.user) throw new Error('Unauthorized');
-        return {
-          allowedContentTypes: ['application/pdf'],
-          maximumSizeInBytes: 50 * 1024 * 1024,
-        };
-      },
-      onUploadCompleted: async ({ blob }) => {
-        console.log('Blob uploaded:', blob.url);
-      },
-    });
-    return NextResponse.json(jsonResponse);
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 400 });
-  }
+  const session = await auth();
+  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const { searchParams } = new URL(request.url);
+  const filename = searchParams.get('filename');
+  if (!filename) return NextResponse.json({ error: 'filename is required' }, { status: 400 });
+
+  if (!request.body) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
+
+  const blob = await put(filename, request.body, {
+    access: 'public',
+    contentType: 'application/pdf',
+  });
+
+  return NextResponse.json({ url: blob.url });
 }
