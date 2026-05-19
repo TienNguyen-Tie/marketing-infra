@@ -207,6 +207,22 @@ _2026-05-19_
 
 ---
 
+## D-019 — Centralized model identifiers in lib/ai-models.ts
+_2026-05-19_
+
+**Decision**: Anthropic model identifiers are centralized in `lib/ai-models.ts` as exported constants (`EXTRACTION_MODEL`, `COMPANION_MODEL`, `SUGGESTION_MODEL`, `TEST_MODEL`). No route hardcodes the model string. The choice of model per route is documented inline in `lib/ai-models.ts` with rationale.
+
+**Three models, three uses:**
+- `EXTRACTION_MODEL` (`claude-opus-4-7`) — PDF extraction and URL collection synthesis; structured JSON output quality matters downstream
+- `COMPANION_MODEL` (`claude-opus-4-7`) — Research Companion; sends full insight library as context per query; large context window and citation accuracy critical
+- `SUGGESTION_MODEL` (`claude-sonnet-4-6`) — Vision Companion and brand foundation generation; latency-sensitive, shorter interactions
+
+**Alternative considered**: leaving model strings inline in each route. Rejected because (a) it duplicates intent across files and (b) future model upgrades require touching every route instead of one constants file.
+
+**Future revisit**: when the Research Companion moves to pgvector-based retrieval (planned when insight library exceeds ~200–300 insights), `COMPANION_MODEL` may revert to Sonnet since smaller context will fit comfortably. Re-evaluate at that point.
+
+---
+
 ## D-015 — Insights tab uses client-side fetch with URL filter state
 _2026-05-19_
 

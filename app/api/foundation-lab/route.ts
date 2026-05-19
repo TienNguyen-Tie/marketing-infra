@@ -2,6 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getAnthropicKey } from '@/lib/get-api-key';
+import { SUGGESTION_MODEL } from '@/lib/ai-models';
 import type { BrandLayer } from '@/app/knowledge-base/brand-system/brand-foundation/foundation-data';
 
 interface RequestBody {
@@ -119,7 +120,7 @@ Rules:
   let raw = '';
   try {
     const message = await client.messages.create({
-      model: 'claude-sonnet-4-6',
+      model: SUGGESTION_MODEL,
       max_tokens: 2000,
       messages: [{ role: 'user', content: 'Generate the brand foundation variant now.' }],
       system: systemPrompt,

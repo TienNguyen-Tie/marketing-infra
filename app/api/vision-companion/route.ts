@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { getAnthropicKey } from '@/lib/get-api-key';
 import { VISION_SYSTEM_PROMPT } from '@/lib/vision-data';
 import Anthropic from '@anthropic-ai/sdk';
+import { SUGGESTION_MODEL } from '@/lib/ai-models';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
 
   try {
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-6',
+      model: SUGGESTION_MODEL,
       max_tokens: 1024,
       system: VISION_SYSTEM_PROMPT,
       messages: [{

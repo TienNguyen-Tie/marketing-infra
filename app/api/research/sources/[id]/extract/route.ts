@@ -7,6 +7,7 @@ import { EXTRACTION_SYSTEM_PROMPT } from '@/lib/research/extraction-prompt';
 import type { DraftInsight } from '@/lib/research/extraction-prompt';
 import type { UrlRef } from '@/lib/research/types';
 import Anthropic from '@anthropic-ai/sdk';
+import { EXTRACTION_MODEL } from '@/lib/ai-models';
 
 export const maxDuration = 60;
 
@@ -61,7 +62,7 @@ export async function POST(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const message = await (anthropic.messages as any).create(
       {
-        model: 'claude-opus-4-7',
+        model: EXTRACTION_MODEL,
         max_tokens: 4096,
         system: EXTRACTION_SYSTEM_PROMPT,
         messages: [
@@ -106,7 +107,7 @@ export async function POST(
     const combinedText = fetched.join('\n\n');
 
     const message = await anthropic.messages.create({
-      model: 'claude-opus-4-7',
+      model: EXTRACTION_MODEL,
       max_tokens: 4096,
       system: EXTRACTION_SYSTEM_PROMPT,
       messages: [

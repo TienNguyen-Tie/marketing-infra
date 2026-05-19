@@ -222,13 +222,19 @@ Required env vars:
 
 ## AI Integration
 
-- Direct fetch calls to `https://api.anthropic.com/v1/messages` (no SDK — Edge runtime conflicts)
-- Model: `claude-sonnet-4-6`
-- API key retrieved via `getAnthropicKey(userId)` from `lib/get-api-key.ts` — handles encryption transparently
-- System prompts live in `lib/{feature}/companion-prompt.ts` or `extraction-prompt.ts` — exported as constants
-- Responses logged to DB for review (`Suggestion` model for Vision Companion, `ResearchQuery` model for Research Companion)
-- All AI sidebars follow the same drawer pattern: right-side slide-in, 480px desktop / 100vw mobile, ESC closes, backdrop click closes
-- Floating trigger button bottom-right (24px from edges) for opening companions
+- **SDK**: Anthropic SDK (`import Anthropic from '@anthropic-ai/sdk'`). Works fine in non-Edge runtimes (which is where AI calls happen — `auth.config.ts` and `proxy.ts` are the only Edge contexts).
+- **Models**: see `lib/ai-models.ts` for the three centralized constants — never hardcode model strings in routes:
+  - `EXTRACTION_MODEL` (`claude-opus-4-7`) — PDF extraction, full-document synthesis
+  - `COMPANION_MODEL` (`claude-opus-4-7`) — Research Companion (sends full insight library as context per query)
+  - `SUGGESTION_MODEL` (`claude-sonnet-4-6`) — Vision Companion, lightweight suggestion and generation routes
+  - `TEST_MODEL` (`claude-haiku-4-5-20251001`) — API key ping test only
+- **Rationale**: Opus is used where context is large (PDFs, full insight libraries) or where output quality strongly affects user trust. Sonnet is used for latency-sensitive, simpler tasks. Don't "optimize" extraction or companion to Sonnet without re-reading the rationale in `lib/ai-models.ts`.
+- **API key**: retrieved via `getAnthropicKey()` (no args) from `lib/get-api-key.ts` — handles encryption transparently.
+- **System prompts**: live in `lib/{feature}/companion-prompt.ts` or `lib/{feature}/extraction-prompt.ts` — exported as constants.
+- **Logging**: AI responses logged to DB for review. `Suggestion` model for Vision Companion. `ResearchQuery` model for Research Companion (includes token usage metadata and cited insight IDs).
+- **AI sidebar pattern**: all AI companions follow the same drawer pattern — right-side slide-in, 480px desktop / 100vw mobile, ESC closes, backdrop click closes.
+- **Floating trigger**: bottom-right, 24px from edges, `var(--red)` background with red-tinted shadow. Match the canonical implementation in `components/VisionCompanion.tsx`.
+- **Beta features**: `extract/route.ts` currently uses `anthropic-beta: pdfs-2024-09-25` and an `as any` cast on `anthropic.messages.create` to send PDFs. Track the SDK changelog — when PDF input graduates to stable, remove both the header and the cast (TODO comment is in place).
 
 ---
 

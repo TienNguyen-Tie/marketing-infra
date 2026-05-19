@@ -1,4 +1,69 @@
-# Last Build — Wave 2: Research Companion UI Alignment
+# Last Build — Wave 3: Docs Alignment + Model Constants
+_2026-05-19_
+
+## Summary
+
+5 findings from CONSOLIDATION_REPORT.md closed. CLAUDE.md now accurately documents the SDK pattern, no-arg `getAnthropicKey()`, and per-route-type model choice. All 6 previously hardcoded model strings moved to `lib/ai-models.ts`. TypeScript clean, build succeeds (114 pages, 0 errors).
+
+---
+
+## Closed findings
+
+| ID | Finding | Fix |
+|----|---------|-----|
+| I-001 | CLAUDE.md documented direct fetch; code uses SDK | Corrected to document SDK pattern |
+| I-002 | CLAUDE.md showed `getAnthropicKey(userId)`; function takes no args | Corrected to `getAnthropicKey()` |
+| I-003 | CLAUDE.md said `claude-sonnet-4-6` everywhere; extraction/companion use Opus | Now documents per-route-type model with rationale |
+| S-002 | No documented rationale for model selection | Rationale in `lib/ai-models.ts` (inline) and `DECISIONS.md` (D-019) |
+| S-003 | Model strings scattered across routes | Created `lib/ai-models.ts`; all 6 occurrences replaced with constants |
+
+## Files created / modified
+
+```
+lib/ai-models.ts              — NEW: EXTRACTION_MODEL, COMPANION_MODEL,
+                                SUGGESTION_MODEL, TEST_MODEL constants
+                                with inline selection rationale
+
+app/api/research/sources/[id]/extract/route.ts
+                              — 2 occurrences of 'claude-opus-4-7' → EXTRACTION_MODEL
+
+app/api/research/companion/route.ts
+                              — 'claude-opus-4-7' → COMPANION_MODEL
+
+app/api/vision-companion/route.ts
+                              — 'claude-sonnet-4-6' → SUGGESTION_MODEL
+
+app/api/foundation-lab/route.ts
+                              — 'claude-sonnet-4-6' → SUGGESTION_MODEL
+
+app/api/settings/api-key/test/route.ts
+                              — 'claude-haiku-4-5-20251001' → TEST_MODEL
+                                (bonus: the haiku ping model is now documented)
+
+CLAUDE.md                     — AI Integration section rewritten to reflect:
+                                SDK pattern, no-arg getAnthropicKey(),
+                                three-model approach with rationale pointer,
+                                PDF beta feature note, trigger spec update
+
+DECISIONS.md                  — D-019 added (model constants decision)
+```
+
+## No schema changes. No new dependencies. No new env vars.
+
+## Manual verification checklist
+
+- `grep` for hardcoded model strings in app/ and lib/ returns only `lib/ai-models.ts` ✅
+- `npx tsc --noEmit` clean ✅
+- `npm run build` succeeds (114 pages) ✅
+- PDF extraction, Research Companion, Vision Companion — functional tests deferred to live environment (no test source available in local dev without a real Anthropic key)
+
+## Discovered during Wave 3, deferred
+
+- none
+
+---
+
+# Previous Build — Wave 2: Research Companion UI Alignment
 _2026-05-19_
 
 ## Summary

@@ -4,6 +4,7 @@ import { db } from '@/lib/db';
 import { getAnthropicKey } from '@/lib/get-api-key';
 import { COMPANION_SYSTEM_PROMPT } from '@/lib/research/companion-prompt';
 import Anthropic from '@anthropic-ai/sdk';
+import { COMPANION_MODEL } from '@/lib/ai-models';
 
 export const maxDuration = 60;
 
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
   const anthropic = new Anthropic({ apiKey });
 
   const message = await anthropic.messages.create({
-    model: 'claude-opus-4-7',
+    model: COMPANION_MODEL,
     max_tokens: 2048,
     system: COMPANION_SYSTEM_PROMPT,
     messages: [

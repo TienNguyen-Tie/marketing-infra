@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth';
 import { getAnthropicKey } from '@/lib/get-api-key';
 import Anthropic from '@anthropic-ai/sdk';
+import { TEST_MODEL } from '@/lib/ai-models';
 import { NextResponse } from 'next/server';
 
 export async function POST() {
@@ -12,7 +13,7 @@ export async function POST() {
     const apiKey = await getAnthropicKey();
     const client = new Anthropic({ apiKey });
     await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
+      model: TEST_MODEL,
       max_tokens: 1,
       messages: [{ role: 'user', content: 'ping' }],
     });
