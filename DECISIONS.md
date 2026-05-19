@@ -1,5 +1,26 @@
 # Architectural Decisions
 
+## D-020 — AI-Assisted Draft Creation Workflow (EntityDraft model)
+_2026-05-20_
+
+**Decision**: ICPs and Personas are created via a human-in-the-loop AI workflow rather than AI-direct-to-DB. The `EntityDraft` table stores the full lifecycle: seed inputs → generated prompt → uploaded markdown → parsed draft → TypeScript snippet. The actual addition to data files remains a manual copy-paste step.
+
+**Why not AI-direct-to-TypeScript-file**: The data files (`data/icps/icps.ts`, `data/personas/personas.ts`) are typed interfaces with rich nested structure. AI-generated prose maps cleanly to sections but not to sub-fields. A TypeScript snippet generated from prose serves as a starting point; the author reshapes it to match the actual interface. This avoids either: (a) forcing the AI to hallucinate structured fields, or (b) accepting a flat prose-only data model.
+
+**Workflow stages**:
+1. `awaiting_upload` — form submitted, prompt generated, waiting for AI response
+2. `in_review` — markdown uploaded and successfully parsed; author reviews in the tool
+3. `approved` — TypeScript snippet generated; draft closed
+4. `rejected` — draft discarded
+
+**Parser approach**: YAML frontmatter + `###` section walker. The AI is instructed to return a specific format with YAML between `---` delimiters and 12 sections with `### §NN HEADING` headings. Warnings are surfaced but don't block the workflow; errors (malformed YAML, missing frontmatter) return a 422 and keep the draft at `awaiting_upload`.
+
+**Template files**: `public/templates/icp-template.md` and `persona-template.md` serve as reference when running the prompt in Claude.ai. They contain a worked example from the existing MNC-FMCG ICP and Regional Commerce Director persona, so the model understands the expected depth and specificity.
+
+**Alternative considered**: Storing the final entity directly in Postgres (dynamic data model). Rejected because (a) the existing ICP and Persona data is TypeScript source files with full type safety and IDE support, and (b) the team is small enough that manual data file updates are acceptable. Revisit if entity count exceeds ~50 or team size warrants a dynamic admin UI.
+
+---
+
 ## D-001 — Portfolio = Parent × Category data unit
 _2026-05-19_
 

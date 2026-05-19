@@ -1550,6 +1550,24 @@
   flex-shrink: 0;
 }
 
+.personaPillLink {
+  font-size: 9px;
+  font-weight: 600;
+  color: #3C3489;
+  background: #EEEDFE;
+  border: 0.5px solid #C4C2F7;
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.personaPillLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .noPersonasNote {
   font-size: 11px;
   color: var(--gray-400);
@@ -2388,6 +2406,41 @@
   background: var(--gray-50);
   border: 0.5px solid var(--gray-200);
   border-radius: 6px;
+}
+
+.icpRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-top: 0.5px solid #F5F5F5;
+}
+
+.icpRowLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #A3A3A3;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  min-width: 140px;
+}
+
+.icpLink {
+  font-size: 13px;
+  font-weight: 600;
+  color: #F43C34;
+  text-decoration: none;
+}
+
+.icpLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.icpLinkMuted {
+  font-size: 13px;
+  color: #A3A3A3;
+  font-style: italic;
 }
 
 /* ─── 02 Brand Portfolio ─────────────────────────────────────── */

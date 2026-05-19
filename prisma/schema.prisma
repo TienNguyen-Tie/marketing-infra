@@ -88,6 +88,7 @@ model Insight {
   applicabilityPortfolios String[]
   applicabilityBrands     String[]
   applicabilityIcps       String[]
+  applicabilityPersonas   String[]
   tags                    String[]
   collectedDate           DateTime       @default(now())
   createdAt               DateTime       @default(now())
@@ -100,6 +101,7 @@ model Insight {
   @@index([applicabilityPortfolios], type: Gin)
   @@index([applicabilityBrands], type: Gin)
   @@index([applicabilityIcps], type: Gin)
+  @@index([applicabilityPersonas], type: Gin)
 }
 
 model ResearchQuery {
@@ -116,6 +118,28 @@ model ResearchQuery {
   updatedAt            DateTime @updatedAt
 
   @@index([userId])
+  @@index([createdAt])
+}
+
+model EntityDraft {
+  id               String    @id @default(cuid())
+  kind             String    // 'icp' | 'persona'
+  status           String    @default("awaiting_upload")
+  seedInputs       Json
+  generatedPrompt  String    @db.Text
+  uploadedMarkdown String?   @db.Text
+  parsedDraft      Json?
+  parseWarnings    String[]
+  parseErrors      String[]
+  edits            Json?
+  finalSnippet     String?   @db.Text
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  createdBy        String?
+  publishedAt      DateTime?
+
+  @@index([kind])
+  @@index([status])
   @@index([createdAt])
 }
 

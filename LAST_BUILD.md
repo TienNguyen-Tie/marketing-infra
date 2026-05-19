@@ -1,4 +1,77 @@
-# Last Build — Wave 4: DRY Consolidations
+# Last Build — AI-Assisted Creation Workflow (ICPs + Personas)
+_2026-05-20_
+
+## Summary
+
+Full AI-assisted draft creation workflow for ICPs and Decision-maker Personas. 13-step build: DB model, type definitions, form configs, prompt templates, markdown templates, helpers, 4 API routes, CreateDraftSlider drawer component, DraftReviewView, PublishSnippetModal, and wiring into both listing pages. TypeScript clean, build succeeds (122 pages, 0 errors).
+
+---
+
+## What was built
+
+### Infrastructure
+- `prisma/schema.prisma` — `EntityDraft` model added (status workflow: `awaiting_upload → in_review → approved → rejected`). Applied via `db push`.
+
+### Type definitions
+- `lib/drafts/types.ts` — `EntityKind`, `DraftStatus`, `SeedInputs` (ICP + Persona variants), `FormFieldConfig`, `EntityFormConfig`, `ParsedDraft`, `DraftRow`
+
+### Form configs
+- `lib/drafts/config/icp-form-config.ts` — 7 fields (name, shortCode, industry, companySize, region, primaryGoal, additionalContext)
+- `lib/drafts/config/persona-form-config.ts` — 7 fields (name, shortCode, jobTitle, seniorityLevel, icpSlug, primaryGoal, additionalContext)
+
+### Prompt templates
+- `lib/drafts/templates/icp-prompt-template.ts` — 12-section ICP prompt with `{{token}}` substitution
+- `lib/drafts/templates/persona-prompt-template.ts` — 12-section persona prompt
+
+### Static markdown templates (authored reference content)
+- `public/templates/icp-template.md` — Instructions + MNC-FMCG example + empty template
+- `public/templates/persona-template.md` — Instructions + Regional Commerce Director example + empty template
+
+### Helpers
+- `lib/drafts/helpers.ts` — CRUD via Prisma (`createDraft`, `getDraft`, `getDraftsForKind`, `getAllDrafts`, `patchDraft`, `clearParsedDraft`, `deleteDraft`)
+- `lib/drafts/generator/generate-prompt.ts` — dispatches to ICP or persona prompt builder
+- `lib/drafts/parser/parse-markdown.ts` — YAML frontmatter parser + section walker + validation warnings/errors
+- `lib/drafts/generator/generate-typescript.ts` — prose-first TS snippet generator for pasting into data files
+
+### API routes (4 new)
+- `POST /api/drafts` — create draft + generate prompt
+- `GET/PATCH/DELETE /api/drafts/[id]` — read, update status/edits, delete
+- `POST /api/drafts/[id]/upload` — parse markdown, advance to `in_review`
+- `POST /api/drafts/[id]/publish` — generate TS snippet, mark `approved`
+
+### Components
+- `components/drafts/CreateDraftSlider.tsx` + `.module.css` — 3-stage 480px drawer (form → prompt+upload → done)
+- `components/drafts/DraftReviewView.tsx` + `.module.css` — review page for a draft (frontmatter + all sections)
+- `components/drafts/DraftReviewWrapper.tsx` — client wrapper holding PublishSnippetModal state
+- `components/drafts/PublishSnippetModal.tsx` + `.module.css` — modal to copy/download the generated TS snippet
+- `components/drafts/IcpListingClient.tsx` — tabs (ICPs / Drafts) + "New Draft" button for ICP listing page
+- `components/drafts/PersonaListingClient.tsx` — same pattern for Personas
+- `components/drafts/ListingClient.module.css` — shared CSS for listing client tabs and draft cards
+
+### Pages
+- `app/knowledge-base/client-insight/icps/page.tsx` — converted to `async` server component, fetches drafts, wraps content in `IcpListingClient`
+- `app/knowledge-base/client-insight/personas/page.tsx` — same conversion
+- `app/knowledge-base/client-insight/icps/drafts/[id]/page.tsx` — ICP draft review page
+- `app/knowledge-base/client-insight/personas/drafts/[id]/page.tsx` — Persona draft review page
+
+---
+
+## npm packages installed
+- `yaml` — YAML frontmatter parsing in `parse-markdown.ts`
+
+---
+
+## Manual steps required
+None. Schema pushed via `db push`. No migration file created (established pattern for this database).
+
+---
+
+## Not yet done
+- End-to-end test with a real Claude.ai–generated markdown response. Test the golden path before using with the team.
+
+---
+
+# Previous Build — Wave 4: DRY Consolidations
 _2026-05-19_
 
 ## Summary

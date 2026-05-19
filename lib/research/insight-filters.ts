@@ -10,6 +10,7 @@ export interface InsightFilters {
   portfolios: string[];
   brands: string[];
   icps: string[];
+  personas: string[];
   sourceType?: 'pdf' | 'url-collection';
   sort: InsightSort;
 }
@@ -22,6 +23,7 @@ export const EMPTY_FILTERS: InsightFilters = {
   portfolios: [],
   brands: [],
   icps: [],
+  personas: [],
   sourceType: undefined,
   sort: 'newest',
 };
@@ -38,6 +40,7 @@ export function filtersFromURL(params: URLSearchParams): InsightFilters {
     portfolios: csv('portfolios'),
     brands: csv('brands'),
     icps: csv('icps'),
+    personas: csv('personas'),
     sourceType: (params.get('sourceType') as 'pdf' | 'url-collection') || undefined,
     sort: (params.get('sort') as InsightSort) || 'newest',
   };
@@ -51,7 +54,7 @@ export function filtersToURL(
   const tab = params.get('tab');
 
   ['categories', 'confidence', 'tags', 'search', 'portfolios',
-    'brands', 'icps', 'sourceType', 'sort'].forEach(k => params.delete(k));
+    'brands', 'icps', 'personas', 'sourceType', 'sort'].forEach(k => params.delete(k));
 
   if (filters.categories.length) params.set('categories', filters.categories.join(','));
   if (filters.confidence.length) params.set('confidence', filters.confidence.join(','));
@@ -60,6 +63,7 @@ export function filtersToURL(
   if (filters.portfolios.length) params.set('portfolios', filters.portfolios.join(','));
   if (filters.brands.length) params.set('brands', filters.brands.join(','));
   if (filters.icps.length) params.set('icps', filters.icps.join(','));
+  if (filters.personas.length) params.set('personas', filters.personas.join(','));
   if (filters.sourceType) params.set('sourceType', filters.sourceType);
   if (filters.sort !== 'newest') params.set('sort', filters.sort);
 
@@ -75,5 +79,6 @@ export function hasActiveFilters(filters: InsightFilters): boolean {
     || filters.portfolios.length > 0
     || filters.brands.length > 0
     || filters.icps.length > 0
+    || filters.personas.length > 0
     || filters.sourceType !== undefined;
 }

@@ -24,3 +24,11 @@ export async function getInsightsForIcp(slug: string) {
     orderBy: { createdAt: 'desc' },
   });
 }
+
+export async function getInsightsForPersona(slug: string) {
+  return db.insight.findMany({
+    where: { applicabilityPersonas: { has: slug } },
+    include: { source: { select: SOURCE_SELECT } },
+    orderBy: { createdAt: 'desc' },
+  });
+}

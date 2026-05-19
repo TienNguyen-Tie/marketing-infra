@@ -288,10 +288,11 @@ export interface PortfolioAccount {
   parentEntity?: string;
   engagedSince: string;
   primaryBU: BU;
-  icpSlug: string;
-  icpLabel: string;
-  icpVerified: boolean;
-  icpRationale: string;
+  icpSlug?: string;
+  /** @deprecated Use icpSlug + getIcpBySlug() for canonical name. Kept for backward compat. */
+  icpLabel?: string;
+  icpVerified?: boolean;
+  icpRationale?: string;
   totalGmvLabel?: string;
 
   // Brands & contacts

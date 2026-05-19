@@ -45,12 +45,14 @@ export default function InsightsTab() {
   const [portfoliosInput, setPortfoliosInput] = useState(filters.portfolios.join(', '));
   const [brandsInput, setBrandsInput] = useState(filters.brands.join(', '));
   const [icpsInput, setIcpsInput] = useState(filters.icps.join(', '));
+  const [personasInput, setPersonasInput] = useState(filters.personas.join(', '));
 
   const searchRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const tagsRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const portfoliosRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const brandsRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const icpsRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const personasRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Fetch on filter change
   useEffect(() => {
@@ -130,12 +132,20 @@ export default function InsightsTab() {
     );
   }
 
+  function handlePersonasChange(value: string) {
+    setPersonasInput(value);
+    debounce(personasRef, () =>
+      pushFilters({ ...filters, personas: value.split(',').map(t => t.trim()).filter(Boolean) }),
+    );
+  }
+
   function clearFilters() {
     setSearchInput('');
     setTagsInput('');
     setPortfoliosInput('');
     setBrandsInput('');
     setIcpsInput('');
+    setPersonasInput('');
     pushFilters({ ...EMPTY_FILTERS, sort: 'newest' });
   }
 
@@ -244,6 +254,15 @@ export default function InsightsTab() {
                 className={styles.insightFilterInput}
                 value={icpsInput}
                 onChange={e => handleIcpsChange(e.target.value)}
+                placeholder="slug, slug…"
+              />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <span className={styles.insightFilterGroupLabel} style={{ fontSize: 8 }}>Personas</span>
+              <input
+                className={styles.insightFilterInput}
+                value={personasInput}
+                onChange={e => handlePersonasChange(e.target.value)}
                 placeholder="slug, slug…"
               />
             </div>

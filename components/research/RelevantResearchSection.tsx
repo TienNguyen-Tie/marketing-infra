@@ -6,13 +6,15 @@ import pStyles from '@/app/knowledge-base/client-insight/portfolio.module.css';
 
 type Props = {
   insights: InsightWithSource[];
-  entityType: 'portfolio' | 'brand';
-  entitySlug: string;
-  entityName: string;
+  entityType?: 'portfolio' | 'brand';
+  entitySlug?: string;
+  entityName?: string;
+  viewAllHref?: string;
+  emptyMessage?: string;
   maxDisplayed?: number;
 };
 
-function viewAllHref(entityType: 'portfolio' | 'brand', entitySlug: string): string {
+function computeViewAllHref(entityType: 'portfolio' | 'brand', entitySlug: string): string {
   const param = entityType === 'portfolio' ? 'portfolios' : 'brands';
   return `/knowledge-base/research?tab=insights&${param}=${encodeURIComponent(entitySlug)}`;
 }
@@ -22,9 +24,13 @@ export default function RelevantResearchSection({
   entityType,
   entitySlug,
   entityName,
+  viewAllHref: viewAllHrefProp,
+  emptyMessage,
   maxDisplayed = 10,
 }: Props) {
-  const href = viewAllHref(entityType, entitySlug);
+  const href = viewAllHrefProp
+    ?? (entityType && entitySlug ? computeViewAllHref(entityType, entitySlug) : '/knowledge-base/research?tab=insights');
+  const entityLabel = entityName ?? entitySlug ?? 'this entity';
   const displayed = insights.slice(0, maxDisplayed);
   const hasMore = insights.length > maxDisplayed;
 
@@ -49,7 +55,7 @@ export default function RelevantResearchSection({
                 </div>
               </div>
               <p className={`${rStyles.insightListHeadline} ${pStyles.ghostText}`}>
-                Headline of insight applicable to this {entityType} not yet captured
+                Headline of insight applicable to this {entityType ?? 'entity'} not yet captured
               </p>
               <p className={`${rStyles.insightListDetail} ${pStyles.ghostText}`}>
                 Detail showing the insight&apos;s context and why it matters not yet captured.
@@ -70,9 +76,13 @@ export default function RelevantResearchSection({
         {/* CTA card */}
         <div className={rStyles.relevantResearchCta}>
           <p className={rStyles.relevantResearchCtaText}>
-            As insights are added to the research library and tagged with the slug{' '}
-            <span className={rStyles.relevantResearchCtaSlug}>&lsquo;{entitySlug}&rsquo;</span>
-            {' '}in their applicability field, they&apos;ll appear here automatically.
+            {emptyMessage ?? (
+              <>
+                As insights are added to the research library and tagged with the slug{' '}
+                <span className={rStyles.relevantResearchCtaSlug}>&lsquo;{entitySlug}&rsquo;</span>
+                {' '}in their applicability field, they&apos;ll appear here automatically.
+              </>
+            )}
           </p>
           <div className={rStyles.relevantResearchCtaLinks}>
             <Link href="/knowledge-base/research/new" className={rStyles.relevantResearchCtaLink}>
@@ -92,7 +102,7 @@ export default function RelevantResearchSection({
       {/* Header row */}
       <div className={rStyles.relevantResearchHeader}>
         <span className={rStyles.relevantResearchCount}>
-          {insights.length} relevant insight{insights.length !== 1 ? 's' : ''} for {entityName}
+          {insights.length} relevant insight{insights.length !== 1 ? 's' : ''} for {entityLabel}
         </span>
         <Link href={href} className={rStyles.relevantResearchViewAll}>
           View all in library →

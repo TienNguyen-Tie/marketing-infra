@@ -1,0 +1,162 @@
+/* ── Backdrop ─────────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── Modal ────────────────────────────────────────────────── */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  background: #fff;
+  border-radius: 12px;
+  z-index: 301;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: popIn 0.2s ease;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 0.5px solid #E6E6E6;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 20px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.closeBtn:hover {
+  background: #F5F5F5;
+  color: #1A1A1A;
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.instructions {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.code {
+  font-family: monospace;
+  background: #F3F4F6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #1A1A1A;
+}
+
+.snippetBox {
+  background: #1A1A1A;
+  color: #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 11px;
+  font-family: monospace;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-y: auto;
+  max-height: 400px;
+  margin: 0;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer {
+  padding: 16px 24px;
+  border-top: 0.5px solid #E6E6E6;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btnPrimary {
+  padding: 10px 20px;
+  background: #F43C34;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  min-width: 130px;
+  text-align: center;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  padding: 10px 20px;
+  background: transparent;
+  color: #444;
+  border: 0.5px solid #D0D0D0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnSecondary:hover {
+  background: #F5F5F5;
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}

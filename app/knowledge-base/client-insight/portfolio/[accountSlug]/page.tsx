@@ -10,6 +10,7 @@ import {
   getFullDisplayName,
   getBrandSlug,
 } from '@/data/portfolio/helpers';
+import { getIcpBySlug } from '@/data/icps/helpers';
 import {
   SERVICE_NAMES,
   CATEGORY_LABELS,
@@ -109,6 +110,7 @@ export default async function AccountPage({
   const displayName = getDisplayName(account);
   const fullDisplayName = getFullDisplayName(account);
   const relevantInsights = await getInsightsForPortfolio(accountSlug);
+  const icp = account.icpSlug ? getIcpBySlug(account.icpSlug) : undefined;
 
   return (
     <div className={styles.dossPage}>
@@ -291,9 +293,16 @@ export default async function AccountPage({
                   </p>
                   <p className={styles.crRole}>{c.role}</p>
                 </div>
-                {c.personaLabel && (
+                {c.personaSlug ? (
+                  <Link
+                    href={`/knowledge-base/client-insight/personas/${c.personaSlug}`}
+                    className={styles.personaPillLink}
+                  >
+                    {c.personaLabel ?? c.personaSlug}
+                  </Link>
+                ) : c.personaLabel ? (
                   <span className={styles.personaPill}>{c.personaLabel}</span>
-                )}
+                ) : null}
               </div>
             ))
           ) : (
@@ -307,6 +316,21 @@ export default async function AccountPage({
                 <span className={`${styles.personaPill} ${styles.ghostPill}`}>—</span>
               </div>
             ))
+          )}
+        </div>
+        <div className={styles.icpRow}>
+          <span className={styles.icpRowLabel}>ICP CLASSIFICATION</span>
+          {icp ? (
+            <Link
+              href={`/knowledge-base/client-insight/icps/${icp.slug}`}
+              className={styles.icpLink}
+            >
+              {icp.name} →
+            </Link>
+          ) : account.icpSlug ? (
+            <span className={styles.icpLinkMuted}>{account.icpSlug}</span>
+          ) : (
+            <span className={styles.icpLinkMuted}>Not yet classified — add icpSlug to portfolio data</span>
           )}
         </div>
         {account.icpRationale && (

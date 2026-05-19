@@ -27,6 +27,7 @@ export async function GET(req: NextRequest) {
   if (filters.portfolios.length) where.applicabilityPortfolios = { hasSome: filters.portfolios };
   if (filters.brands.length) where.applicabilityBrands = { hasSome: filters.brands };
   if (filters.icps.length) where.applicabilityIcps = { hasSome: filters.icps };
+  if (filters.personas.length) where.applicabilityPersonas = { hasSome: filters.personas };
   if (filters.sourceType) where.source = { type: filters.sourceType };
 
   const orderBy: Record<string, string> =

@@ -66,7 +66,13 @@
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('exports', {}\\), indent=2\\)\\)\")",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k: d[k] for k in ['browser','exports','main','module'] if k in d}, indent=2\\)\\)\")",
       "Bash(npm view *)",
-      "Bash(python3 -c \"import sys,json; vs=json.load\\(sys.stdin\\); print\\(json.dumps\\(vs[-10:], indent=2\\)\\)\")"
+      "Bash(python3 -c \"import sys,json; vs=json.load\\(sys.stdin\\); print\\(json.dumps\\(vs[-10:], indent=2\\)\\)\")",
+      "Bash(awk '/^  \\\\{/{found=1} found && /slug:/{print NR\": \"$0; found=0}' /Users/tienvnguyen/eco_mkt_infra/data/portfolio/accounts.ts)",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/data/icps && mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/icps/\\\\[icpSlug\\\\])",
+      "Bash(sed -i '' 's/icpSlug: '\\\\''local-indie'\\\\''/icpSlug: '\\\\''regional-d2c-beauty'\\\\''/g' data/portfolio/accounts.ts)",
+      "Bash(sed -i '' 's/icpSlug: '\\\\''local-large'\\\\'',/icpSlug: '\\\\''vietnamese-domestic-cpg'\\\\'',/g' data/portfolio/accounts.ts)",
+      "Bash(mkdir -p /Users/tienvnguyen/eco_mkt_infra/app/api/drafts/\\\\[id\\\\]/upload /Users/tienvnguyen/eco_mkt_infra/app/api/drafts/\\\\[id\\\\]/publish)",
+      "Bash(mkdir -p \"/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/icps/drafts/[id]\" \"/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/personas/drafts/[id]\")"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",
@@ -75,7 +81,10 @@
       "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/portfolio/[accountSlug]/brand",
       "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]",
       "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/research/sources",
-      "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]/extract"
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]/extract",
+      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/icps",
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/drafts/[id]",
+      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/icps/drafts"
     ]
   }
 }
