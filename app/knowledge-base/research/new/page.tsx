@@ -368,7 +368,12 @@ export default function NewSourcePage() {
           xhr.onload = () => {
             setUploadProgress(null);
             if (xhr.status >= 200 && xhr.status < 300) {
-              resolve(blobUrl);
+              try {
+                const parsed = JSON.parse(xhr.responseText) as { url?: string };
+                resolve(parsed.url ?? blobUrl);
+              } catch {
+                resolve(blobUrl);
+              }
             } else {
               reject(new Error(`Upload failed (${xhr.status}): ${xhr.responseText.slice(0, 200)}`));
             }
