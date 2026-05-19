@@ -57,7 +57,8 @@
       "Bash(wait)",
       "Bash(xargs kill -9)",
       "Bash(grep -v \"^$\")",
-      "Bash(git init *)"
+      "Bash(git init *)",
+      "Bash(sed -i '' \"s/model: 'claude-opus-4-7'/model: EXTRACTION_MODEL/g\" \"/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]/extract/route.ts\")"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",
@@ -65,7 +66,8 @@
       "/Users/tienvnguyen/eco_mkt_infra/app/api/suggestions",
       "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/client-insight/portfolio/[accountSlug]/brand",
       "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]",
-      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/research/sources"
+      "/Users/tienvnguyen/eco_mkt_infra/app/knowledge-base/research/sources",
+      "/Users/tienvnguyen/eco_mkt_infra/app/api/research/sources/[id]/extract"
     ]
   }
 }
