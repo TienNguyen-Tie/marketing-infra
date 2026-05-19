@@ -1,4 +1,61 @@
-# Last Build — Wave 3: Docs Alignment + Model Constants
+# Last Build — Wave 4: DRY Consolidations
+_2026-05-19_
+
+## Summary
+
+2 consolidation opportunities from CONSOLIDATION_REPORT.md closed. Pure refactor — no behavior changes. TypeScript clean, build succeeds (114 pages, 0 errors).
+
+---
+
+## Closed consolidation opportunities
+
+| # | Opportunity | Fix |
+|---|-------------|-----|
+| 2 | `InsightWithSource` type had 1 definition + 3 re-imports from `InsightListItem` | Moved to `lib/research/types.ts`; all 4 consumers (`InsightListItem`, `RelevantResearchSection`, `InsightDetailModal`, `InsightsTab`) now import from there |
+| 3 | `SOURCE_SELECT` inline in `helpers.ts`; second inline copy in companion route with fewer fields | Moved canonical 4-field version to `lib/research/constants.ts`; both consumers import from there |
+
+## Files touched
+
+```
+lib/research/types.ts             — Added InsightWithSource interface export
+
+lib/research/constants.ts         — Added SOURCE_SELECT constant export
+
+lib/research/helpers.ts           — Removed local SOURCE_SELECT; imports from constants
+
+components/research/InsightListItem.tsx
+                                  — Removed local InsightWithSource interface; imports from types
+
+components/research/RelevantResearchSection.tsx
+                                  — Changed import source from ./InsightListItem → lib/research/types
+
+components/research/InsightDetailModal.tsx
+                                  — Changed import source from ./InsightListItem → lib/research/types
+
+components/research/InsightsTab.tsx
+                                  — Changed import source from ./InsightListItem → lib/research/types
+
+app/api/research/companion/route.ts
+                                  — Removed inline { id: true, title: true, type: true } select;
+                                    imports SOURCE_SELECT from lib/research/constants
+                                    (note: companion now also selects source.category, which it
+                                    doesn't use — harmless, aligns with InsightWithSource shape)
+```
+
+## Deferred
+
+- **Consolidation #1** (requireAuth helper): current pattern is consistent and only 2–3 lines per route. The helper's discriminated-union return type would add complexity comparable to what it saves. Revisit if new auth-gated routes feel like boilerplate; otherwise leave as-is.
+
+## No schema changes. No new dependencies. No new env vars. No behavior changes.
+
+## Discovered during Wave 4
+
+- `InsightWithSource` was actually only defined in `InsightListItem.tsx` (not in `RelevantResearchSection` as the audit report stated). `RelevantResearchSection` was already importing from `InsightListItem`. Two additional consumers (`InsightDetailModal` and `InsightsTab`) also imported from `InsightListItem` — 4 total consumers updated.
+- `SOURCE_SELECT` in companion route had 3 fields (`id, title, type`) vs helpers.ts with 4 (`id, title, type, category`). Canonical is the 4-field version. Companion now selects `category` too but doesn't use it — noted above.
+
+---
+
+# Previous Build — Wave 3: Docs Alignment + Model Constants
 _2026-05-19_
 
 ## Summary

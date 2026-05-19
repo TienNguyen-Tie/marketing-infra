@@ -29,3 +29,15 @@ export const CONFIDENCE_LABELS: Record<Confidence, string> = {
 
 export const MAX_PDF_SIZE_MB = 50;
 export const MAX_PDF_SIZE_BYTES = MAX_PDF_SIZE_MB * 1024 * 1024;
+
+/**
+ * Standard Prisma select shape for the Source relation when included
+ * with insights. Centralized so changes to what we surface about a
+ * source on insight cards propagate consistently.
+ */
+export const SOURCE_SELECT = {
+  id: true,
+  title: true,
+  type: true,
+  category: true,
+} as const;

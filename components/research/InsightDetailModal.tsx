@@ -6,7 +6,7 @@ import {
   INSIGHT_CATEGORY_LABELS,
   CONFIDENCE_LABELS,
 } from '@/lib/research/constants';
-import type { InsightWithSource } from './InsightListItem';
+import type { InsightWithSource } from '@/lib/research/types';
 import styles from '@/app/knowledge-base/research/research.module.css';
 
 const CAT_CLASS: Record<string, string> = {

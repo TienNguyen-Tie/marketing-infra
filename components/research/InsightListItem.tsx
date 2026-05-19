@@ -2,28 +2,8 @@
 
 import Link from 'next/link';
 import { INSIGHT_CATEGORY_LABELS, CONFIDENCE_LABELS } from '@/lib/research/constants';
+import type { InsightWithSource } from '@/lib/research/types';
 import styles from '@/app/knowledge-base/research/research.module.css';
-
-export interface InsightWithSource {
-  id: string;
-  sourceId: string;
-  headline: string;
-  detail: string;
-  evidence: string | null;
-  reference: string | null;
-  category: string;
-  confidence: string;
-  applicabilityPortfolios: string[];
-  applicabilityBrands: string[];
-  applicabilityIcps: string[];
-  tags: string[];
-  source: {
-    id: string;
-    title: string;
-    type: string;
-    category: string | null;
-  };
-}
 
 const CAT_CLASS: Record<string, string> = {
   audience: styles['insightCat--audience'],

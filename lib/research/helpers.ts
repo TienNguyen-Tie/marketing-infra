@@ -1,11 +1,5 @@
 import { db } from '@/lib/db';
-
-const SOURCE_SELECT = {
-  id: true,
-  title: true,
-  type: true,
-  category: true,
-} as const;
+import { SOURCE_SELECT } from './constants';
 
 export async function getInsightsForPortfolio(slug: string) {
   return db.insight.findMany({

@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { getAnthropicKey } from '@/lib/get-api-key';
 import { COMPANION_SYSTEM_PROMPT } from '@/lib/research/companion-prompt';
+import { SOURCE_SELECT } from '@/lib/research/constants';
 import Anthropic from '@anthropic-ai/sdk';
 import { COMPANION_MODEL } from '@/lib/ai-models';
 
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
   }
 
   const insights = await db.insight.findMany({
-    include: { source: { select: { id: true, title: true, type: true } } },
+    include: { source: { select: SOURCE_SELECT } },
     orderBy: { collectedDate: 'desc' },
   });
 

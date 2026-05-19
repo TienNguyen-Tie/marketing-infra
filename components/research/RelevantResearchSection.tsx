@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import InsightListItem from './InsightListItem';
-import type { InsightWithSource } from './InsightListItem';
+import type { InsightWithSource } from '@/lib/research/types';
 import rStyles from '@/app/knowledge-base/research/research.module.css';
 import pStyles from '@/app/knowledge-base/client-insight/portfolio.module.css';
 

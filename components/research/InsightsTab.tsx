@@ -16,7 +16,7 @@ import {
   CONFIDENCE_LABELS,
 } from '@/lib/research/constants';
 import InsightListItem from './InsightListItem';
-import type { InsightWithSource } from './InsightListItem';
+import type { InsightWithSource } from '@/lib/research/types';
 import InsightDetailModal from './InsightDetailModal';
 import styles from '@/app/knowledge-base/research/research.module.css';
 

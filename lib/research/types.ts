@@ -1,3 +1,24 @@
+export interface InsightWithSource {
+  id: string;
+  sourceId: string;
+  headline: string;
+  detail: string;
+  evidence: string | null;
+  reference: string | null;
+  category: string;
+  confidence: string;
+  applicabilityPortfolios: string[];
+  applicabilityBrands: string[];
+  applicabilityIcps: string[];
+  tags: string[];
+  source: {
+    id: string;
+    title: string;
+    type: string;
+    category: string | null;
+  };
+}
+
 export type SourceType = 'pdf' | 'url-collection';
 
 export type SourceCategory =
