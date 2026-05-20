@@ -1,0 +1,397 @@
+/* ── Page shell ─────────────────────────────────────────────── */
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 32px 64px;
+  background: #FAFAFA;
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+
+.hero {
+  margin-bottom: 8px;
+}
+
+.breadcrumb {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A3A3A3;
+  margin-bottom: 16px;
+}
+
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #535353;
+}
+
+.h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #535353;
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0;
+}
+
+/* ── Snapshot bar ───────────────────────────────────────────── */
+
+.snapshotBar {
+  background: #FFF5F5;
+  border: 0.5px solid #FCE7E5;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 14px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.snapshotCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.snapshotLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A3A3A3;
+}
+
+.snapshotValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+/* ── Headline counts ────────────────────────────────────────── */
+
+.headlineCounts {
+  background: white;
+  border: 0.5px solid #E6E6E6;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .headlineCounts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.headlineCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.headlineLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A3A3A3;
+}
+
+.headlineNumber {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.headlineSubtitle {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #727272;
+}
+
+/* ── Distribution sections ──────────────────────────────────── */
+
+.distributionSection {
+  margin-bottom: 32px;
+}
+
+.distributionHeader {
+  margin-bottom: 12px;
+}
+
+.distributionEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #F43C34;
+  margin-bottom: 4px;
+}
+
+.distributionH2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.distributionSubtitle {
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  color: #535353;
+}
+
+.distributionTable {
+  background: white;
+  border: 0.5px solid #E6E6E6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.distributionRow {
+  display: grid;
+  grid-template-columns: 1fr auto 2fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid #F5F5F5;
+  align-items: center;
+}
+
+.distributionRow:last-child {
+  border-bottom: none;
+}
+
+.distributionName {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.distributionNameLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.distributionNameLink:hover {
+  color: #F43C34;
+}
+
+.distributionNameText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.distributionCount {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.distributionNote {
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: italic;
+  color: #727272;
+  line-height: 1.5;
+}
+
+.distributionTotalRow {
+  display: grid;
+  grid-template-columns: 1fr auto 2fr;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #FAFAFA;
+  border-top: 0.5px solid #E6E6E6;
+  font-weight: 700;
+  align-items: center;
+}
+
+.distributionTotalLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #A3A3A3;
+}
+
+.distributionTotalCount {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #1A1A1A;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.distributionEmpty {
+  padding: 24px;
+  text-align: center;
+  color: #A3A3A3;
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* ── Tier pills (used in distribution table) ────────────────── */
+
+.tierPillCore {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #EAF1FA;
+  color: #1E4E8C;
+}
+
+.tierPillEmerging {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #FBF3E2;
+  color: #7A5A14;
+}
+
+.tierPillNiche {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #F0F0F0;
+  color: #535353;
+}
+
+/* ── Observations block ─────────────────────────────────────── */
+
+.observationsSection {
+  margin-bottom: 32px;
+}
+
+.observationsCard {
+  background: white;
+  border: 0.5px solid #E6E6E6;
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.observationsBody {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1A1A1A;
+  line-height: 1.65;
+  max-width: 760px;
+}
+
+/* ── Notable creators ───────────────────────────────────────── */
+
+.notableSection {
+  margin-bottom: 32px;
+}
+
+.notableGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .notableGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.notableCard {
+  background: white;
+  border: 0.5px solid #E6E6E6;
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notableHandle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.notableMeta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.notableNote {
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: italic;
+  color: #727272;
+  line-height: 1.5;
+}
+
+.notablePill {
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #F0F0F0;
+  color: #535353;
+  text-decoration: none;
+  transition: background 120ms;
+}
+
+.notablePill:hover {
+  background: #E6E6E6;
+}
+
+.ghostCard {
+  border: 0.5px dashed #D3D3D3;
+  background: transparent;
+  opacity: 0.55;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  color: #A3A3A3;
+  font-size: 13px;
+}

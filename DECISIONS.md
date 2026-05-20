@@ -1,5 +1,21 @@
 # Architectural Decisions
 
+## D-028 — Creators modeled as static TypeScript, not Prisma; Passio integration deferred
+_2026-05-20_
+
+**Decision**: Creator Archetypes (~6-10), Creator Markets (3), and TAP Network overview are modeled as static TypeScript data in `data/creators/`, same pattern as `data/services/` (D-021) and `data/icps/`. No Prisma tables introduced.
+
+TAP Network overview numbers are CURATED ESTIMATES (`snapshotMethod: 'curated'`). No Passio integration in v1. The structure supports future swapping to integrated data via the `snapshotMethod` field.
+
+**Rationale**:
+- Creator Archetypes change at the pace of strategic understanding (rare), not operational throughput. Static TS fits this cadence.
+- The tool is a PLANNING surface, not a CRM. Real-time creator counts add integration complexity without proportional planning value at v1 scale (~6-10 archetypes, 3 markets).
+- Building the framework with curated estimates first lets the team validate whether the planning workflow is useful before investing in Passio integration plumbing.
+
+**Consequence**: `TAP_NETWORK_OVERVIEW` must be manually refreshed periodically (recommend monthly). The `snapshotDate` field is the audit trail. If/when the framework proves valuable, swapping to Passio integration is a non-breaking change (same interface, new data source).
+
+---
+
 ## D-027 — SERVICE_NAMES static map retired in favour of helper lookups
 _2026-05-20_
 

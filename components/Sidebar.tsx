@@ -41,6 +41,16 @@ const navTree: NavItem[] = [
       },
       {
         kind: 'flyout',
+        label: 'Creators',
+        href: '/knowledge-base/creators',
+        items: [
+          { label: 'Archetypes', href: '/knowledge-base/creators/archetypes' },
+          { label: 'Markets', href: '/knowledge-base/creators/markets' },
+          { label: 'Network', href: '/knowledge-base/creators/network' },
+        ],
+      },
+      {
+        kind: 'flyout',
         label: 'Client Insight',
         href: '/knowledge-base/client-insight',
         items: [
