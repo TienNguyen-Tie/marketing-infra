@@ -26,7 +26,6 @@ export type SourceCategory =
   | 'industry-report'
   | 'consumer-insight'
   | 'competitive'
-  | 'creator-trend'
   | 'platform-trend'
   | 'other';
 
@@ -34,7 +33,6 @@ export type InsightCategory =
   | 'audience'
   | 'market'
   | 'competitive'
-  | 'creator'
   | 'content'
   | 'platform'
   | 'other';

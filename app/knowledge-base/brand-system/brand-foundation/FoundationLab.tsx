@@ -30,8 +30,8 @@ interface GenerationResult {
 }
 
 // In overarching mode, brands is already the source — only other audiences are valid targets
-const OVERARCHING_TARGETS: Audience[] = ['creators', 'employer-branding'];
-const ALL_AUDIENCES: Audience[] = ['brands', 'creators', 'employer-branding'];
+const OVERARCHING_TARGETS: Audience[] = ['employer-branding'];
+const ALL_AUDIENCES: Audience[] = ['brands', 'employer-branding'];
 const MARKETS: Market[] = ['vn', 'th', 'id', 'ph', 'my', 'sg'];
 
 const MODE_META: Record<Mode, { label: string; desc: string }> = {
@@ -52,7 +52,7 @@ export default function FoundationLab() {
   const [mode, setMode] = useState<Mode>('adapt');
 
   /* ── target dimensions ── */
-  const [targetAudience, setTargetAudience] = useState<Audience>('creators');
+  const [targetAudience, setTargetAudience] = useState<Audience>('employer-branding');
   const [targetMarket, setTargetMarket] = useState<Market>('vn');
 
   const [userPrompt, setUserPrompt] = useState('');
@@ -80,7 +80,7 @@ export default function FoundationLab() {
     setLabTier(tier);
     // brands can't be a target in overarching mode (it's the source)
     if (tier === 'overarching' && targetAudience === 'brands') {
-      setTargetAudience('creators');
+      setTargetAudience('employer-branding');
     }
     setResult(null);
     setError(null);

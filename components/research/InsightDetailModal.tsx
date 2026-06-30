@@ -13,7 +13,6 @@ const CAT_CLASS: Record<string, string> = {
   audience: styles['insightCat--audience'],
   market: styles['insightCat--market'],
   competitive: styles['insightCat--competitive'],
-  creator: styles['insightCat--creator'],
   content: styles['insightCat--content'],
   platform: styles['insightCat--platform'],
   other: styles['insightCat--other'],

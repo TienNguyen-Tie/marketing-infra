@@ -5,7 +5,7 @@ import type { Audience, Market, BrandLayer } from './foundation-data';
 import { getVariant, AUDIENCE_LABELS, MARKET_LABELS } from './foundation-data';
 import styles from './brand-foundation.module.css';
 
-const AUDIENCES: Audience[] = ['brands', 'creators', 'employer-branding'];
+const AUDIENCES: Audience[] = ['brands', 'employer-branding'];
 const MARKETS: Market[] = ['vn', 'th', 'id', 'ph', 'my', 'sg'];
 
 const LAYER_LABEL: Record<string, string> = {

@@ -5,7 +5,6 @@ export const SOURCE_CATEGORY_LABELS: Record<SourceCategory, string> = {
   'industry-report': 'Industry Report',
   'consumer-insight': 'Consumer Insight',
   'competitive': 'Competitive Intel',
-  'creator-trend': 'Creator Trend',
   'platform-trend': 'Platform Trend',
   'other': 'Other',
 };
@@ -14,7 +13,6 @@ export const INSIGHT_CATEGORY_LABELS: Record<InsightCategory, string> = {
   'audience': 'Audience',
   'market': 'Market',
   'competitive': 'Competitive',
-  'creator': 'Creator',
   'content': 'Content',
   'platform': 'Platform',
   'other': 'Other',

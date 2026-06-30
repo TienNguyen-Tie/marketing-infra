@@ -3,7 +3,7 @@
 export type VariantTier = 'overarching' | 'localized';
 
 // kebab-case values; display via AUDIENCE_LABELS
-export type Audience = 'brands' | 'creators' | 'employer-branding';
+export type Audience = 'brands' | 'employer-branding';
 
 // lowercase values; display via MARKET_LABELS
 export type Market = 'vn' | 'th' | 'id' | 'ph' | 'my' | 'sg';
@@ -55,7 +55,6 @@ export interface AspirationalQuote {
 
 export const AUDIENCE_LABELS: Record<Audience, string> = {
   'brands': 'Brand',
-  'creators': 'Creator',
   'employer-branding': 'Employer Branding',
 };
 
@@ -107,7 +106,7 @@ const overarchingBrandsLayers: BrandLayer[] = [
 
 /* ── ALL VARIANTS ──────────────────────────────────────────── */
 
-const ALL_AUDIENCES: Audience[] = ['brands', 'creators', 'employer-branding'];
+const ALL_AUDIENCES: Audience[] = ['brands', 'employer-branding'];
 const ALL_MARKETS: Market[] = ['vn', 'th', 'id', 'ph', 'my', 'sg'];
 
 export const variants: FoundationVariant[] = [
@@ -120,7 +119,6 @@ export const variants: FoundationVariant[] = [
     layers: overarchingBrandsLayers,
   },
   // ── 2 empty overarching ──
-  { tier: 'overarching', audience: 'creators', status: 'empty', layers: [] },
   { tier: 'overarching', audience: 'employer-branding', status: 'empty', layers: [] },
   // ── 18 empty localized (3 audiences × 6 markets) ──
   ...ALL_AUDIENCES.flatMap((audience) =>
@@ -180,14 +178,13 @@ export const contextTokens: ContextToken[] = [
   { id: 'mk-sg', category: 'market', label: 'Singapore', value: 'Singapore market: regional HQ clients, B2B-skewing, premium positioning only', defaultActive: false },
   // Audience
   { id: 'aud-brands', category: 'audience', label: 'Brand CMO', value: 'Audience: Brand-side marketing decision maker — CMO or Head of Ecommerce. Cares about GMV attribution, CAC, brand safety', defaultActive: true },
-  { id: 'aud-creators', category: 'audience', label: 'Creator', value: 'Audience: Independent content creator or KOL — values income stability, content freedom, brand matching', defaultActive: false },
   { id: 'aud-employer-branding', category: 'audience', label: 'Employer Branding', value: 'Audience: Employer branding — positioning VinaCapital as a destination for talent, emphasising culture, growth, and mission', defaultActive: false },
   // Channel
   { id: 'ch-tiktok', category: 'channel', label: 'TikTok Shop', value: 'Channel: TikTok Shop — short-video + livestream, algorithm-driven discovery, affiliate-native', defaultActive: true },
   { id: 'ch-shopee', category: 'channel', label: 'Shopee Affiliate', value: 'Channel: Shopee Affiliate — price-sensitive, voucher-heavy, high conversion intent', defaultActive: false },
   { id: 'ch-b2b', category: 'channel', label: 'B2B Deck', value: 'Channel: B2B pitch deck or proposal — formal tone, data-heavy, boardroom-ready', defaultActive: false },
   // Objective
-  { id: 'obj-scale', category: 'objective', label: 'Scale GMV', value: 'Objective: Scale GMV — emphasise velocity, creator network density, and operational throughput', defaultActive: true },
-  { id: 'obj-trust', category: 'objective', label: 'Build Trust', value: 'Objective: Build brand trust — emphasise authenticity, creator vetting, long-term brand safety', defaultActive: false },
+  { id: 'obj-scale', category: 'objective', label: 'Scale', value: 'Objective: Scale reach — emphasise momentum, network density, and operational throughput', defaultActive: true },
+  { id: 'obj-trust', category: 'objective', label: 'Build Trust', value: 'Objective: Build brand trust — emphasise authenticity, rigorous vetting, long-term brand safety', defaultActive: false },
   { id: 'obj-enter', category: 'objective', label: 'Market Entry', value: 'Objective: Market entry — emphasise local network depth, regulatory know-how, and market-specific proof', defaultActive: false },
 ];

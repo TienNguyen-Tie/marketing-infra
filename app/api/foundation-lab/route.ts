@@ -11,7 +11,7 @@ interface RequestBody {
   sourceMarket?: string;
   targetAudience: string;
   targetMarket?: string;
-  targetLabel: string;       // human-readable e.g. "Creator overarching" or "Brand × VN"
+  targetLabel: string;       // human-readable e.g. "Employer Branding overarching" or "Brand × VN"
   userPrompt?: string;
   activeTokenIds: string[];
   sourceLayers: BrandLayer[];
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       ? `\n\nActive context signals:\n${activeTokenValues.map((v) => `- ${v}`).join('\n')}`
       : '';
 
-  const systemPrompt = `You are a brand strategist at VinaCapital — Southeast Asia's full-stack creator commerce platform.
+  const systemPrompt = `You are a brand strategist at VinaCapital — Vietnam's leading investment and wealth management group.
 
 Your task is to ${MODE_INSTRUCTIONS[mode] ?? MODE_INSTRUCTIONS.adapt}
 

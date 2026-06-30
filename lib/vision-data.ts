@@ -72,34 +72,10 @@ export const ACTIVITY_TILES: ActivityTile[] = [
       staysAligned: 'Partnerships built around real synergies — not opportunistic deals',
     },
   },
-  {
-    id: 'creator-acq',
-    name: 'Creator Acquisition',
-    icon: 'person_add',
-    desc: 'Network growth, onboarding',
-    status: 'planned',
-    details: {
-      drawsFrom: 'Creator ICPs, market needs, service capacity by category',
-      produces: 'Targeted creator recruitment, qualified onboarding, expansion by tier',
-      staysAligned: 'New creators match real demand — not volume for volume\'s sake',
-    },
-  },
-  {
-    id: 'creator-nurture',
-    name: 'Creator Nurturing',
-    icon: 'volunteer_activism',
-    desc: 'Retention, activation, loyalty',
-    status: 'planned',
-    details: {
-      drawsFrom: 'Creator performance history, engagement patterns, network insights',
-      produces: 'Retention programs, top-tier recognition, creator-led content loops',
-      staysAligned: 'Creators stay because the system values them as data, not as headcount',
-    },
-  },
 ];
 
 export const ROADMAP_PHASES = [
-  { id: 'p1', label: 'Phase 1', timing: 'Now',   title: 'Foundations',       summary: 'Brand book, philosophy, investors, creators all locked.',         active: true  },
+  { id: 'p1', label: 'Phase 1', timing: 'Now',   title: 'Foundations',       summary: 'Brand book, philosophy, investors all locked.',         active: true  },
   { id: 'p2', label: 'Phase 2', timing: 'Next',  title: 'Activities Online', summary: 'Every activity launches with full system support.',                active: false },
   { id: 'p3', label: 'Phase 3', timing: 'Later', title: 'Intelligence Loop', summary: 'Insight AI closes the loop. System learns on its own.',             active: false },
 ];
@@ -115,7 +91,6 @@ export const ACTIVITY_FEED = [
 export const FEED_TYPE_COLORS: Record<string, string> = {
   foundation: '#7F77DD',
   client:     '#3B82F6',
-  creator:    '#4A5570',
   system:     '#D71920',
 };
 
@@ -159,7 +134,7 @@ export const PATH_SYSTEM = {
   points: [
     'Every campaign pulls from a locked brand book and the investment philosophy',
     'Each activity inherits the intelligence of every previous one',
-    'All functions work from one source of truth — content, PR, IR, partnerships, creator',
+    'All functions work from one source of truth — content, PR, IR, partnerships',
     'Performance data feeds back into the system to make the next campaign smarter',
     'Every decision is traceable to a foundation and a metric',
     'The system gets more valuable over time — not less',
@@ -172,7 +147,6 @@ export const LOCKED_SOURCES = [
   { name: 'Brand Foundation', icon: 'local_fire_department', desc: 'Expertise · Experience · Growth; voice, values' },
   { name: 'Services',         icon: 'inventory_2',           desc: 'Funds & capabilities across asset classes' },
   { name: 'Investors',        icon: 'business',              desc: 'Segments, ICPs, decision-maker personas' },
-  { name: 'Creators',         icon: 'group',                 desc: 'Network, partners, segments' },
   { name: 'Performance Data', icon: 'trending_up',           desc: 'Live results, patterns' },
 ];
 
@@ -205,7 +179,7 @@ export const WORKED_EXAMPLE = {
 export const CLOSING_PILLARS = [
   { label: 'Less waste',        text: "Every campaign starts from the system's accumulated intelligence — no relearning, no repeating mistakes." },
   { label: 'Right focus',       text: 'Decisions are traceable to the brand book and the data — not preferences, deadlines, or the loudest voice.' },
-  { label: 'Aligned execution', text: 'Content, PR, IR, partnerships, creator — all pulling from the same source. No drift, no contradiction.' },
+  { label: 'Aligned execution', text: 'Content, PR, IR, partnerships — all pulling from the same source. No drift, no contradiction.' },
   { label: 'Compounding trust', text: 'The brand gets more trusted every quarter, not less. Year three is exponentially ahead of year one.' },
 ];
 
@@ -230,7 +204,7 @@ export const VISION_MODES: VisionMode[] = [
     id: 'brainstorm',
     label: 'Brainstorm features',
     icon: 'lightbulb',
-    placeholder: 'For Creator Acquisition, what tools would help us recruit higher-quality creators faster?',
+    placeholder: 'For Investor Relations, what tools would help us reach institutions more effectively?',
   },
   {
     id: 'stress-test',
@@ -254,21 +228,20 @@ Marketing as the engine that makes VinaCapital the trusted partner for investing
 THE OPERATING RULE
 Nothing is invented. Everything is inherited. Every marketing output — every brief, campaign, post, IR story, partnership pitch — traces back to a locked, verified source. No blank-page work.
 
-THE FIVE LOCKED SOURCES
+THE FOUR LOCKED SOURCES
 1. Brand Foundation — positioning (Expertise · Experience · Growth), voice, values, design system (from the 2022 brand book)
 2. Services — funds and capabilities across asset classes
 3. Investors — segments (institutional, retail, domestic, international), ICPs, decision-maker personas
-4. Creators — network, partners, segments, performance history
-5. Performance Data — live results across all activities
+4. Performance Data — live results across all activities
 
 THE ARCHITECTURE
 Closed-loop system in three layers:
-- Layer 1: The SSOT containing the five locked sources
+- Layer 1: The SSOT containing the four locked sources
 - Layer 2: Production AI reads SSOT to produce grounded work · Insight AI reads results to update SSOT
 - Layer 3: All marketing activities pull from SSOT, feed results back
 
 THE ACTIVITIES (illustrative, not exhaustive)
-Content, SEO, AIO (AI search optimization for ChatGPT/Perplexity/AI Overviews), PR, Partnership, Creator Acquisition, Creator Nurturing. More can be added — system is extensible.
+Content, SEO, AIO (AI search optimization for ChatGPT/Perplexity/AI Overviews), PR, Partnership, Investor Relations. More can be added — system is extensible.
 
 YOUR MODES (one specified per message)
 1. explain-role: User shares their function. Show how they plug in — what foundations they draw from, what data they generate, how they compound with other activities.

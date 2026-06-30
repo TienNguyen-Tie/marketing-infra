@@ -210,7 +210,7 @@ export default function HomePage() {
           <div className={styles.activitiesBlock}>
             <p className={styles.activitiesBlockLabel}>EVERY MARKETING ACTIVITY</p>
             <p className={styles.activitiesBlockFlow}>
-              Content · SEO · AIO · PR · Investor Relations · Partnerships · Creator Network · Brand Collaborations · Events · Reports ·{' '}
+              Content · SEO · AIO · PR · Investor Relations · Partnerships · Brand Collaborations · Events · Reports ·{' '}
               <em style={{ color: '#727272' }}>+ every future activity</em>
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function HomePage() {
             <p className={styles.ssotBlockTitle}>Single Source of Truth</p>
             <div className={styles.ssot2x2}>
               <span className={styles.ssotCell}>Brand · Services</span>
-              <span className={styles.ssotCell}>Clients · Creators</span>
+              <span className={styles.ssotCell}>Investors · Clients</span>
               <span className={`${styles.ssotCell} ${styles.ssotCellFull}`}>
                 Activities · Performance Data
               </span>
@@ -302,8 +302,8 @@ export default function HomePage() {
             <p className={styles.activitiesPoolLabel}>LAYER 3 · THE EXECUTION LAYER</p>
             <p className={styles.activitiesPoolTitle}>All Marketing Activities</p>
             <p className={styles.activitiesPoolDesc}>
-              Content · SEO · AIO · PR · Partnership · Creator Acquisition · Creator
-              Nurturing — every activity pulls from the same source
+              Content · SEO · AIO · PR · Partnership · Investor Relations · Reports
+              — every activity pulls from the same source
             </p>
           </div>
 
@@ -319,7 +319,7 @@ export default function HomePage() {
       <section className={`${styles.band} ${styles.band6}`}>
         <p className={styles.eyebrow}>Every Marketing Activity</p>
         <h2 className={styles.bandH2}>
-          Seven activities in motion.{' '}
+          Five activities in motion.{' '}
           <em className={styles.redEm}>Many more to come.</em>
         </h2>
         <p className={styles.band6Sub}>

@@ -18,7 +18,7 @@ export default function BrandFoundationPage() {
         <h1 className={styles.title}>Brand Foundation</h1>
         <p className={styles.subtitle}>
           Four locked strategic layers — the beliefs, promise, and persona that define how VinaCapital
-          shows up. The Brand overarching version is locked; Creator, Employer Branding, and all
+          shows up. The Brand overarching version is locked; Employer Branding and all
           market-localized versions can be generated in the Foundation Lab below.
         </p>
       </div>
