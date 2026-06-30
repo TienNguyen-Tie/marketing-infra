@@ -123,7 +123,15 @@
       "Bash(curl -s -o /dev/null -w \"broker\\(interactive-investor\\) → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/knowledge-base/investor-insight/retail-investor/financial-advisers)",
       "Bash(curl -s -o /dev/null -w \"old personal route → HTTP %{http_code}\\\\n\" --max-time 15 http://localhost:3000/knowledge-base/investor-insight/personal-investor)",
       "Bash(curl -s -o /dev/null -w \"profile\\(aj-bell\\) → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/knowledge-base/investor-insight/retail-investor/aj-bell)",
-      "Bash(curl -s -o /dev/null -w \"profile\\(financial-advisers\\) → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/knowledge-base/investor-insight/retail-investor/financial-advisers)"
+      "Bash(curl -s -o /dev/null -w \"profile\\(financial-advisers\\) → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/knowledge-base/investor-insight/retail-investor/financial-advisers)",
+      "Bash(rm -f middleware.ts lib/auth.config.ts \"app/api/auth/[...nextauth]/route.ts\")",
+      "Bash(rmdir \"app/api/auth/[...nextauth]\" \"app/api/auth\")",
+      "Bash(perl -pi -e 's/admin\\\\@ecomobi\\\\.com/admin\\\\@majorisdigital.com/g' prisma/seed.ts)",
+      "Bash(lsof -nP -iTCP:3000 -sTCP:LISTEN -t)",
+      "Bash(xargs -r kill)",
+      "Bash(disown)",
+      "Bash(curl -s -o /dev/null -w \"home → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/login → HTTP %{http_code} \\(redirects home\\)\\\\n\" --max-time 25 http://localhost:3000/login)"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",

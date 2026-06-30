@@ -13,16 +13,16 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
   const password = await bcrypt.hash('changeme123', 12);
   await prisma.user.upsert({
-    where: { email: 'admin@vinacapital.com' },
+    where: { email: 'admin@majorisdigital.com' },
     update: {},
     create: {
       name: 'Admin',
-      email: 'admin@vinacapital.com',
+      email: 'admin@majorisdigital.com',
       password,
       role: 'ADMIN',
     },
   });
-  console.log('Seeded admin user: admin@vinacapital.com / changeme123');
+  console.log('Seeded admin user: admin@majorisdigital.com / changeme123');
 }
 
 main().catch(console.error).finally(() => prisma.$disconnect());

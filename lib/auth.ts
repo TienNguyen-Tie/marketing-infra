@@ -1,39 +1,42 @@
-import NextAuth from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
-import { db } from '@/lib/db';
-import bcrypt from 'bcryptjs';
-import { authConfig } from '@/lib/auth.config';
+/* ─────────────────────────────────────────────────────────────────────────
+   AUTHENTICATION IS DEACTIVATED.
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  ...authConfig,
-  providers: [
-    Credentials({
-      credentials: {
-        email:    { label: 'Email',    type: 'email'    },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password)
-          return null;
+   This project was cloned from another project together with its database/auth
+   settings, so login could not work once deployed (no matching AUTH_SECRET /
+   DATABASE_URL / seeded user on Vercel). Rather than gate the whole app behind a
+   broken login, auth is stubbed out here: the app is OPEN and every request is
+   treated as a fixed admin. No NextAuth runtime, database, or secret is involved,
+   so it builds and runs anywhere with zero auth env vars.
 
-        const user = await db.user.findUnique({
-          where: { email: credentials.email as string },
-        });
-        if (!user) return null;
+   ⚠️  The deployed app is now PUBLICLY ACCESSIBLE. Before exposing anything
+   sensitive, either turn on Vercel "Password Protection", or re-enable real auth.
 
-        const valid = await bcrypt.compare(
-          credentials.password as string,
-          user.password
-        );
-        if (!valid) return null;
+   TO RE-ENABLE real auth later: restore this file, lib/auth.config.ts,
+   middleware.ts and app/api/auth/[...nextauth]/route.ts from git history, then set
+   AUTH_SECRET / NEXTAUTH_URL / DATABASE_URL on the host and seed an admin user.
+   ───────────────────────────────────────────────────────────────────────── */
 
-        return {
-          id:    user.id,
-          name:  user.name,
-          email: user.email,
-          role:  user.role,
-        };
-      },
-    }),
-  ],
-});
+import type { Session } from 'next-auth';
+
+const STUB_SESSION = {
+  user: {
+    id: 'local-admin',
+    name: 'Admin',
+    email: 'admin@majorisdigital.com',
+    role: 'ADMIN',
+  },
+  expires: '2099-12-31T23:59:59.999Z',
+} as unknown as Session;
+
+/** Returns a fixed admin session — auth is deactivated, so callers always pass. */
+export async function auth(): Promise<Session | null> {
+  return STUB_SESSION;
+}
+
+/* No-ops so existing imports keep resolving while auth is off. */
+export async function signIn(): Promise<void> {
+  /* auth deactivated */
+}
+export async function signOut(): Promise<void> {
+  /* auth deactivated */
+}

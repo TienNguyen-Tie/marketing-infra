@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { signOut } from 'next-auth/react';
 import styles from './account.module.css';
 import ApiKeySection from './ApiKeySection';
 
@@ -209,13 +208,13 @@ export default function AccountClient({ userId: _userId, initialName, email, rol
         <div className={styles.dangerCard}>
           <div>
             <p className={styles.dangerCardLabel}>Sign out</p>
-            <p className={styles.dangerCardDesc}>Sign out of this browser session.</p>
+            <p className={styles.dangerCardDesc}>Authentication is currently disabled for this app.</p>
           </div>
           <button
             className={styles.btnDanger}
-            onClick={() => signOut({ callbackUrl: '/login' })}
+            onClick={() => { window.location.href = '/'; }}
           >
-            Sign out
+            Back to app
           </button>
         </div>
       </div>
