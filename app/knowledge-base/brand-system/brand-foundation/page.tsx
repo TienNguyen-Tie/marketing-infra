@@ -54,36 +54,6 @@ export default function BrandFoundationPage() {
       {/* ── Section 5: Foundation Lab ── */}
       <FoundationLab />
 
-      {/* ── Section 6: Divider ── */}
-      <div className={styles.divider} />
-
-      {/* ── Section 7: Full Presentation ── */}
-      <div className={styles.presentation}>
-        <div className={styles.presentationHeader}>
-          <div className={styles.presentationLeft}>
-            <p className={styles.presentationLabel}>Full Presentation</p>
-            <p className={styles.presentationTitle}>
-              Brand Strategy 2026 — Interactive Deck
-            </p>
-          </div>
-          <a
-            href="/vinacapital_brand_foundation.html"
-            download="VinaCapital-Brand-Foundation-2026.html"
-            className={styles.downloadLink}
-          >
-            <span className={`material-icons-round ${styles.downloadIcon}`}>
-              file_download
-            </span>
-            Download
-          </a>
-        </div>
-        <iframe
-          src="/vinacapital_brand_foundation.html"
-          className={styles.iframe}
-          title="VinaCapital Brand Foundation 2026"
-        />
-      </div>
-
     </div>
   );
 }
