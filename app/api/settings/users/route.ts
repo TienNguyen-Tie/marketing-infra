@@ -9,6 +9,8 @@ function isAdmin(session: Session | null): boolean {
   return session?.user?.role === 'ADMIN';
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const session = await auth();
   if (!isAdmin(session)) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });

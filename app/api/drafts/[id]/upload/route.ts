@@ -3,6 +3,8 @@ import { auth } from '@/lib/auth';
 import { getDraft, patchDraft, clearParsedDraft } from '@/lib/drafts/helpers';
 import { parseMarkdown } from '@/lib/drafts/parser/parse-markdown';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },

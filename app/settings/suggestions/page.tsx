@@ -52,6 +52,8 @@ function relativeDate(iso: string): string {
   return `${days}d ago`;
 }
 
+export const dynamic = 'force-dynamic';
+
 export default function SuggestionsPage() {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [loading, setLoading] = useState(true);

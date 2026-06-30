@@ -7,6 +7,8 @@ const CONFIDENCE_ORDER: Record<string, number> = {
   high: 0, medium: 1, low: 2, speculative: 3,
 };
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

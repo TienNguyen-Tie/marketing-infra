@@ -39,6 +39,8 @@ const MODE_INSTRUCTIONS: Record<string, string> = {
   rewrite: 'Rewrite the brand foundation from scratch for the target audience/market. Use the source as strategic reference only — generate fresh language that fits the new context optimally.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const session = await auth();
   if (!session?.user) {

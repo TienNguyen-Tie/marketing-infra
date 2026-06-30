@@ -6,6 +6,8 @@ import Anthropic from '@anthropic-ai/sdk';
 import { SUGGESTION_MODEL } from '@/lib/ai-models';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
   const session = await auth();
   if (!session?.user) {

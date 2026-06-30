@@ -7,6 +7,8 @@ import { SOURCE_SELECT } from '@/lib/research/constants';
 import Anthropic from '@anthropic-ai/sdk';
 import { COMPANION_MODEL } from '@/lib/ai-models';
 
+export const dynamic = 'force-dynamic';
+
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {

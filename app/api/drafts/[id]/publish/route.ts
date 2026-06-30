@@ -4,6 +4,8 @@ import { getDraft, patchDraft } from '@/lib/drafts/helpers';
 import { generateTypescriptSnippet } from '@/lib/drafts/generator/generate-typescript';
 import type { ParsedDraft } from '@/lib/drafts/types';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> },

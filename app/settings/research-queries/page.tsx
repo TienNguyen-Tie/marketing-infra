@@ -13,6 +13,8 @@ function fmtDate(d: Date): string {
   }).format(d);
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function ResearchQueriesPage() {
   const session = await auth();
   if (!session?.user) redirect('/login');

@@ -21,6 +21,8 @@ function fmtBytes(n: number | null | undefined): string {
   return (n / (1024 * 1024)).toFixed(1) + ' MB';
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function SourceDetailPage({
   params,
 }: {

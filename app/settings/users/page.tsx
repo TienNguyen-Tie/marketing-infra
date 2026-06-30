@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import UsersClient from './UsersClient';
 import styles from './users.module.css';
 
+export const dynamic = 'force-dynamic';
+
 export default async function UsersPage() {
   const session = await auth();
   if (!session?.user) redirect('/login');

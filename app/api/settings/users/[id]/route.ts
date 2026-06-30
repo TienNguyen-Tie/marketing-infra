@@ -8,6 +8,8 @@ function isAdmin(session: Session | null): boolean {
   return session?.user?.role === 'ADMIN';
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }

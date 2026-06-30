@@ -131,7 +131,10 @@
       "Bash(xargs -r kill)",
       "Bash(disown)",
       "Bash(curl -s -o /dev/null -w \"home → HTTP %{http_code}\\\\n\" --max-time 25 http://localhost:3000/)",
-      "Bash(curl -s -o /dev/null -w \"/login → HTTP %{http_code} \\(redirects home\\)\\\\n\" --max-time 25 http://localhost:3000/login)"
+      "Bash(curl -s -o /dev/null -w \"/login → HTTP %{http_code} \\(redirects home\\)\\\\n\" --max-time 25 http://localhost:3000/login)",
+      "Bash(DATABASE_URL='postgresql://u:p@127.0.0.1:5599/db' npm run build)",
+      "Bash(nohup npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"home → HTTP %{http_code}\\\\n\" --max-time 20 http://localhost:3000/)"
     ],
     "additionalDirectories": [
       "/Users/tienvnguyen/Downloads",

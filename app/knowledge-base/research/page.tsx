@@ -7,6 +7,8 @@ import InsightsTab from '@/components/research/InsightsTab';
 import ResearchCompanionTrigger from '@/components/research/ResearchCompanionTrigger';
 import styles from './research.module.css';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ResearchPage({
   searchParams,
 }: {
