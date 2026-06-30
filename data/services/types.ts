@@ -43,7 +43,7 @@ export interface ServiceLine {
   status: ServiceStatus;
   upsellPosition: UpsellPosition;
   pricingModel?: string;
-  ecomobiProvides?: string;
+  vinacapitalProvides?: string;
   brandProvides?: string;
   bestFor?: string;
   successCriteria?: string;

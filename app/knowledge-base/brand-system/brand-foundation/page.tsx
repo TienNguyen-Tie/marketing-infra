@@ -17,7 +17,7 @@ export default function BrandFoundationPage() {
         </div>
         <h1 className={styles.title}>Brand Foundation</h1>
         <p className={styles.subtitle}>
-          Four locked strategic layers — the beliefs, promise, and persona that define how Ecomobi
+          Four locked strategic layers — the beliefs, promise, and persona that define how VinaCapital
           shows up. The Brand overarching version is locked; Creator, Employer Branding, and all
           market-localized versions can be generated in the Foundation Lab below.
         </p>
@@ -67,8 +67,8 @@ export default function BrandFoundationPage() {
             </p>
           </div>
           <a
-            href="/eco_brand_foundation.html"
-            download="Ecomobi-Brand-Foundation-2026.html"
+            href="/vinacapital_brand_foundation.html"
+            download="VinaCapital-Brand-Foundation-2026.html"
             className={styles.downloadLink}
           >
             <span className={`material-icons-round ${styles.downloadIcon}`}>
@@ -78,9 +78,9 @@ export default function BrandFoundationPage() {
           </a>
         </div>
         <iframe
-          src="/eco_brand_foundation.html"
+          src="/vinacapital_brand_foundation.html"
           className={styles.iframe}
-          title="Ecomobi Brand Foundation 2026"
+          title="VinaCapital Brand Foundation 2026"
         />
       </div>
 

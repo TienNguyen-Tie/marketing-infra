@@ -49,7 +49,7 @@
 .closeBtn {
   width: 32px;
   height: 32px;
-  border-radius: 4px;
+  border-radius: 0;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -81,7 +81,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 1.5px solid #D0D0D0;
+  border: none;
   background: #fff;
   display: flex;
   align-items: center;
@@ -93,14 +93,14 @@
 }
 
 .stageDot.active {
-  border-color: #F43C34;
-  background: #F43C34;
+  border-color: #D71920;
+  background: #D71920;
   color: #fff;
 }
 
 .stageDot.done {
-  border-color: #22C55E;
-  background: #22C55E;
+  border-color: #4A5570;
+  background: #4A5570;
   color: #fff;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .stageLine.done {
-  background: #22C55E;
+  background: #4A5570;
 }
 
 .stageLabel {
@@ -147,7 +147,7 @@
 }
 
 .required {
-  color: #F43C34;
+  color: #D71920;
   margin-left: 2px;
 }
 
@@ -162,8 +162,8 @@
 .select {
   width: 100%;
   padding: 10px 12px;
-  border: 0.5px solid #D0D0D0;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   font-size: 13px;
   font-family: inherit;
   color: #1A1A1A;
@@ -176,7 +176,7 @@
 .textarea:focus,
 .select:focus {
   outline: none;
-  border-color: #F43C34;
+  border-color: #D71920;
 }
 
 .textarea {
@@ -194,16 +194,16 @@
   color: #555;
   line-height: 1.6;
   background: #FAFAFA;
-  border: 0.5px solid #E6E6E6;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 12px 16px;
 }
 
 /* ── Prompt area (stage 2) ────────────────────────────────── */
 .promptBox {
   background: #FAFAFA;
-  border: 0.5px solid #E6E6E6;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 16px;
   font-size: 12px;
   color: #444;
@@ -224,7 +224,7 @@
 /* ── Upload area ──────────────────────────────────────────── */
 .uploadArea {
   border: 1.5px dashed #D0D0D0;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 24px;
   text-align: center;
   cursor: pointer;
@@ -234,7 +234,7 @@
 
 .uploadArea:hover,
 .uploadArea.dragover {
-  border-color: #F43C34;
+  border-color: #D71920;
   background: #FFF5F4;
 }
 
@@ -249,23 +249,23 @@
 }
 
 .uploadLabel strong {
-  color: #F43C34;
+  color: #D71920;
 }
 
 /* ── Parse result messages ────────────────────────────────── */
 .parseSuccess {
   background: #F0FDF4;
-  border: 0.5px solid #86EFAC;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 12px 16px;
   font-size: 13px;
-  color: #166534;
+  color: #162E38;
 }
 
 .parseError {
   background: #FFF1F2;
-  border: 0.5px solid #FDA4AF;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 12px 16px;
   font-size: 13px;
   color: #9F1239;
@@ -273,8 +273,8 @@
 
 .parseWarning {
   background: #FFFBEB;
-  border: 0.5px solid #FCD34D;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 12px 16px;
   font-size: 13px;
   color: #78350F;
@@ -303,10 +303,10 @@
 /* ── Buttons ──────────────────────────────────────────────── */
 .btnPrimary {
   padding: 10px 20px;
-  background: #F43C34;
+  background: #D71920;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 13px;
   font-weight: 600;
   font-family: inherit;
@@ -327,8 +327,8 @@
   padding: 10px 20px;
   background: transparent;
   color: #444;
-  border: 0.5px solid #D0D0D0;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   font-size: 13px;
   font-weight: 500;
   font-family: inherit;
@@ -345,7 +345,7 @@
   background: transparent;
   color: #888;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 13px;
   font-family: inherit;
   cursor: pointer;

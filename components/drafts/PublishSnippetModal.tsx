@@ -31,7 +31,7 @@ export default function PublishSnippetModal({ snippet, kind, onClose }: Props) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `ecomobi-${kind}-snippet.ts`;
+    a.download = `vinacapital-${kind}-snippet.ts`;
     a.click();
     URL.revokeObjectURL(url);
   }

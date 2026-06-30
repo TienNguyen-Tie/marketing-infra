@@ -1,26 +1,19 @@
 import type { Metadata } from "next";
-import { DM_Sans, IBM_Plex_Serif } from "next/font/google";
 import ConditionalLayout from "@/components/ConditionalLayout";
 import { auth } from "@/lib/auth";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-sans",
-});
-
-const ibmPlexSerif = IBM_Plex_Serif({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-});
+/*
+ * VinaCapital primary typefaces — Helvetica Now (sans) + Georgia (serif).
+ * Neither is a Google Font: Helvetica Now is licensed and falls back to the
+ * system Helvetica/Arial stack named in the brand book; Georgia ships on every
+ * platform. Both font stacks are defined as --font-sans / --font-serif in
+ * globals.css, so no next/font wiring is needed here.
+ */
 
 export const metadata: Metadata = {
-  title: "Ecomobi Marketing Knowledge Base",
-  description: "Internal knowledge-base tool for the Ecomobi marketing team",
+  title: "VinaCapital Marketing Knowledge Base",
+  description: "Internal marketing intelligence tool for VinaCapital",
 };
 
 export default async function RootLayout({
@@ -30,7 +23,7 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang="en" className={`${dmSans.variable} ${ibmPlexSerif.variable}`}>
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"

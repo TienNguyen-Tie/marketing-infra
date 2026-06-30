@@ -1,4 +1,4 @@
-# Ecomobi Persona Template — Instructions for Claude
+# VinaCapital Persona Template — Instructions for Claude
 
 > **How to use this file**
 > 1. Fill in the YAML frontmatter at the top with accurate, typed values.
@@ -25,7 +25,7 @@ icpSlugs:
 
 ### §01 PROFILE
 
-Senior commerce leader sitting between brand custody and country execution. Owns regional GMV growth and the digital/social commerce vendor strategy — typically the Ecomobi sponsor and champion at MNC FMCG accounts.
+Senior commerce leader sitting between brand custody and country execution. Owns regional GMV growth and the digital/social commerce vendor strategy — typically the VinaCapital sponsor and champion at MNC FMCG accounts.
 
 Typical background: 10-15 years of experience. Career path: brand management (4-6 years) → digital marketing manager → regional digital lead → regional commerce director. Many came up through Unilever, P&G, L'Oréal, or Reckitt management trainee programs. Some increasingly come from agency/tech side (ex-GroupM, ex-Lazada/Shopee) for data fluency.
 
@@ -144,7 +144,7 @@ At advanced maturity: Already has an internal playbook; looking for operational 
 - TikTok Shop regional merchant case studies — from TikTok's partner portal
 - Nielsen/Kantar brand equity impact studies from similar campaigns
 - Internal competitive intelligence from their regional procurement team
-- Ecomobi's own case study library (the L'Oréal CPD reference is the most credible for this persona)
+- VinaCapital's own case study library (the L'Oréal CPD reference is the most credible for this persona)
 
 ### §12 REFERENCE INDEX
 

@@ -25,7 +25,7 @@ export const DEAL_USPS: DealUsp[] = [
     icon: '⚡',
     whenToDeploy: 'Replace incumbent agency on social commerce',
     commercialFrame:
-      "When a brand buys CIR + TSP + Ads from Ecomobi, there's no role left for Publicis on TikTok commerce. One AM, one ROAS view, 5-8× revenue vs single-product engagement.",
+      "When a brand buys CIR + TSP + Ads from VinaCapital, there's no role left for Publicis on TikTok commerce. One AM, one ROAS view, 5-8× revenue vs single-product engagement.",
     dealsClosed: "Unilever Home Care annual, L'Oréal Beauty Year 2 expansion",
     resonatesWithPersonaSlugs: ['country-gm', 'regional-commerce-director'],
     relevantModuleSlugs: ['content-commerce'],

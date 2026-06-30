@@ -3,7 +3,7 @@ import path from 'path';
 
 function readDesignSystemHtml(): string {
   return fs.readFileSync(
-    path.join(process.cwd(), 'ecomobi-design-system.html'),
+    path.join(process.cwd(), 'vinacapital-design-system.html'),
     'utf-8'
   );
 }

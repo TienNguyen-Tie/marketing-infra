@@ -74,33 +74,33 @@ const overarchingBrandsLayers: BrandLayer[] = [
   {
     id: 'ob-01',
     layerNumber: '01',
-    layerName: 'Core Truth',
-    title: 'Creator commerce is a systems problem, not a campaign problem.',
-    body: "Only a full-stack connected system produces compounding results. Four vendors, zero system — that's why most brands fail.",
+    layerName: 'Brand Essence',
+    title: 'Expertise, Experience, Growth.',
+    body: "Our brand DNA. A diverse team of world-class professionals, deep experience in Vietnam complemented by international expertise, and a commitment to continually learn and grow with the market.",
     scope: 'universal',
   },
   {
     id: 'ob-02',
     layerNumber: '02',
-    layerName: 'Brand Essence',
-    title: 'Authentic Commerce Intent — real purchase desire through creator trust.',
-    body: "Creating intent for SEA's most iconic brands — not manufactured through paid placement or generic content.",
+    layerName: 'Our Belief',
+    title: 'Everyone should have access to Vietnam’s prosperity and growth.',
+    body: "We passionately believe in Vietnam’s extraordinary economic potential — and that local and international investors alike should be able to benefit from it.",
     scope: 'universal',
   },
   {
     id: 'ob-03',
     layerNumber: '03',
-    layerName: 'Core USP',
-    title: 'Social Commerce Velocity — speed, scale, and compounding momentum.',
-    body: "The only affiliate-rooted, full-stack creator commerce operation in SEA. No competitor can shortcut what took years to build.",
+    layerName: 'Proposition',
+    title: 'Vietnam’s only multi-disciplinary investment manager.',
+    body: "Uniquely positioned to create value and share the opportunities and benefits of the country’s growth across every asset class — listed equity, private equity, venture, real estate, fixed income.",
     scope: 'universal',
   },
   {
     id: 'ob-04',
     layerNumber: '04',
-    layerName: 'Brand Persona',
-    title: 'Content Commerce Catalyst — not an operator, a catalyst.',
-    body: "We create the conditions for demand. The momentum compounds long after any campaign ends — that's catalysis, not service delivery.",
+    layerName: 'Brand Personality',
+    title: 'Focused, passionate, driven — balanced by diligence.',
+    body: "Proud of our track record but ambitious for more; adaptable when a new approach is needed. Our appetite for opportunity is always balanced by research, discipline, and good governance.",
     scope: 'universal',
   },
 ];
@@ -153,19 +153,19 @@ export function getVariant(
 /* ── METRICS ───────────────────────────────────────────────── */
 
 export const metrics: Metric[] = [
-  { number: '1M+', label: 'Creators' },
-  { number: '6', label: 'SEA Markets' },
-  { number: '$40M', label: 'Monthly GMV' },
-  { number: '80+', label: 'Studios' },
+  { number: '2003', label: 'Founded' },
+  { number: '6', label: 'Asset Classes' },
+  { number: '200+', label: 'Team Members' },
+  { number: '20+', label: "Years' Experience" },
 ];
 
 /* ── ASPIRATIONAL QUOTE ────────────────────────────────────── */
 
 export const aspirationalQuote: AspirationalQuote = {
-  eyebrow: 'Ecomobi — Brand Foundation 2026',
-  primary: "We don't run campaigns.\nWe build momentum.",
+  eyebrow: 'VinaCapital — Brand Foundation',
+  primary: 'Creating prosperity\ntogether.',
   secondary:
-    "Authentic commerce intent, delivered at social commerce velocity, by Southeast Asia's content commerce catalyst.",
+    'Our core values, global knowledge, local insight and many years of experience make us the trusted partner for investing in Vietnam — for local and international investors alike.',
 };
 
 /* ── CONTEXT TOKENS ────────────────────────────────────────── */
@@ -181,7 +181,7 @@ export const contextTokens: ContextToken[] = [
   // Audience
   { id: 'aud-brands', category: 'audience', label: 'Brand CMO', value: 'Audience: Brand-side marketing decision maker — CMO or Head of Ecommerce. Cares about GMV attribution, CAC, brand safety', defaultActive: true },
   { id: 'aud-creators', category: 'audience', label: 'Creator', value: 'Audience: Independent content creator or KOL — values income stability, content freedom, brand matching', defaultActive: false },
-  { id: 'aud-employer-branding', category: 'audience', label: 'Employer Branding', value: 'Audience: Employer branding — positioning Ecomobi as a destination for talent, emphasising culture, growth, and mission', defaultActive: false },
+  { id: 'aud-employer-branding', category: 'audience', label: 'Employer Branding', value: 'Audience: Employer branding — positioning VinaCapital as a destination for talent, emphasising culture, growth, and mission', defaultActive: false },
   // Channel
   { id: 'ch-tiktok', category: 'channel', label: 'TikTok Shop', value: 'Channel: TikTok Shop — short-video + livestream, algorithm-driven discovery, affiliate-native', defaultActive: true },
   { id: 'ch-shopee', category: 'channel', label: 'Shopee Affiliate', value: 'Channel: Shopee Affiliate — price-sensitive, voucher-heavy, high conversion intent', defaultActive: false },

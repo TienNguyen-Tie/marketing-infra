@@ -5,7 +5,7 @@
     #727272  — secondary muted
     #D3D3D3  — icon muted / empty state
     #F5F5F5  — hover / user msg bg
-    #0F6E56  — token count green
+    #333B52  — token count green
 */
 
 .page {
@@ -93,8 +93,8 @@
 
 .card {
   background: white;
-  border: 0.5px solid var(--gray-200);
-  border-radius: 10px;
+  border: none;
+  border-radius: 0;
   padding: 22px;
 }
 
@@ -132,13 +132,13 @@
   font-weight: 600;
   color: #727272;
   background: #F5F5F5;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 3px 8px;
 }
 
 .tokenPill {
   font-size: 10.5px;
-  color: #0F6E56;
+  color: #333B52;
   font-weight: 500;
 }
 
@@ -220,8 +220,8 @@
   font-size: 9.5px;
   font-weight: 600;
   color: var(--red);
-  background: #FEF3F2;
+  background: #FCEBEC;
   border: 0.5px solid #FDBDBB;
-  border-radius: 4px;
+  border-radius: 0;
   padding: 2px 6px;
 }

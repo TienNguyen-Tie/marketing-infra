@@ -1,6 +1,6 @@
-# Ecomobi MKT Infrastructure
+# VinaCapital MKT Infrastructure
 
-Internal marketing intelligence tool for Ecomobi, Southeast Asia's social commerce operation. Built solo by the marketing lead in HCMC. Used by the marketing team (~10-20 people) to manage client portfolios, brand intelligence, research, and creator commerce operations.
+Internal marketing intelligence tool for VinaCapital, Southeast Asia's social commerce operation. Built solo by the marketing lead in HCMC. Used by the marketing team (~10-20 people) to manage client portfolios, brand intelligence, research, and creator commerce operations.
 
 This file is the source of truth for how to work on this codebase. Read it at the start of every session.
 
@@ -10,7 +10,7 @@ This file is the source of truth for how to work on this codebase. Read it at th
 
 - **Framework**: Next.js 15 (App Router) with TypeScript strict mode
 - **Styling**: Plain CSS modules. NO Tailwind, NO styled-components, NO CSS-in-JS.
-- **Font**: DM Sans throughout. Never override with another font.
+- **Font**: VinaCapital typefaces — Helvetica Now (sans, system Helvetica/Arial fallback) + Georgia (serif). Defined as `--font-sans` / `--font-serif` in `app/globals.css`. Never introduce a third typeface.
 - **Database**: Neon Postgres (managed) accessed via Prisma ORM
 - **Auth**: NextAuth/Auth.js v5 with Prisma adapter + bcryptjs for passwords
 - **Encryption**: AES-256-GCM for API keys (lib/encryption.ts)
@@ -79,12 +79,12 @@ The main app section at `/knowledge-base/` contains:
 
 ## Visual & UI Foundations
 
-The non-negotiable rules. Detailed implementation (full color palette, ghost CSS classes, status pill maps, section rhythm specs) lives in `.claude/skills/ecomobi-ui-patterns/SKILL.md` — that skill loads automatically when working on UI.
+The non-negotiable rules. Detailed implementation (full color palette, ghost CSS classes, status pill maps, section rhythm specs) lives in `.claude/skills/vinacapital-ui-patterns/SKILL.md` — that skill loads automatically when working on UI.
 
 ### Foundations (always apply)
 
-- **Font**: DM Sans. Never override with another font.
-- **Brand color**: `#F43C34` for primary actions and accents. Don't introduce new accent colors.
+- **Font**: Helvetica Now (sans, system Helvetica/Arial fallback) + Georgia (serif). Never override with another font.
+- **Brand color**: VinaCapital Red `#D71920` (Pantone 3546 C) for primary actions and accents. Secondary surfaces use Deep Blue `#333B52` / Darker Blue `#162E38`; Off-White `#EDECE8` for warm canvas accents. Don't introduce new accent colors. (Note: the `--red` token name is historical; it now holds VinaCapital Red.)
 - **Borders**: 0.5px solid `#E6E6E6` on cards. Never 1px unless emphasizing a divider.
 - **Radius**: 8px on cards, 4px on small chips, 12px on modals/drawers.
 - **Spacing**: 12 / 16 / 24 rhythm. Avoid arbitrary values like 13px or 21px.
@@ -99,7 +99,7 @@ Every detail page section MUST always render its structure, regardless of whethe
 
 Never replace a section with a single muted "this section will populate" card. The structure itself is the value.
 
-Specific ghost CSS classes, color tokens, and section rhythm specs are in the `ecomobi-ui-patterns` skill.
+Specific ghost CSS classes, color tokens, and section rhythm specs are in the `vinacapital-ui-patterns` skill.
 
 ---
 
@@ -249,7 +249,7 @@ Required env vars:
 - Don't use SessionProvider with NextAuth v5 App Router
 - Don't import Prisma in `auth.config.ts` or `proxy.ts` (edge runtime breaks)
 - Don't render a section-level "this section will populate" empty card — always show structure
-- Don't introduce new fonts beyond DM Sans
+- Don't introduce new fonts beyond Helvetica Now (sans) and Georgia (serif)
 - Don't introduce new colors beyond the defined palette
 - Don't make destructive Prisma schema changes without explicit confirmation
 - Don't rewrite working files when a small change suffices
@@ -331,4 +331,4 @@ Open items at the time of writing (check LAST_BUILD.md for current state):
 - Phase 2 enhancement: slug autocomplete on Insights tab applicability filters
 - Phase 2 enhancement: ICP cross-linking (uses existing `getInsightsForIcp` helper once ICP pages exist)
 - Phase 2 enhancement: Product detail pages at `/portfolio/.../brand/.../product/{slug}` when products warrant their own dossier
-- Domain: deploy to `mkt.ecomobi.com` when DNS is configured (update NEXTAUTH_URL)
+- Domain: deploy to `mkt.vinacapital.com` when DNS is configured (update NEXTAUTH_URL)

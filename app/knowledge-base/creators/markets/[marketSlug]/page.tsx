@@ -301,7 +301,7 @@ export default async function MarketDetailPage({
         <SectionHeader
           num="05"
           title="TAP Presence"
-          subtitle="Depth and coverage of Ecomobi's TAP network in this market"
+          subtitle="Depth and coverage of VinaCapital's TAP network in this market"
         />
         <div className={styles.fieldGrid}>
           <FieldCell label="Presence Level" fullWidth>

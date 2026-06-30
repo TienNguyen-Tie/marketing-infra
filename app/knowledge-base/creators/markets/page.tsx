@@ -5,7 +5,7 @@ import MarketGrid from './_components/MarketGrid';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Creator Markets — Ecomobi Knowledge Base',
+  title: 'Creator Markets — VinaCapital Knowledge Base',
 };
 
 export default async function MarketListingPage() {

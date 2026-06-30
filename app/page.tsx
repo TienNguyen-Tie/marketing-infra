@@ -50,12 +50,12 @@ export default function HomePage() {
         <div className={styles.heroLeft}>
           <p className={styles.heroEyebrow}>Marketing Infrastructure · Vision</p>
           <h1 className={styles.heroH1}>
-            Marketing as the engine that positions Ecomobi as a category leader.
+            Marketing as the engine that makes VinaCapital the trusted partner for investing in Vietnam.
           </h1>
           <p className={styles.heroSub}>
-            A foundations-first system where every activity is insight-driven,
-            mistake-resistant, focused, and consistently aligned — turning 10
-            years of stable revenue into a market-defining brand.
+            A foundations-first system where every report, story, and campaign is
+            insight-driven, on-brand, and traceable — turning 20+ years of
+            investment track record into a brand investors trust first.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export default function HomePage() {
           </div>
           <div className={styles.statusPill}>
             <span className={`${styles.dot} ${styles.dotPurple}`} />
-            Brand Foundation v2026 · Locked
+            Brand Book v1.0 (2022) · Locked
           </div>
           <div className={styles.statusPill}>
             <span className={`${styles.dot} ${styles.dotGray}`} />
@@ -84,14 +84,15 @@ export default function HomePage() {
       <section className={`${styles.band} ${styles.band2}`}>
         <p className={styles.eyebrow}>The Moment We&rsquo;re In</p>
         <h2 className={styles.bandH2}>
-          10 years of stable revenue. Marketing fragmented by growth.<br />
+          20+ years of investment results. Marketing fragmented by growth.<br />
           A <em className={styles.redEm}>rare window</em> to rebuild it as a system.
         </h2>
         <p className={styles.bandSub}>
-          Marketing has happened at Ecomobi for years — campaigns shipped,
-          partnerships closed, content delivered. But during scaling, the
-          function fragmented while every team focused on business operations.
-          The moment to consolidate it into a real system is now.
+          Since 2003, VinaCapital has grown into one of Vietnam&rsquo;s leading
+          investment managers — campaigns shipped, reports published,
+          partnerships closed. But as the platform scaled, the marketing function
+          fragmented while every team focused on investing. The moment to
+          consolidate it into a real system is now.
         </p>
 
         <div className={styles.momentCards}>
@@ -169,9 +170,10 @@ export default function HomePage() {
         </h2>
         <p className={styles.bandSub}>
           This is the single rule the system enforces. Every brief, every
-          campaign, every creator outreach, every piece of content — none of
+          campaign, every investor story, every piece of content — none of
           it originates from a blank page. Every output traces back to a
-          locked, verified source.
+          locked, verified source: the brand book, the investment philosophy,
+          the track record.
         </p>
 
         <div className={styles.pullDiagram}>
@@ -208,7 +210,7 @@ export default function HomePage() {
           <div className={styles.activitiesBlock}>
             <p className={styles.activitiesBlockLabel}>EVERY MARKETING ACTIVITY</p>
             <p className={styles.activitiesBlockFlow}>
-              Content · SEO · AIO · PR · Partnership · Creator Acquisition · Creator Nurturing · Brand Collaborations · Regional Plays · Events ·{' '}
+              Content · SEO · AIO · PR · Investor Relations · Partnerships · Creator Network · Brand Collaborations · Events · Reports ·{' '}
               <em style={{ color: '#727272' }}>+ every future activity</em>
             </p>
           </div>
@@ -273,7 +275,7 @@ export default function HomePage() {
 
             <div className={styles.flowCenter}>
               <div className={styles.flowArrowGroup}>
-                <span className={styles.flowArrowUp} style={{ color: '#0F6E56' }}>↑</span>
+                <span className={styles.flowArrowUp} style={{ color: '#333B52' }}>↑</span>
                 <span className={styles.flowArrowLabel}>feeds back</span>
               </div>
               <div className={styles.flowArrowGroup}>
@@ -471,8 +473,8 @@ export default function HomePage() {
         <div className={styles.closingPanel}>
           <p className={styles.closingEyebrow}>What this becomes at scale</p>
           <h2 className={styles.closingH2}>
-            Not an agency in the market.<br />
-            The brand that <em style={{ fontStyle: 'normal' }}>defines the market.</em>
+            Not a fund among funds.<br />
+            The name investors <em style={{ fontStyle: 'normal' }}>trust first.</em>
           </h2>
           <div className={styles.closingGrid}>
             {CLOSING_PILLARS.map(p => (
@@ -520,9 +522,9 @@ export default function HomePage() {
                   I lead PR for the Vietnam market. How does my function fit into this system?
                 </div>
                 <div className={styles.aiBubble}>
-                  Your PR work draws directly from the Brand Foundation (positioning, narrative) and
-                  verified outcomes from the Client portfolio. Every press pitch becomes a
-                  reinforcement of category leadership...
+                  Your PR work draws directly from the Brand Foundation (positioning, voice) and
+                  VinaCapital&rsquo;s 20-year track record. Every press pitch reinforces the same
+                  story: the trusted partner for investing in Vietnam...
                 </div>
               </div>
 
@@ -541,7 +543,7 @@ export default function HomePage() {
 
       {/* ── FOOTER ────────────────────────────────────────────── */}
       <footer className={styles.pageFooter}>
-        Ecomobi Marketing Infrastructure · Phase 1 deployment · May 2026
+        VinaCapital Marketing Infrastructure · Phase 1 deployment · May 2026
       </footer>
 
       {/* ── VISION COMPANION SLIDER ───────────────────────────── */}

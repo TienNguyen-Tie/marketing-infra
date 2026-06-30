@@ -53,7 +53,7 @@ export const ICP_FORM_CONFIG: EntityFormConfig = {
       type: 'text',
       placeholder: 'e.g. Drive online GMV in VN via KOL/livestream commerce',
       required: true,
-      hint: 'What is this ICP primarily trying to achieve through Ecomobi?',
+      hint: 'What is this ICP primarily trying to achieve through VinaCapital?',
     },
     {
       key: 'additionalContext',

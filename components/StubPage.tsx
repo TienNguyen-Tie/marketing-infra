@@ -9,7 +9,7 @@ interface Props {
 }
 
 const PHASE_COLOR: Record<Props['phase'], string> = {
-  'phase-1': '#F43C34',
+  'phase-1': '#D71920',
   'phase-2': '#F59E0B',
   'phase-3': '#3B82F6',
 };

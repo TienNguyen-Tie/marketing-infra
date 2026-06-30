@@ -90,7 +90,7 @@ export default function CreateDraftSlider({ kind, onClose }: Props) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `ecomobi-${kind}-prompt.txt`;
+    a.download = `vinacapital-${kind}-prompt.txt`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -200,7 +200,7 @@ export default function CreateDraftSlider({ kind, onClose }: Props) {
                     />
                   )}
                   {errors[field.key] && (
-                    <span style={{ fontSize: 11, color: '#F43C34' }}>{errors[field.key]}</span>
+                    <span style={{ fontSize: 11, color: '#D71920' }}>{errors[field.key]}</span>
                   )}
                 </div>
               ))}

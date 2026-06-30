@@ -10,8 +10,8 @@ You are reviewing recently changed files for consistency with the project's arch
 
 **Visual patterns:**
 
-- DM Sans font used (no other fonts introduced)
-- Brand red `#F43C34` used for primary actions and accents
+- VinaCapital typefaces only — Helvetica Now (sans) / Georgia (serif) via `var(--font-sans)` / `var(--font-serif)`; no other fonts introduced
+- VinaCapital Red `#D71920` (the `--red` token) used for primary actions and accents; no second red or legacy green
 - 0.5px borders, 8px radius on cards
 - Spacing follows 12/16/24 rhythm
 - Transparency pattern applied: every section renders structure even when empty

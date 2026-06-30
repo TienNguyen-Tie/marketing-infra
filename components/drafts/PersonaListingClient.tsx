@@ -46,7 +46,7 @@ export default function PersonaListingClient({ children, personaDrafts, addBtnCl
         </div>
         <button
           className={addBtnClassName}
-          style={{ cursor: 'pointer', color: '#F43C34', borderColor: '#F43C34' }}
+          style={{ cursor: 'pointer', color: '#D71920', borderColor: '#D71920' }}
           onClick={() => setSliderOpen(true)}
         >
           + New Draft

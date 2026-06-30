@@ -40,13 +40,13 @@ export default function LoginPage() {
       {/* ── Left panel ── */}
       <div className={styles.left}>
         <div className={styles.wordmark}>
-          <span className={styles.wordmarkName}>Ecomobi</span>
+          <span className={styles.wordmarkName}>VinaCapital</span>
           <span className={styles.wordmarkSub}>Marketing Infrastructure</span>
         </div>
 
         <div className={styles.formArea}>
           <h1 className={styles.heading}>Sign in</h1>
-          <p className={styles.subtext}>Internal tool — Ecomobi team only</p>
+          <p className={styles.subtext}>Internal tool — VinaCapital team only</p>
 
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.fieldGroup}>
@@ -55,7 +55,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 className={styles.input}
-                placeholder="you@ecomobi.com"
+                placeholder="you@vinacapital.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
@@ -97,7 +97,7 @@ export default function LoginPage() {
           <p className={styles.rightTagline}>
             One source of truth for every campaign, every client, every creator.
           </p>
-          <p className={styles.rightMeta}>Ecomobi Marketing Infrastructure · 2026</p>
+          <p className={styles.rightMeta}>VinaCapital Marketing Infrastructure · 2026</p>
         </div>
       </div>
     </div>

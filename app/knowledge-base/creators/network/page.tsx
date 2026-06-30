@@ -10,7 +10,7 @@ import NotableCreators from './_components/NotableCreators';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'TAP Network Overview — Ecomobi Knowledge Base',
+  title: 'TAP Network Overview — VinaCapital Knowledge Base',
 };
 
 export default async function NetworkOverviewPage() {

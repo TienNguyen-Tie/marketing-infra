@@ -22,7 +22,7 @@ const MODE_COLORS: Record<string, string> = {
   'explain-role': '#3B82F6',
   'brainstorm':   '#7F77DD',
   'stress-test':  '#D97706',
-  'new-activity': '#F43C34',
+  'new-activity': '#D71920',
 };
 
 const MODE_LABELS: Record<string, string> = {
@@ -34,8 +34,8 @@ const MODE_LABELS: Record<string, string> = {
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
   new:         { bg: '#EEF2FF', color: '#4338CA' },
-  reviewed:    { bg: '#ECFDF5', color: '#065F46' },
-  implemented: { bg: '#F0FAF6', color: '#0F6E56' },
+  reviewed:    { bg: '#EAECF2', color: '#162E38' },
+  implemented: { bg: '#EAECF2', color: '#333B52' },
   dismissed:   { bg: '#F5F5F5', color: '#727272' },
 };
 

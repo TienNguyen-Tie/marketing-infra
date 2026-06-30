@@ -167,7 +167,7 @@ export default function VisionCompanion({ open, onClose, initialMode, initialCon
                 <div>
                   <div className={styles.aiMsg}>{msg.content}</div>
                   <div className={styles.loggedNote}>
-                    <span className="material-icons-round" style={{ fontSize: 11, color: '#10B981' }}>check</span>
+                    <span className="material-icons-round" style={{ fontSize: 11, color: '#4A5570' }}>check</span>
                     <span className={styles.loggedText}>Logged as suggestion for the team</span>
                   </div>
                 </div>

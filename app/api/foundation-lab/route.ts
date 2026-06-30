@@ -72,7 +72,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       ? `\n\nActive context signals:\n${activeTokenValues.map((v) => `- ${v}`).join('\n')}`
       : '';
 
-  const systemPrompt = `You are a brand strategist at Ecomobi — Southeast Asia's full-stack creator commerce platform.
+  const systemPrompt = `You are a brand strategist at VinaCapital — Southeast Asia's full-stack creator commerce platform.
 
 Your task is to ${MODE_INSTRUCTIONS[mode] ?? MODE_INSTRUCTIONS.adapt}
 

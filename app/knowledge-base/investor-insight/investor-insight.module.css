@@ -1,0 +1,206 @@
+/* Investor Insight — VinaCapital flat aesthetic.
+   White cards on the off-white canvas, square corners, hairline section rules,
+   navy accents, pills only where needed. Shared by the section landing and the
+   Institutional / Personal investor pages. */
+
+.wrapper { max-width: 1040px; padding: 40px 48px 120px; }
+
+/* Header */
+.header { padding-bottom: 28px; border-bottom: 0.5px solid var(--border); margin-bottom: 44px; }
+.breadcrumb { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.breadcrumbText { font-size: 12px; color: var(--gray-600); }
+.tag {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--red); background: var(--red-pale); padding: 4px 10px; border-radius: 9999px;
+}
+.title { font-size: 40px; font-weight: 700; color: var(--black); letter-spacing: -0.025em; line-height: 1.02; margin-bottom: 14px; }
+.subtitle { font-size: 15px; color: var(--gray-600); line-height: 1.65; max-width: 660px; }
+
+/* Stats strip */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-bottom: 48px; }
+.stat { background: var(--off-white); padding: 22px 24px; }
+.statNum { font-family: var(--font-serif); font-size: 30px; color: var(--black); line-height: 1; letter-spacing: -0.01em; }
+.statNum em { font-style: normal; color: var(--red); }
+.statLabel { font-size: 11px; color: var(--gray-600); margin-top: 8px; line-height: 1.4; }
+
+/* Section rhythm */
+.section { margin-bottom: 52px; }
+.sectionHead { margin-bottom: 24px; padding-bottom: 14px; border-bottom: 0.5px solid var(--border); }
+.eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--red); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.eyebrow::before { content: ''; width: 14px; height: 2px; background: var(--red); }
+.sectionTitle { font-size: 22px; font-weight: 700; color: var(--black); letter-spacing: -0.015em; line-height: 1.15; }
+.sectionSub { font-size: 14px; color: var(--gray-600); line-height: 1.65; margin-top: 8px; max-width: 680px; }
+
+/* Two big nav cards (landing) */
+.navGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.navCard { background: var(--white); padding: 32px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; transition: background 0.15s ease; }
+.navCard:hover { background: var(--off-white); }
+.navCardLabel { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+.navCardTitle { font-size: 24px; font-weight: 700; color: var(--black); letter-spacing: -0.015em; }
+.navCardBody { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+.navCardArrow { font-size: 13px; font-weight: 700; color: var(--navy); margin-top: 4px; }
+
+/* Holder table */
+.table { width: 100%; border-collapse: collapse; background: var(--white); }
+.table thead th {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray-400); text-align: left; padding: 12px 18px; border-bottom: 0.5px solid var(--border);
+}
+.table thead th.num { text-align: right; }
+.table tbody td { padding: 14px 18px; border-bottom: 0.5px solid var(--gray-100); font-size: 13px; color: var(--gray-600); vertical-align: top; }
+.table tbody tr:last-child td { border-bottom: none; }
+.table td.name { color: var(--black); font-weight: 700; white-space: nowrap; }
+.table td.num { text-align: right; font-family: var(--font-serif); color: var(--black); white-space: nowrap; }
+.typePill {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+  padding: 3px 9px; border-radius: 9999px; background: var(--off-white); color: var(--navy); white-space: nowrap;
+}
+
+/* Archetype / segment cards */
+.cardGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.cardGrid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--white); padding: 24px; }
+.cardNum { font-family: var(--font-serif); font-size: 26px; color: var(--vc-gray); line-height: 1; margin-bottom: 12px; }
+.cardLabel { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+.cardTitle { font-size: 16px; font-weight: 700; color: var(--black); line-height: 1.3; margin-bottom: 8px; }
+.cardBody { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+.cardMetaRow { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.cardChip { font-size: 11px; font-weight: 500; color: var(--navy); background: var(--off-white); padding: 5px 11px; border-radius: 9999px; }
+
+/* Key/value rows (what they want) */
+.kvList { background: var(--white); }
+.kvRow { display: grid; grid-template-columns: 200px 1fr; gap: 20px; padding: 16px 24px; border-bottom: 0.5px solid var(--gray-100); align-items: baseline; }
+.kvRow:last-child { border-bottom: none; }
+.kvKey { font-size: 13px; font-weight: 700; color: var(--black); }
+.kvVal { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+/* Navy callout */
+.callout { background: var(--navy); color: #fff; padding: 32px 36px; }
+.calloutEyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+.calloutText { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: #fff; }
+.calloutText em { font-style: normal; color: #fff; border-bottom: 2px solid var(--red); }
+
+/* Note / source */
+.note {
+  background: var(--red-pale); border-left: 3px solid var(--red);
+  padding: 16px 20px; font-size: 12.5px; color: var(--gray-800); line-height: 1.6; margin-top: 16px;
+}
+.note strong { color: var(--red); font-weight: 700; }
+.sources { font-size: 11.5px; color: var(--gray-400); margin-top: 16px; line-height: 1.6; }
+.sources a { color: var(--navy); text-decoration: underline; }
+
+/* ── Framework explainer (MICE / RASCALS) ── */
+.frameworkIntro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 8px; }
+.fwCard { background: var(--navy); color: #fff; padding: 24px 26px; }
+.fwName { font-family: var(--font-serif); font-size: 24px; color: #fff; letter-spacing: 0.02em; }
+.fwExpand { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 8px 0 10px; }
+.fwBody { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.6; }
+
+/* ── Letter-led cards (MICE = 4, RASCALS = 6) ── */
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.letterCard { background: var(--white); padding: 20px 22px; }
+.letter { font-family: var(--font-serif); font-size: 34px; color: var(--red); line-height: 1; }
+.letterWord { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin: 10px 0 8px; }
+.letterBody { font-size: 12.5px; color: var(--gray-600); line-height: 1.55; }
+.appLine { font-size: 12px; color: var(--gray-800); line-height: 1.5; margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--gray-100); }
+.appLine strong { color: var(--navy); font-weight: 700; }
+.guard { font-size: 11px; color: var(--red); line-height: 1.45; margin-top: 8px; }
+.guard strong { font-weight: 700; }
+
+/* ── Channel playbook (Content / Social / Branding ads) ── */
+.playbook { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.playCol { background: var(--white); padding: 24px; }
+.playHead { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); }
+.playHead .material-icons-round { font-size: 18px; color: var(--red); }
+.playColTitle { font-size: 15px; font-weight: 700; color: var(--black); }
+.playRow { margin-bottom: 13px; }
+.playRow:last-child { margin-bottom: 0; }
+.playKey { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+.playVal { font-size: 12.5px; color: var(--gray-600); line-height: 1.55; margin-top: 3px; }
+
+/* ── Clickable register cards ── */
+.holderList { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+.holderCard { display: grid; grid-template-columns: minmax(190px, 1.1fr) 2fr auto; gap: 18px; align-items: center; background: var(--white); padding: 16px 20px; text-decoration: none; transition: background 0.15s ease; }
+.holderCard:hover { background: var(--off-white); }
+.hcLeft { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+.hcName { font-size: 14px; font-weight: 700; color: var(--black); line-height: 1.25; }
+.hcRole { font-size: 12.5px; color: var(--gray-600); line-height: 1.5; }
+.hcRight { display: flex; align-items: center; gap: 14px; justify-content: flex-end; }
+.hcStake { font-family: var(--font-serif); font-size: 15px; color: var(--black); white-space: nowrap; }
+.hcArrow { display: inline-flex; color: var(--navy); }
+.hcArrow .material-icons-round { font-size: 20px; }
+.holderCard:hover .hcArrow { color: var(--red); }
+
+/* ── Investor detail page ── */
+.backLink { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--navy); text-decoration: none; margin-bottom: 18px; }
+.backLink .material-icons-round { font-size: 16px; }
+.backLink:hover { color: var(--red); }
+.descriptor { font-size: 16px; color: var(--gray-600); line-height: 1.6; max-width: 700px; }
+
+.snapshot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-bottom: 44px; }
+.snapCell { background: var(--off-white); padding: 18px 20px; }
+.snapLabel { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px; }
+.snapValue { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; }
+
+.prose { font-size: 14px; color: var(--gray-600); line-height: 1.7; max-width: 720px; }
+
+.marketingList { display: flex; flex-direction: column; gap: 10px; }
+.marketingItem { display: grid; grid-template-columns: 28px 1fr; gap: 12px; background: var(--white); padding: 16px 18px; align-items: start; }
+.marketingNum { font-family: var(--font-serif); font-size: 19px; color: var(--red); line-height: 1.15; }
+.marketingText { font-size: 13.5px; color: var(--gray-800); line-height: 1.55; }
+
+/* Detail — scannable blocks (replaces long paragraphs) */
+.glanceGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.glanceCard { background: var(--white); border-left: 3px solid var(--red); padding: 15px 18px; font-size: 13.5px; font-weight: 700; color: var(--black); line-height: 1.4; }
+.pullQuote { font-family: var(--font-serif); font-size: 22px; line-height: 1.35; color: var(--black); border-left: 3px solid var(--red); padding-left: 22px; margin-bottom: 16px; max-width: 760px; }
+.points { display: flex; flex-direction: column; gap: 8px; }
+.pointItem { font-size: 13px; color: var(--gray-600); line-height: 1.5; padding-left: 18px; position: relative; max-width: 720px; }
+.pointItem::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+.fitCallout { background: var(--red-pale); padding: 14px 18px; font-size: 13px; color: var(--gray-800); line-height: 1.55; margin-top: 14px; max-width: 760px; }
+.fitCallout strong { color: var(--red); font-weight: 700; }
+.angleLead { font-size: 14px; color: var(--gray-800); line-height: 1.6; margin-bottom: 16px; max-width: 720px; }
+.watchLabel { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px; }
+
+/* Brand-story box — "promote the future of Vietnam" angle for this audience */
+.brandBox { background: var(--navy-dark); padding: 28px 32px; }
+.brandTop { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.brandPill { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--red); padding: 5px 11px; border-radius: 9999px; }
+.brandEyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.brandQuote { font-family: var(--font-serif); font-size: 23px; line-height: 1.3; color: #fff; max-width: 800px; }
+.brandQuote em { font-style: normal; border-bottom: 2px solid var(--red); }
+
+/* Channel directory — the full VOF buy-list (platforms / distributors) */
+.dirGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.dirCard { background: var(--white); padding: 20px 22px; position: relative; display: flex; flex-direction: column; gap: 5px; text-decoration: none; transition: background 0.15s ease; }
+a.dirCard:hover { background: var(--off-white); }
+.dirArrow { position: absolute; top: 16px; right: 16px; color: var(--navy); display: inline-flex; }
+.dirArrow .material-icons-round { font-size: 18px; }
+a.dirCard:hover .dirArrow { color: var(--red); }
+.dirName { font-size: 15px; font-weight: 700; color: var(--black); padding-right: 26px; }
+.dirNameLink { font-size: 15px; font-weight: 700; color: var(--black); text-decoration: none; padding-right: 26px; display: inline-flex; align-items: center; gap: 6px; }
+.dirNameLink .material-icons-round { font-size: 15px; color: var(--navy); }
+.dirNameLink:hover { color: var(--red); }
+.dirType { font-size: 12px; color: var(--gray-600); }
+.dirBadge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); margin-top: 4px; }
+.dirContact { font-size: 12px; margin-top: 6px; }
+.dirContact a { color: var(--gray-600); text-decoration: underline; }
+.dirPhone { font-size: 12px; font-weight: 700; color: var(--red); margin-top: 2px; }
+.dirPhone a { color: var(--red); text-decoration: none; }
+
+@media (max-width: 900px) {
+  .brandBox { padding: 22px 24px; }
+  .brandQuote { font-size: 19px; }
+  .dirGrid { grid-template-columns: 1fr; }
+  .wrapper { padding: 32px 24px 80px; }
+  .navGrid, .cardGrid, .cardGrid3, .frameworkIntro, .playbook, .glanceGrid { grid-template-columns: 1fr; }
+  .grid4 { grid-template-columns: repeat(2, 1fr); }
+  .stats, .snapshot { grid-template-columns: repeat(2, 1fr); }
+  .kvRow { grid-template-columns: 1fr; gap: 4px; }
+  .holderCard { grid-template-columns: 1fr; gap: 10px; }
+  .hcRight { justify-content: space-between; }
+  .pullQuote { font-size: 19px; }
+  .title { font-size: 32px; }
+}

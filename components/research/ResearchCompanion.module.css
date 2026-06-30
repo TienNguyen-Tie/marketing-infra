@@ -1,12 +1,12 @@
 /*
   ResearchCompanion.module.css
   Component-specific palette (not in global tokens):
-    #FEF3F2  — red-pale background for AI messages
+    #FCEBEC  — red-pale background for AI messages
     #353535  — AI message text
     #D3D3D3  — empty state icon
     #727272  — empty state / footer text
     #F5F5F5  — user message bg, hover states
-    #10B981  — logged check green
+    #4A5570  — logged check green
     rgba(0,0,0,0.4) — backdrop
 */
 
@@ -96,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 0;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -150,7 +150,7 @@
   max-width: 85%;
   background: #F5F5F5;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 0;
   font-size: 13.5px;
   font-weight: 500;
   color: var(--black);
@@ -166,9 +166,9 @@
 }
 
 .aiMsg {
-  background: #FEF3F2;
+  background: #FCEBEC;
   padding: 14px 18px;
-  border-radius: 12px;
+  border-radius: 0;
   font-size: 13.5px;
   color: #353535;
   line-height: 1.6;
@@ -180,9 +180,9 @@
   font-size: 10px;
   font-weight: 700;
   color: var(--red);
-  background: #FEF3F2;
+  background: #FCEBEC;
   border: 0.5px solid var(--red);
-  border-radius: 4px;
+  border-radius: 0;
   padding: 1px 5px;
   text-decoration: none;
   margin: 0 1px;
@@ -216,9 +216,9 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #FEF3F2;
+  background: #FCEBEC;
   padding: 14px 18px;
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .dot {
@@ -244,9 +244,9 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  background: #FEF3F2;
+  background: #FCEBEC;
   border: 0.5px solid var(--red);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 12px 14px;
 }
 
@@ -287,8 +287,8 @@
   min-height: 40px;
   max-height: 120px;
   padding: 10px 14px;
-  border: 0.5px solid var(--gray-200);
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1.55;
@@ -323,7 +323,7 @@
   background: var(--red);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.15s;
@@ -361,19 +361,19 @@
   background: var(--red);
   color: white;
   border: none;
-  border-radius: 100px;
+  border-radius: 0;
   cursor: pointer;
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(244, 60, 52, 0.3);
+  box-shadow: 0 4px 16px rgba(215, 25, 32, 0.3);
   transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .trigger:hover {
   background: #D63028;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(244, 60, 52, 0.4);
+  box-shadow: 0 6px 20px rgba(215, 25, 32, 0.4);
 }
 
 .triggerDot {

@@ -131,7 +131,7 @@ export default function UsersClient({ initialUsers, currentUserId }: Props) {
             </div>
             <div className={styles.fieldGroup}>
               <label className={styles.label}>Email</label>
-              <input type="email" className={styles.input} value={inviteEmail} onChange={e => setInviteEmail(e.target.value)} placeholder="user@ecomobi.com" />
+              <input type="email" className={styles.input} value={inviteEmail} onChange={e => setInviteEmail(e.target.value)} placeholder="user@vinacapital.com" />
             </div>
             <div className={styles.fieldGroup}>
               <label className={styles.label}>Role</label>

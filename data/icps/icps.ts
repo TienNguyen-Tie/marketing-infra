@@ -94,9 +94,9 @@ export const ICPS: ICP[] = [
       pitchFormat:
         "Multi-meeting flow. Meeting 1: discovery + show market data + L'Oréal case study. Meeting 2: tailored solution + economics. Meeting 3: regional alignment session (bring regional director). Optional Meeting 4: studio visit / livestream observation.",
       requiredStakeholders: [
-        "Ecomobi Account Lead",
-        "Ecomobi Solutions / Creative Director (for content discussion)",
-        "Ecomobi Operations Lead (for credibility on execution scale)",
+        "VinaCapital Account Lead",
+        "VinaCapital Solutions / Creative Director (for content discussion)",
+        "VinaCapital Operations Lead (for credibility on execution scale)",
         "Optional: Senior leader for regional alignment session",
       ],
       commonObjections: [
@@ -175,7 +175,7 @@ export const ICPS: ICP[] = [
         {
           date: 'Mar 2025',
           label: "Featured in L'Oréal APAC regional review",
-          description: "Cross-market case study elevated Ecomobi from VN-vendor to regional reference. Drives inbound from other MNCs in similar position.",
+          description: "Cross-market case study elevated VinaCapital from VN-vendor to regional reference. Drives inbound from other MNCs in similar position.",
         },
       ],
       learningCases: [
@@ -190,7 +190,7 @@ export const ICPS: ICP[] = [
       quotableMaterial: [
         {
           quote:
-            "Ecomobi is the only partner where signing one contract reduces my vendor list rather than adding to it.",
+            "VinaCapital is the only partner where signing one contract reduces my vendor list rather than adding to it.",
           attribution: "Regional Commerce Director, L'Oréal CPD APAC (paraphrased, internal)",
         },
       ],
@@ -251,7 +251,7 @@ export const ICPS: ICP[] = [
         "Offer studio visit early — credibility from observation beats credibility from pitch decks",
       ],
       channelPreferences:
-        "Warm intro via existing client > LinkedIn from senior Ecomobi leader > Industry event meeting > Cold email (rarely works without trigger event).",
+        "Warm intro via existing client > LinkedIn from senior VinaCapital leader > Industry event meeting > Cold email (rarely works without trigger event).",
       timing:
         "Best months for first contact: September (annual planning open), February (mid-year reforecast). Worst: December (holiday slowdown), July (regional travel/conferences).",
       failedPatterns: [

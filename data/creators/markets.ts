@@ -29,7 +29,7 @@ export const CREATOR_MARKETS: CreatorMarket[] = [
     },
     operationalNotes: {
       tapPresenceLevel:
-        'Deepest TAP presence — Ecomobi headquarters in Vietnam; largest creator pool and most established acquisition pipelines.',
+        'Deepest TAP presence — VinaCapital headquarters in Vietnam; largest creator pool and most established acquisition pipelines.',
       preferredLanguages: 'Vietnamese (primary), English (secondary).',
       paymentInfrastructure:
         'Local bank transfers via Passio app. 25-day payment cycle (was 90-day) is a key creator-side differentiator.',

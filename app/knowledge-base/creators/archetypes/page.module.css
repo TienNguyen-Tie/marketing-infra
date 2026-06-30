@@ -51,8 +51,8 @@
 /* ── Stats strip ────────────────────────────────────────────── */
 
 .statsStrip {
-  background: #FFF5F5;
-  border-radius: 8px;
+  background: #FCEBEC;
+  border-radius: 0;
   padding: 16px 20px;
   margin-bottom: 24px;
   display: grid;
@@ -99,8 +99,8 @@
 
 .filterChip {
   padding: 6px 12px;
-  border-radius: 16px;
-  border: 0.5px solid #E6E6E6;
+  border-radius: 0;
+  border: none;
   background: white;
   font-size: 11.5px;
   font-weight: 600;
@@ -116,9 +116,9 @@
 }
 
 .filterChipActive {
-  background: #F43C34;
+  background: #D71920;
   color: white;
-  border-color: #F43C34;
+  border-color: #D71920;
 }
 
 /* ── Card grid ──────────────────────────────────────────────── */
@@ -139,8 +139,8 @@
 
 .archetypeCard {
   background: white;
-  border: 0.5px solid #E6E6E6;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -151,8 +151,8 @@
 }
 
 .archetypeCard:hover {
-  border-color: #F43C34;
-  box-shadow: 0 2px 12px rgba(244, 60, 52, 0.06);
+  border-color: #D71920;
+  box-shadow: 0 2px 12px rgba(215, 25, 32, 0.06);
   transform: translateY(-1px);
 }
 
@@ -166,7 +166,7 @@
 
 .populationTierPill {
   padding: 3px 9px;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -192,7 +192,7 @@
 
 .statusPill {
   padding: 3px 9px;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -254,11 +254,11 @@
 
 .smallPill {
   padding: 3px 8px;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 11.5px;
   font-weight: 600;
   background: #FAFAFA;
-  border: 0.5px solid #E6E6E6;
+  border: none;
   color: #535353;
 }
 
@@ -281,7 +281,7 @@
 
 .acquisitionPill {
   padding: 3px 8px;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -289,8 +289,8 @@
 }
 
 .acquisitionEstablished {
-  background: #EDF7EE;
-  color: #2D6938;
+  background: #EAECF2;
+  color: #333B52;
 }
 
 .acquisitionAccessible {
@@ -304,8 +304,8 @@
 }
 
 .acquisitionHard {
-  background: #FFF5F5;
-  color: #A8302A;
+  background: #FCEBEC;
+  color: #8C1015;
 }
 
 .acquisitionNote {
@@ -333,5 +333,5 @@
   font-size: 13px;
   background: white;
   border: 0.5px dashed #D3D3D3;
-  border-radius: 8px;
+  border-radius: 0;
 }

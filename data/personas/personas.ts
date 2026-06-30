@@ -22,7 +22,7 @@ export const PERSONAS: Persona[] = [
 
     snapshot: {
       oneSentenceDefinition:
-        "Senior commerce leader sitting between brand custody and country execution, owning regional GMV growth and the digital/social commerce vendor strategy — typically the Ecomobi sponsor and champion at MNC FMCG accounts.",
+        "Senior commerce leader sitting between brand custody and country execution, owning regional GMV growth and the digital/social commerce vendor strategy — typically the VinaCapital sponsor and champion at MNC FMCG accounts.",
       coreRole:
         "Owns regional digital and social commerce P&L. Sets vendor strategy across SEA markets. Reports performance to regional CMO and global commerce leadership. Carries an explicit GMV growth target (typically 30-50% YoY) and is measured on incremental growth — proving that social commerce drives net new revenue, not channel substitution.",
       typicalBackground:
@@ -113,7 +113,7 @@ export const PERSONAS: Persona[] = [
         "Honest 1-page on where we work and where we don't (sophistication signal)",
       ],
       antiPatterns: [
-        "Don't lead with 'about Ecomobi' slide deck — they don't care about us yet",
+        "Don't lead with 'about VinaCapital' slide deck — they don't care about us yet",
         "Don't present full-spectrum services in meeting 1 — overwhelms; pick one to lead",
         "Don't promise multi-market parity if VN is genuinely the depth market — be specific",
         "Don't quote creator network size in millions as a hero stat — commodity framing",
@@ -183,7 +183,7 @@ export const PERSONAS: Persona[] = [
         { name: "L'Oréal VN — Consumer Products", type: 'portfolio', slug: 'loreal-vn-consumer' },
       ],
       aiNote:
-        "Regional Commerce Director (RCD): senior champion persona at MNC FMCG accounts. Owns regional GMV P&L, sets vendor strategy, typically Ecomobi's primary sponsor. Decision style: data-driven + relationship-overlay + consensus-aware. Cares about: incrementality proof, vendor consolidation, regional consistency, career-defining wins. Avoids: vendor fragmentation, public failure, picking commodity-positioned partners. Lead pitch with peer reference + market context + focused proof window. Anti-pattern: lead with technology demos or generic creator-network size.",
+        "Regional Commerce Director (RCD): senior champion persona at MNC FMCG accounts. Owns regional GMV P&L, sets vendor strategy, typically VinaCapital's primary sponsor. Decision style: data-driven + relationship-overlay + consensus-aware. Cares about: incrementality proof, vendor consolidation, regional consistency, career-defining wins. Avoids: vendor fragmentation, public failure, picking commodity-positioned partners. Lead pitch with peer reference + market context + focused proof window. Anti-pattern: lead with technology demos or generic creator-network size.",
     },
   },
 

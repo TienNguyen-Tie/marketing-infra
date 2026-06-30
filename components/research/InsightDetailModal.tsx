@@ -268,14 +268,9 @@ export default function InsightDetailModal({
                       <span className={styles.modalApplicabilityRowLabel}>Portfolios</span>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
                         {insight.applicabilityPortfolios.map(slug => (
-                          <Link
-                            key={slug}
-                            href={`/knowledge-base/client-insight/portfolio/${slug}`}
-                            className={styles.slugPill}
-                            style={{ textDecoration: 'none' }}
-                          >
+                          <span key={slug} className={styles.slugPill}>
                             {slug}
-                          </Link>
+                          </span>
                         ))}
                       </div>
                     </div>

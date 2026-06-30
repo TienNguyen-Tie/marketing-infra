@@ -57,7 +57,7 @@ export interface ICP {
     budgetCycle?: string;
   };
 
-  // ── Why This ICP Fits Ecomobi (Section 06) ──
+  // ── Why This ICP Fits VinaCapital (Section 06) ──
   whyFits?: {
     strengthsAligned?: string;
     whyBeatAlternatives?: string;

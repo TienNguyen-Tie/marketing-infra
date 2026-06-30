@@ -26,7 +26,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Hourly / daily room rental rate',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Studio space + full tech setup (lighting, camera, ring light, green screen, audio, streaming infrastructure) + tech support during the stream',
     brandProvides: 'Host, ops team, script, product, ads management',
     bestFor:
@@ -42,11 +42,11 @@ export const SERVICE_LINES: ServiceLine[] = [
     name: 'Room + Tech + Operation + Host',
     tierLevel: 'Growth · Standard Managed',
     oneLiner:
-      'Full managed livestream service. Ecomobi runs the stream end-to-end; brand provides product and brief.',
+      'Full managed livestream service. VinaCapital runs the stream end-to-end; brand provides product and brief.',
     status: 'active',
     upsellPosition: 4,
     pricingModel: 'Management fee + performance bonus on GMV above target',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Studio + tech + trained host + ops-live team + stream script + real-time GPM monitoring',
     brandProvides: 'Product, campaign brief, product samples, Pub-U budget (via Melia)',
     bestFor:
@@ -66,7 +66,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Per-stream host fee + monthly retainer for regular bookings',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Trained host talent matched to brand vertical + product briefing + performance scoring post-stream',
     bestFor:
       'Cross-border brands with production infrastructure but no local Vietnamese/Thai/Indonesian host. Also for brands that have studio but in-house host conversion is low.',
@@ -85,7 +85,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Project fee — higher than standard stream, per-event pricing',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Full production crew, set design, multi-cam, director, branded overlays, event ops team',
     brandProvides: 'Campaign brief, spokesperson or brand ambassador, product showcase items',
     bestFor:
@@ -105,7 +105,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Highest TSP tier — production fee + KOL talent fee + management fee',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Full production + KOL sourcing + KOL contract management + KOL briefing + post-event attribution',
     bestFor:
       "L'Oréal new product launch, Unilever Tết campaign, cross-border brand market entry event",
@@ -127,7 +127,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: 1,
     pricingModel: 'Standard platform commission rate (base)',
-    ecomobiProvides: 'Platform access + creator matching algorithm',
+    vinacapitalProvides: 'Platform access + creator matching algorithm',
     bestFor:
       'Brands testing TikTok affiliate for the first time; brands with strong product-market fit who just need creator access.',
     addOns: [],
@@ -144,8 +144,8 @@ export const SERVICE_LINES: ServiceLine[] = [
       'Curated creator pool with active matching, weekly performance digest, soft GMV estimate.',
     status: 'active',
     upsellPosition: 2,
-    pricingModel: "Higher than Open Plan — reflects Ecomobi's active creator curation",
-    ecomobiProvides:
+    pricingModel: "Higher than Open Plan — reflects VinaCapital's active creator curation",
+    vinacapitalProvides:
       'Curated creator pool, weekly performance digest, creator success support',
     bestFor:
       'Local brands with established TikTok Shop presence; brands post-Open-Plan trial.',
@@ -160,12 +160,12 @@ export const SERVICE_LINES: ServiceLine[] = [
     name: 'Commission + Sample',
     tierLevel: 'Scale',
     oneLiner:
-      'Brand provides product samples to selected creators. Ecomobi manages sample logistics, creator briefing, and content quality.',
+      'Brand provides product samples to selected creators. VinaCapital manages sample logistics, creator briefing, and content quality.',
     status: 'active',
     upsellPosition: 3,
     pricingModel:
       'Higher commission rate than Pure Commission — creator has product = higher conversion rate',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Sample logistics, creator briefing, content review, performance tracking per creator',
     brandProvides: 'Product samples (30-100 units per creator cohort)',
     bestFor:
@@ -181,15 +181,15 @@ export const SERVICE_LINES: ServiceLine[] = [
     name: 'Commission + Sample + Cash (CIR)',
     tierLevel: 'Full CIR Service',
     oneLiner:
-      'Full Creator Investment & Results service. Brand provides commission + samples + cash incentives. Ecomobi commits to hard GMV with a campaign plan.',
+      'Full Creator Investment & Results service. Brand provides commission + samples + cash incentives. VinaCapital commits to hard GMV with a campaign plan.',
     status: 'active',
     upsellPosition: 3,
-    pricingModel: 'Highest commission tier — reflects full Ecomobi resource deployment',
-    ecomobiProvides:
+    pricingModel: 'Highest commission tier — reflects full VinaCapital resource deployment',
+    vinacapitalProvides:
       'Dedicated creator team, content calendar, weekly reporting, SLA-backed GMV plan',
     brandProvides: 'Samples + cash budget for creator incentives and content boosting',
     successCriteria:
-      'Hard GMV commit + campaign plan. SLA terms — if under-delivered, Ecomobi runs a remediation campaign.',
+      'Hard GMV commit + campaign plan. SLA terms — if under-delivered, VinaCapital runs a remediation campaign.',
     bestFor:
       "MNC brands (Unilever, L'Oréal) doing seasonal campaigns; local brands preparing for 11.11 / 12.12 / Tết push.",
     addOns: [],
@@ -265,7 +265,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     name: 'Creator Briefing & Content QC',
     tierLevel: 'Modular',
     oneLiner:
-      'Brand provides creators; Ecomobi handles brief writing, content review, and quality optimization. Modular for brands with existing networks.',
+      'Brand provides creators; VinaCapital handles brief writing, content review, and quality optimization. Modular for brands with existing networks.',
     status: 'active',
     upsellPosition: null,
     addOns: [],
@@ -300,7 +300,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: 1,
     pricingModel: 'Monthly account rental fee (flat)',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Verified TikTok Business Center account, onboarding, compliance, billing management',
     brandProvides: 'All campaign creation, optimization, creative, and budget decisions',
     bestFor:
@@ -362,7 +362,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: 4,
     pricingModel: '% of ad spend managed (10-15%) + optional performance bonus on ROAS above target',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Account + full campaign strategy + Spark Ads + Pub-U + GMV Max + creative testing + weekly reporting',
     bestFor:
       'All brand types. MNC brands with large budgets = highest Melia revenue. Local brands scaling TikTok spend = fastest growth clients.',
@@ -380,7 +380,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     name: 'Multi-Marketplace Commerce Engagement',
     tierLevel: 'Bundle',
     oneLiner:
-      'The full social commerce operation across multiple marketplaces under one engagement. Designed for brands consolidating their entire social commerce presence with Ecomobi.',
+      'The full social commerce operation across multiple marketplaces under one engagement. Designed for brands consolidating their entire social commerce presence with VinaCapital.',
     status: 'active',
     upsellPosition: null,
     addOns: [],
@@ -433,10 +433,10 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Package rate — CIR commission + % of managed ad spend',
-    ecomobiProvides:
+    vinacapitalProvides:
       'CIR Affiliate + Melia Spark Ads + GMV Max + weekly GMV flash + monthly full report with ROAS attribution',
     successCriteria:
-      'Hard affiliate GMV target — monthly, with weekly milestone tracking. If under-delivered, Ecomobi runs free remediation in the following month.',
+      'Hard affiliate GMV target — monthly, with weekly milestone tracking. If under-delivered, VinaCapital runs free remediation in the following month.',
     bestFor:
       'Brands that want affiliate-led commerce as primary TikTok channel. No livestream. Beauty, health, fashion — high creator-content categories.',
     composedOf: ['pl1-cir', 'pl3-spark-ads', 'pl3-gmv-max'],
@@ -455,7 +455,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     status: 'active',
     upsellPosition: null,
     pricingModel: 'Package rate — TSP management fee + Melia % of managed ad spend',
-    ecomobiProvides:
+    vinacapitalProvides:
       'Room + Ops + Host + Pub-U Live + GMV Max + post-stream Spark Ads + post-stream report within 2h + monthly QBR',
     successCriteria:
       'Hard livestream GMV target — per stream and monthly aggregate. GPM benchmark guaranteed.',
@@ -478,7 +478,7 @@ export const SERVICE_LINES: ServiceLine[] = [
     upsellPosition: 5,
     pricingModel:
       'Package rate — lower per-component than buying separately. 5-8× revenue vs single-product brand.',
-    ecomobiProvides:
+    vinacapitalProvides:
       'CIR Affiliate + TSP Full Managed + Full Melia Ads + unified AM + integrated reporting + monthly QBR',
     successCriteria:
       'Hard total store GMV target — affiliate GMV + livestream GMV combined, monthly. SLA-backed.',

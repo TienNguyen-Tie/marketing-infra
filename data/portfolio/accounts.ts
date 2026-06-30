@@ -114,7 +114,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
           },
         ],
         brandStoryCapital: {
-          definingNarrative: "L'Oréal Paris was our first L'Oréal CPD brand activation in VN. The Tet 2024 livestream exceeded GMV target by 220%, becoming the regional case study that justified scaling the relationship to other CPD brands. The brand is our 'premium beauty hero' across Ecomobi marketing.",
+          definingNarrative: "L'Oréal Paris was our first L'Oréal CPD brand activation in VN. The Tet 2024 livestream exceeded GMV target by 220%, becoming the regional case study that justified scaling the relationship to other CPD brands. The brand is our 'premium beauty hero' across VinaCapital marketing.",
           storyWorthyMoments: [
             { date: 'Feb 2024', label: 'Tet 2024 — 220% over target', description: 'Defined the format for premium beauty livestream in VN' },
             { date: 'May 2024', label: "Featured in L'Oréal APAC regional review", description: 'Cross-market case study' },
@@ -487,7 +487,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     },
 
     storyCapital: {
-      definingNarrative: "L’Oréal CPD chose Ecomobi as exclusive livestream partner in Feb 2024 after a single Maybelline pilot delivered 240% over target. The relationship scaled to 3 brands within 6 months and became the regional case study for L’Oréal APAC on TikTok commerce execution.",
+      definingNarrative: "L’Oréal CPD chose VinaCapital as exclusive livestream partner in Feb 2024 after a single Maybelline pilot delivered 240% over target. The relationship scaled to 3 brands within 6 months and became the regional case study for L’Oréal APAC on TikTok commerce execution.",
       storyWorthyMoments: [
         { date: 'Feb 2024', label: 'Pilot exceeded target by 240%', description: 'Single Maybelline livestream test event triggered the full cross-brand expansion conversation' },
         { date: 'May 2024', label: 'All Q1 KPIs exceeded', description: 'GMV target raised by 60% mid-year based on overachievement' },
@@ -518,7 +518,7 @@ export const PORTFOLIO_ACCOUNTS: PortfolioAccount[] = [
     ],
 
     coPromotionOpportunities: [
-      { id: 'cp1', type: 'event', title: 'TikTok Shop Summit Vietnam 2026', description: "L’Oréal CPD scheduled to present case study; opportunity for joint Ecomobi presentation on the same panel", timing: 'March 2026' },
+      { id: 'cp1', type: 'event', title: 'TikTok Shop Summit Vietnam 2026', description: "L’Oréal CPD scheduled to present case study; opportunity for joint VinaCapital presentation on the same panel", timing: 'March 2026' },
       { id: 'cp2', type: 'event', title: 'Vietnam Beauty Expo 2026', description: 'Joint booth opportunity discussed informally', timing: 'October 2026' },
       { id: 'cp3', type: 'industry-presence', title: "L’Oréal Regional Digital Awards 2026", description: 'Joint nomination submission for the Innovation category', timing: 'Submission window Q3 2026' },
       { id: 'cp4', type: 'co-content', title: "L’Oréal APAC blog feature", description: "L’Oréal APAC team interested in featuring our Vietnam case study on their regional digital blog", timing: 'Q2-Q3 2026' },

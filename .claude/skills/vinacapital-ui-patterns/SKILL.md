@@ -1,11 +1,11 @@
 ---
-name: ecomobi-ui-patterns
-description: Detailed UI implementation reference for the Ecomobi MKT Infrastructure tool. Load when creating or modifying any page, section, component, or stylesheet. Covers the full color palette, typography table, ghost CSS classes, section structure rhythm, hero patterns, status pill maps, and drawer patterns. The foundational rules (DM Sans, brand red, transparency pattern, 0.5px borders) live in CLAUDE.md — this skill carries the implementation specifics.
+name: vinacapital-ui-patterns
+description: Detailed UI implementation reference for the VinaCapital MKT Infrastructure tool. Load when creating or modifying any page, section, component, or stylesheet. Covers the full color palette, typography table, ghost CSS classes, section structure rhythm, hero patterns, status pill maps, and drawer patterns. The foundational rules (Helvetica Now + Georgia, VinaCapital Red, transparency pattern, 0.5px borders) live in CLAUDE.md — this skill carries the implementation specifics.
 ---
 
-# Ecomobi UI Patterns — Implementation Reference
+# VinaCapital UI Patterns — Implementation Reference
 
-Detailed implementation reference for the visual and UI rules. The high-level rules (DM Sans, brand red, 0.5px borders, transparency pattern) are in the project root `CLAUDE.md`. This skill contains the specifics: color tokens, typography table, ghost CSS classes, section rhythm, status pill maps, hero pattern, etc.
+Detailed implementation reference for the visual and UI rules. The high-level rules (Helvetica Now + Georgia, VinaCapital Red, 0.5px borders, transparency pattern) are in the project root `CLAUDE.md`. This skill contains the specifics: color tokens, typography table, ghost CSS classes, section rhythm, status pill maps, hero pattern, etc.
 
 If a rule appears in both files and they conflict, `CLAUDE.md` wins.
 
@@ -17,9 +17,9 @@ Use these exact values. Don't introduce new colors without updating this skill f
 
 | Token            | Hex       | Usage                                                         |
 |------------------|-----------|---------------------------------------------------------------|
-| Brand red        | `#F43C34` | Primary actions, accents, brand chips                         |
-| Red-pale         | `#FFF5F5` | Stats strip background, status pill background (contracted)   |
-| Red-light        | `#FCE7E5` | Subtle red zones, hover states                                |
+| Brand red        | `#D71920` | Primary actions, accents, brand chips                         |
+| Red-pale         | `#FCEBEC` | Stats strip background, status pill background (contracted)   |
+| Red-light        | `#F7D0D2` | Subtle red zones, hover states                                |
 | Black            | `#1A1A1A` | Primary text, h1 / h2                                         |
 | Dark gray        | `#535353` | Body text, subtitle text                                      |
 | Medium gray      | `#727272` | Secondary text, meta lines                                    |
@@ -35,17 +35,21 @@ Subtle tinted backgrounds for pills. Border-radius 4px or pill-shaped. Padding 4
 
 | Status           | Background  | Text color |
 |------------------|-------------|------------|
-| Green-pale       | `#EDF7EE`   | `#2D6938`  |
+| Navy-pale¹       | `#EAECF2`   | `#333B52`  |
 | Blue-pale        | `#EAF1FA`   | `#1E4E8C`  |
 | Amber-pale       | `#FBF3E2`   | `#7A5A14`  |
 | Gray-pale        | `#F0F0F0`   | `#535353`  |
-| Red-pale         | `#FFF5F5`   | `#A8302A`  |
+| Red-pale         | `#FCEBEC`   | `#B0141A`  |
+
+¹ Navy-pale replaces the former green "success / active" tint. Green has been
+purged from the UI — `active`, `high`, `reviewed`, and other positive states now
+use the navy tint, not green. Red stays exclusive to the VinaCapital brand accent.
 
 ---
 
 ## Typography
 
-Use DM Sans. Sizes and weights:
+Use Helvetica Now (system fallback: Helvetica / Arial, per the brand book). Use Georgia for serif / editorial display accents (proof numbers, pull quotes). Sizes and weights:
 
 | Element            | Size  | Weight | Color     | Notes                                  |
 |--------------------|-------|--------|-----------|----------------------------------------|
@@ -53,7 +57,7 @@ Use DM Sans. Sizes and weights:
 | h2 section group   | 18px  | 700    | `#1A1A1A` | rare; mostly use group eyebrows        |
 | Section title      | 12px  | 700    | `#1A1A1A` | uppercase, letter-spacing 0.08em       |
 | Section subtitle   | 12.5px| 400    | `#535353` | italic                                 |
-| Group eyebrow      | 11px  | 700    | `#F43C34` | uppercase, letter-spacing 0.1em        |
+| Group eyebrow      | 11px  | 700    | `#D71920` | uppercase, letter-spacing 0.1em        |
 | Field label        | 11px  | 700    | `#A3A3A3` | uppercase, letter-spacing 0.08em       |
 | Field value        | 13px  | 500    | `#1A1A1A` |                                        |
 | Body paragraph     | 13.5–14px| 400 | `#535353` | line-height 1.6                        |
@@ -120,7 +124,7 @@ Every section on a detail page follows this rhythm:
    - Vertical space above and below: 48px
 
 2. **Section header**:
-   - Section chip: 24×24 rounded square with red bg (`#F43C34`), white text, the section number in 12px/700. Border-radius 6px.
+   - Section chip: 24×24 rounded square with red bg (`#D71920`), white text, the section number in 12px/700. Border-radius 6px.
    - Section title: 12px/700 uppercase `#1A1A1A`, letter-spacing 0.08em, positioned to the right of the chip with 12px gap
    - Section subtitle: 12.5px italic `#535353`, on the line below, max-width ~70% of container
 
@@ -157,7 +161,7 @@ Used at the top of every entity detail page (portfolio, brand, source, etc.).
 
 ### Stats strip
 
-- Red-pale background (`#FFF5F5`), 1px solid `#FCE7E5`, border-radius 8px
+- Red-pale background (`#FCEBEC`), 1px solid `#F7D0D2`, border-radius 8px
 - Padding 16px 24px
 - Flex row, 3–4 cells equally spaced
 - Each cell:
@@ -173,7 +177,7 @@ Used at the top of every entity detail page (portfolio, brand, source, etc.).
 
 | Status        | Background     | Label            |
 |---------------|----------------|------------------|
-| `active`      | green-pale     | "ACTIVE"         |
+| `active`      | navy-pale     | "ACTIVE"         |
 | `pitched`     | blue-pale      | "PITCHED"        |
 | `prospect`    | gray-pale      | "PROSPECT"       |
 | `contracted`  | red-pale       | "CONTRACTED"     |
@@ -184,7 +188,7 @@ Used at the top of every entity detail page (portfolio, brand, source, etc.).
 | Status        | Background     | Label            |
 |---------------|----------------|------------------|
 | `hero`        | red-pale       | "HERO"           |
-| `active`      | green-pale     | "ACTIVE"         |
+| `active`      | navy-pale     | "ACTIVE"         |
 | `upcoming`    | blue-pale      | "UPCOMING"       |
 | `considered`  | amber-pale     | "CONSIDERED"     |
 | `sunset`      | gray-pale      | "SUNSET"         |
@@ -193,7 +197,7 @@ Used at the top of every entity detail page (portfolio, brand, source, etc.).
 
 | Confidence    | Background     | Label            |
 |---------------|----------------|------------------|
-| `high`        | green-pale     | "HIGH"           |
+| `high`        | navy-pale     | "HIGH"           |
 | `medium`      | blue-pale      | "MEDIUM"         |
 | `low`         | amber-pale     | "LOW"            |
 | `speculative` | gray-pale      | "SPECULATIVE"    |
@@ -242,10 +246,10 @@ Used for: Vision Companion, Research Companion, future AI sidebars, and large mo
 - Position: fixed, bottom 24px, right 24px
 - Z-index: 50 (above content, below modals)
 - Visual: pill shape, 48px height, padding 0 20px
-  - Background: `#F43C34`
+  - Background: `#D71920`
   - Text: white, 13.5px/600
   - Icon (left of text): 16px sparkle or message-question icon
-  - Box-shadow: `0 4px 16px rgba(244, 60, 52, 0.3)`
+  - Box-shadow: `0 4px 16px rgba(215, 25, 32, 0.3)`
 - Hover: scale 1.03, deeper shadow
 - Mobile: collapse to icon-only circle button (48×48)
 
@@ -270,7 +274,7 @@ Used for: Vision Companion, Research Companion, future AI sidebars, and large mo
 
 ### Stats strip cell
 
-- Background: `#FFF5F5`
+- Background: `#FCEBEC`
 - Border-radius: 8px (the whole strip, not individual cells)
 - Padding: 16px 24px (on the strip; cells use flex spacing)
 

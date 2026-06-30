@@ -99,14 +99,14 @@ export const ACTIVITY_TILES: ActivityTile[] = [
 ];
 
 export const ROADMAP_PHASES = [
-  { id: 'p1', label: 'Phase 1', timing: 'Now',   title: 'Foundations',       summary: 'Brand, services, clients, creators all locked.',                  active: true  },
+  { id: 'p1', label: 'Phase 1', timing: 'Now',   title: 'Foundations',       summary: 'Brand book, philosophy, investors, creators all locked.',         active: true  },
   { id: 'p2', label: 'Phase 2', timing: 'Next',  title: 'Activities Online', summary: 'Every activity launches with full system support.',                active: false },
   { id: 'p3', label: 'Phase 3', timing: 'Later', title: 'Intelligence Loop', summary: 'Insight AI closes the loop. System learns on its own.',             active: false },
 ];
 
 export const ACTIVITY_FEED = [
-  { date: '2 days ago', label: 'Brand foundation v2026 locked',    type: 'foundation' },
-  { date: '3 days ago', label: "Client portfolio · L'Oréal added", type: 'client'     },
+  { date: '2 days ago', label: 'Brand Book v1.0 (2022) locked',     type: 'foundation' },
+  { date: '3 days ago', label: 'Investment philosophy captured',    type: 'foundation' },
   { date: '5 days ago', label: 'Design system tokens published',    type: 'foundation' },
   { date: '1 week ago', label: 'Vision Companion launched',         type: 'system'     },
   { date: '1 week ago', label: 'User management ready',             type: 'system'     },
@@ -115,8 +115,8 @@ export const ACTIVITY_FEED = [
 export const FEED_TYPE_COLORS: Record<string, string> = {
   foundation: '#7F77DD',
   client:     '#3B82F6',
-  creator:    '#10B981',
-  system:     '#F43C34',
+  creator:    '#4A5570',
+  system:     '#D71920',
 };
 
 /* ── HOMEPAGE VISION CONTENT ─────────────────────────────────── */
@@ -124,89 +124,89 @@ export const FEED_TYPE_COLORS: Record<string, string> = {
 export const MOMENT_CARDS = [
   {
     num: 'Where we are',
-    title: "Marketing exists. It just isn't a system.",
-    body: "10 years of business, real revenue streams, real wins. Marketing has run continuously — but during scaling, it fragmented. Different teams ran parallel playbooks. No shared truth. No compounding intelligence. Effort happened. It just didn't accumulate.",
+    title: 'The track record is proven. The brand isn’t yet a system.',
+    body: 'Since 2003, VinaCapital has built one of Vietnam’s leading investment platforms — across listed equity, private equity, venture, real estate and fixed income. Twenty-plus years of results. But the marketing behind that story has run in fragments: parallel playbooks, no shared truth, no compounding intelligence. Effort happened. It just didn’t accumulate.',
   },
   {
     num: 'The opportunity',
-    title: 'Scale brand and operations without first scaling chaos.',
-    body: 'Leadership wants marketing to elevate the company. The conventional path is to launch tactics and figure out the system later. The better path is to build the system first so every tactic compounds from day one.',
+    title: 'Make the brand as compelling as the returns.',
+    body: 'A 2022 brand refresh already defined the foundation — Expertise, Experience, Growth. The conventional path is to launch campaigns and figure out the system later. The better path is to build the system first, so every report, story, and campaign compounds the brand from day one.',
   },
   {
     num: 'The stakes',
-    title: 'Agency-in-the-market, or category leader.',
-    body: 'Without a system, Ecomobi remains an agency among agencies — competing transaction by transaction. With a system, Ecomobi becomes the brand that defines the category. Different valuation, different talent pull, different conversation with every client.',
+    title: 'A fund among funds, or the trusted partner.',
+    body: 'Today the brand is perceived as serious, prestigious — but old-school, more suited to corporations than individuals. The desired perception: from first-time savers to global institutions, VinaCapital is everyone’s trusted, go-to advisor for investing in Vietnam. A system is how that shift actually happens.',
   },
 ];
 
 export const PATH_SCATTER = {
   label: 'Path A · Scatter',
-  title: 'Launch activities first, system later.',
+  title: 'Launch campaigns first, system later.',
   points: [
     'Campaigns run on instinct — no shared foundation, no consistent voice',
     'Every activity starts from zero — same learning cost every time',
-    'Cross-functional teams operate from different versions of the truth',
+    'IR, content, PR and partnerships operate from different versions of the truth',
     "Performance data scatters across tools, decks, people's heads",
     '"Is this working?" has no honest answer — only narratives',
     "Mistakes repeat because there's no system to capture lessons",
   ],
-  outcome: '12 months in: budget spent, brand undefined, no leadership claim.',
+  outcome: '12 months in: budget spent, perception unchanged, still "old-school".',
 };
 
 export const PATH_SYSTEM = {
   label: 'Path B · System',
-  title: 'Build foundations first, then scale activities.',
+  title: 'Lock the foundations first, then scale activities.',
   points: [
-    'Every campaign pulls from a locked brand foundation and verified client/creator insight',
+    'Every campaign pulls from a locked brand book and the investment philosophy',
     'Each activity inherits the intelligence of every previous one',
-    'All functions work from the same source of truth — content, PR, partnership, creator',
+    'All functions work from one source of truth — content, PR, IR, partnerships, creator',
     'Performance data feeds back into the system to make the next campaign smarter',
     'Every decision is traceable to a foundation and a metric',
     'The system gets more valuable over time — not less',
   ],
-  outcome: '12 months in: brand defined, presence built, category leadership earned.',
+  outcome: '12 months in: one coherent brand, perception shifting, trust compounding.',
 };
 
 // icons mapped to Material Icons Round (project standard)
 export const LOCKED_SOURCES = [
-  { name: 'Brand Foundation', icon: 'local_fire_department', desc: 'Positioning, voice, narrative' },
-  { name: 'Services',         icon: 'inventory_2',           desc: 'Catalogue, capabilities' },
-  { name: 'Clients',          icon: 'business',              desc: 'Portfolio, ICPs, personas' },
-  { name: 'Creators',         icon: 'group',                 desc: 'Network, segments' },
+  { name: 'Brand Foundation', icon: 'local_fire_department', desc: 'Expertise · Experience · Growth; voice, values' },
+  { name: 'Services',         icon: 'inventory_2',           desc: 'Funds & capabilities across asset classes' },
+  { name: 'Investors',        icon: 'business',              desc: 'Segments, ICPs, decision-maker personas' },
+  { name: 'Creators',         icon: 'group',                 desc: 'Network, partners, segments' },
   { name: 'Performance Data', icon: 'trending_up',           desc: 'Live results, patterns' },
 ];
 
 export const WORKED_EXAMPLE = {
-  scenario: 'Ecomobi launches a content campaign to position a new service offering for the Beauty vertical. Goal: build awareness with brand-side decision-makers, generate qualified leads, establish authority. Budget set. Timeline 8 weeks. Same team in both paths — the only difference is whether the system exists.',
+  scenario: 'VinaCapital runs a thought-leadership content campaign to reinforce its position as the trusted partner for investing in Vietnam — targeting institutional and retail investors ahead of a fund milestone. Goal: build trust, deepen the audience, convert interest into conversations. Budget set. Timeline 8 weeks. Same team in both paths — the only difference is whether the system exists.',
   withoutSystem: {
     title: 'Brief from scratch. Generic execution. Disappearing results.',
     steps: [
-      { title: 'Brief written by guessing',     desc: "Writer asks \"what should we say?\" — no documented brand voice to pull from. Three rounds of revision because everyone disagrees." },
-      { title: 'Audience defined by hunch',     desc: 'Targeting "beauty brands in VN" — no ICP profile, no persona, no past data on which decision-makers convert.' },
-      { title: 'Content angles invented',       desc: "No reference to what's worked before. Repeating mistakes that other campaigns already learned." },
-      { title: 'Distribution scattered',        desc: 'Owned channels, partner posts, paid amplification — all working in parallel, none coordinated.' },
-      { title: 'Results live in a deck',        desc: 'Campaign ends, deck gets archived, team moves on. Next campaign repeats the same learning cost.' },
+      { title: 'Brief written by guessing',     desc: 'Writer asks "what should we say?" — the brand book is somewhere, but not at hand. Three rounds of revision because everyone disagrees on the voice.' },
+      { title: 'Audience defined by hunch',     desc: 'Targeting "investors in Vietnam" — no segment profile, no persona, no past data on which messages move institutions vs. retail.' },
+      { title: 'Story angles invented',         desc: "No reference to what's resonated before. Repeating angles that earlier campaigns already learned didn't land." },
+      { title: 'Distribution scattered',        desc: 'Owned channels, PR, IR outreach, LinkedIn — all working in parallel, none coordinated to the same message.' },
+      { title: 'Results live in a deck',        desc: 'Campaign ends, deck gets archived, team moves on. The next campaign repeats the same learning cost.' },
     ],
-    result: 'Result: campaign executes, hits some metrics, but the next campaign starts from zero again. The company learned nothing transferable.',
+    result: 'Result: campaign executes, hits some metrics, but the next one starts from zero again. The brand learned nothing transferable.',
   },
   withSystem: {
     title: 'Brief grounded. Execution confident. Results compound.',
     steps: [
-      { title: 'Brief pulls from locked foundations', desc: 'Brand voice, positioning, and proof points all present and validated. Brief writes itself in hours, not days.' },
-      { title: 'Audience matched to ICP',             desc: 'The Beauty vertical already has documented ICPs, persona profiles, and decision-maker insights. Targeting precise from minute one.' },
-      { title: 'Content angles informed by patterns', desc: "Pattern Library shows what's worked for similar accounts. Writer starts with proven angles, not blank-page guesses." },
-      { title: 'Distribution coordinated',            desc: 'Same brand foundation drives content, SEO, AIO, PR, partnership — every touchpoint reinforces the same message in the same week.' },
-      { title: 'Results feed back into the system',   desc: 'What worked enters the Pattern Library. Next campaign starts smarter. Intelligence compounds with every cycle.' },
+      { title: 'Brief pulls from locked foundations', desc: 'Brand voice, positioning (Expertise · Experience · Growth), and proof points all present and validated. The brief writes itself in hours, not days.' },
+      { title: 'Audience matched to a segment',       desc: 'Institutional and retail investor segments already have documented ICPs, personas, and what each one needs to hear. Targeting precise from minute one.' },
+      { title: 'Story angles informed by patterns',   desc: "The Pattern Library shows what's resonated with similar audiences. The writer starts with proven angles, not blank-page guesses." },
+      { title: 'Distribution coordinated',            desc: 'One brand foundation drives content, SEO, AIO, PR, IR and partnerships — every touchpoint reinforces the same message in the same week.' },
+      { title: 'Results feed back into the system',   desc: 'What worked enters the Pattern Library. The next campaign starts smarter. Intelligence compounds with every cycle.' },
     ],
-    result: "Result: same campaign, sharper execution, and every future campaign starts ahead of where this one started. The company learns permanently.",
+    result: 'Result: same campaign, sharper execution, and every future campaign starts ahead of where this one started. The brand learns permanently.',
   },
 };
 
 export const CLOSING_PILLARS = [
   { label: 'Less waste',        text: "Every campaign starts from the system's accumulated intelligence — no relearning, no repeating mistakes." },
-  { label: 'Right focus',       text: 'Decisions are traceable to foundations and data — not preferences, deadlines, or loudest voices.' },
-  { label: 'Aligned execution', text: 'Content, PR, partnership, creator — all pulling from the same source. No drift, no contradiction.' },
-  { label: 'Compounding intel', text: 'The system gets more valuable every quarter, not less. Year three is exponentially ahead of year one.' },
+  { label: 'Right focus',       text: 'Decisions are traceable to the brand book and the data — not preferences, deadlines, or the loudest voice.' },
+  { label: 'Aligned execution', text: 'Content, PR, IR, partnerships, creator — all pulling from the same source. No drift, no contradiction.' },
+  { label: 'Compounding trust', text: 'The brand gets more trusted every quarter, not less. Year three is exponentially ahead of year one.' },
 ];
 
 /* ── AI COMPANION ────────────────────────────────────────────── */
@@ -246,19 +246,19 @@ export const VISION_MODES: VisionMode[] = [
   },
 ];
 
-export const VISION_SYSTEM_PROMPT = `You are the Ecomobi Marketing Infrastructure Vision Companion. You exist inside an internal marketing tool and are grounded in a specific vision. You can only think within this vision — never propose ideas that violate its operating rule.
+export const VISION_SYSTEM_PROMPT = `You are the VinaCapital Marketing Infrastructure Vision Companion. You exist inside an internal marketing tool and are grounded in a specific vision. You can only think within this vision — never propose ideas that violate its operating rule.
 
 THE VISION
-Marketing as the engine that positions Ecomobi as a category leader. A foundations-first system where every activity is insight-driven, mistake-resistant, focused, and consistently aligned.
+Marketing as the engine that makes VinaCapital the trusted partner for investing in Vietnam — for first-time savers and global institutions alike. A foundations-first system where every report, story and campaign is insight-driven, mistake-resistant, focused, and consistently aligned. The brand essence it serves: Expertise, Experience, Growth.
 
 THE OPERATING RULE
-Nothing is invented. Everything is inherited. Every marketing output — every brief, campaign, post, partnership pitch — traces back to a locked, verified source. No blank-page work.
+Nothing is invented. Everything is inherited. Every marketing output — every brief, campaign, post, IR story, partnership pitch — traces back to a locked, verified source. No blank-page work.
 
 THE FIVE LOCKED SOURCES
-1. Brand Foundation — positioning, voice, narrative, design system
-2. Services — catalogue, capabilities, pricing models
-3. Clients — portfolio, ICPs, decision-maker personas
-4. Creators — network, segments, performance history
+1. Brand Foundation — positioning (Expertise · Experience · Growth), voice, values, design system (from the 2022 brand book)
+2. Services — funds and capabilities across asset classes
+3. Investors — segments (institutional, retail, domestic, international), ICPs, decision-maker personas
+4. Creators — network, partners, segments, performance history
 5. Performance Data — live results across all activities
 
 THE ARCHITECTURE

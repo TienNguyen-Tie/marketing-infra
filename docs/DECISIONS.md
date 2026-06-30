@@ -4,6 +4,46 @@ Append-only log of significant choices. Most recent first.
 
 ---
 
+## [2026-06] Full rebrand — Ecomobi/NetNam → VinaCapital
+
+**What**: Replaced the entire brand layer with VinaCapital's identity, extracted
+from the VinaCapital Brand Book v1.0 (2022).
+
+- **Colour**: brand accent is now **VinaCapital Red `#D71920`** (Pantone 3546 C),
+  with `--red-dark #B0141A`, `--red-pale #FCEBEC`, `--red-light #F7D0D2`. The old
+  Ecomobi green (`#35B033` + ramp) and the stray secondary red (`#F43C34`) were
+  both folded into the single VinaCapital Red. New secondary tokens added:
+  `--navy #333B52` (Deep Blue), `--navy-dark #162E38` (Darker Blue, used for the
+  sidebar), `--off-white #EDECE8`, `--vc-gray #C8C8C8`.
+- **Type**: **Helvetica Now** (sans, system Helvetica/Arial fallback) + **Georgia**
+  (serif), replacing DM Sans / Plus Jakarta Sans / IBM Plex Serif. `next/font` wiring
+  removed from `app/layout.tsx`; both stacks now live in `globals.css` `:root`.
+- **Chrome**: sidebar surface → Darker Blue; brand label "NetNam Corporation" →
+  "VinaCapital"; metadata title → "VinaCapital Marketing Knowledge Base".
+
+**Why**: The app shipped on Ecomobi/NetNam styling but is for VinaCapital. User
+provided the VinaCapital brand book and asked to retheme the whole system.
+
+**Decisions of note**:
+- **Semantic greens kept.** Success/positive deltas, "active" pills, emerald
+  category accents, and the lime secondary stayed green — recoloring them red would
+  be semantically wrong (red = loss in finance). Only the *brand* green was swapped.
+- **`--red*` token names kept** (historical) to avoid churning every CSS module;
+  they now hold VinaCapital Red.
+- **Helvetica Now not self-hosted** — relies on the system fallback the brand book
+  itself names. Drop in a self-hosted `@font-face` later if exact rendering matters.
+
+**Affects**: `app/globals.css`, `app/layout.tsx`, `components/Sidebar.tsx`,
+all `*.module.css`, `.claude/skills/ecomobi-ui-patterns/SKILL.md`,
+`.claude/agents/architect-reviewer.md`, `CLAUDE.md`, `docs/DESIGN_TOKENS.md`,
+and the `*.html` brand-system reference docs.
+
+**Not done (out of brand/CSS scope)**: CLAUDE.md / brand-foundation *content* still
+describes Ecomobi's social-commerce business domain. Rebranding the company narrative
+and the Brand Foundation data (`foundation-data.ts`) is a separate content task.
+
+---
+
 ## [2026-05] Font change — Primary Sans: IBM Plex Sans → DM Sans
 
 **What**: Primary sans-serif font changed across the entire project.

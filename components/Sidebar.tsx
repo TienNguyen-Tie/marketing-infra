@@ -35,28 +35,12 @@ const navTree: NavItem[] = [
         ],
       },
       {
-        kind: 'leaf',
-        label: 'Services',
-        href: '/knowledge-base/services',
-      },
-      {
         kind: 'flyout',
-        label: 'Creators',
-        href: '/knowledge-base/creators',
+        label: 'Investor Insight',
+        href: '/knowledge-base/investor-insight',
         items: [
-          { label: 'Archetypes', href: '/knowledge-base/creators/archetypes' },
-          { label: 'Markets', href: '/knowledge-base/creators/markets' },
-          { label: 'Network', href: '/knowledge-base/creators/network' },
-        ],
-      },
-      {
-        kind: 'flyout',
-        label: 'Client Insight',
-        href: '/knowledge-base/client-insight',
-        items: [
-          { label: 'Client Portfolio', href: '/knowledge-base/client-insight/portfolio' },
-          { label: 'ICPs', href: '/knowledge-base/client-insight/icps' },
-          { label: 'Decision-maker Personas', href: '/knowledge-base/client-insight/personas' },
+          { label: 'Institutional Investor', href: '/knowledge-base/investor-insight/institutional-investor' },
+          { label: 'Retail Investor', href: '/knowledge-base/investor-insight/retail-investor' },
         ],
       },
       {
@@ -64,25 +48,6 @@ const navTree: NavItem[] = [
         label: 'Research & Insights',
         href: '/knowledge-base/research',
       },
-      {
-        kind: 'flyout',
-        label: 'Creator Insight',
-        href: '/knowledge-base/creator-insight',
-        items: [
-          { label: 'Creator ICPs', href: '/knowledge-base/creator-insight/icps' },
-          { label: 'Creator Personas', href: '/knowledge-base/creator-insight/personas' },
-          { label: 'Network Overview', href: '/knowledge-base/creator-insight/network' },
-        ],
-      },
-    ],
-  },
-  {
-    kind: 'branch',
-    label: 'Current Projects',
-    href: '/current-projects',
-    children: [
-      { kind: 'leaf', label: 'Focused Services', href: '/current-projects/focused-services' },
-      { kind: 'leaf', label: 'Focused Clients', href: '/current-projects/focused-clients' },
     ],
   },
   {
@@ -94,16 +59,6 @@ const navTree: NavItem[] = [
       { kind: 'leaf', label: 'Content Production', href: '/planning-tools/content-production' },
       { kind: 'leaf', label: 'Design Templates', href: '/planning-tools/design-templates' },
       { kind: 'leaf', label: 'Review & Validation', href: '/planning-tools/review-validation' },
-    ],
-  },
-  {
-    kind: 'branch',
-    label: 'Team Performance',
-    href: '/team-performance',
-    children: [
-      { kind: 'leaf', label: 'Member Performance', href: '/team-performance/member-performance' },
-      { kind: 'leaf', label: 'Campaign Results', href: '/team-performance/campaign-results' },
-      { kind: 'leaf', label: 'Insight Extraction', href: '/team-performance/insight-extraction' },
     ],
   },
   {
@@ -239,10 +194,8 @@ export default function Sidebar({ session }: { session: Session | null }) {
     <aside className="sidebar">
       <div className="sidebar__logo">
         <Link href="/" className="sidebar__logo-link">
-          <img src="/LOGO_am-ban-2.png" alt="Ecomobi" className="sidebar__logo-img" />
-          {/* Fallback — drop logo.svg or logo.png into /public to replace:
-          <span className="sidebar__logo-mark">E</span>
-          <span className="sidebar__logo-text">Ecomobi</span> */}
+          <span className="sidebar__logo-mark">V</span>
+          <span className="sidebar__logo-text">VinaCapital</span>
         </Link>
       </div>
       <nav className="sidebar__nav">

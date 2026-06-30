@@ -12,7 +12,7 @@ export default function Hero() {
       </nav>
       <h1 className={styles.h1}>Creator Archetypes</h1>
       <p className={styles.subtitle}>
-        Recognized types of TAP creators Ecomobi acquires, nurtures, and activates. Each archetype
+        Recognized types of TAP creators VinaCapital acquires, nurtures, and activates. Each archetype
         behaves consistently enough to be planned for as one group — different content style,
         different audience trust patterns, different acquisition channels, different commercial
         behavior.

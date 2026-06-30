@@ -1,4 +1,4 @@
-# Ecomobi ICP Template — Instructions for Claude
+# VinaCapital ICP Template — Instructions for Claude
 
 > **How to use this file**
 > 1. Fill in the YAML frontmatter at the top with accurate, typed values.
@@ -25,7 +25,7 @@ region: "Vietnam, SEA"
 
 ### §01 DEFINITION
 
-Multinational FMCG companies with established Vietnam operations, regional or global commerce/digital functions, and active interest in scaling social commerce as a growth lever in SEA. This segment is defined by the tension between regional consistency requirements (driven by global/regional HQ) and local Vietnam execution — a tension Ecomobi sits at the center of.
+Multinational FMCG companies with established Vietnam operations, regional or global commerce/digital functions, and active interest in scaling social commerce as a growth lever in SEA. This segment is defined by the tension between regional consistency requirements (driven by global/regional HQ) and local Vietnam execution — a tension VinaCapital sits at the center of.
 
 These companies are post-pilot: they've tested TikTok Shop or Shopee Live, seen early signals, and are now evaluating whether to scale. The question is not "should we do social commerce" but "how do we scale it without losing brand consistency and without adding more vendor complexity."
 
@@ -97,7 +97,7 @@ Regional Commerce / Digital Director. Title variants: Regional Commerce Director
 
 **E-commerce enablers** (Lazada partners, Shopee ecosystem players): Manage storefronts and logistics. Don't bring the creator audience or live commerce capability. We are upstream.
 
-**In-house team build-out**: The "do it ourselves" alternative. Ecomobi responds with time-to-scale and talent availability argument — building takes 12-18 months, market moves in 3.
+**In-house team build-out**: The "do it ourselves" alternative. VinaCapital responds with time-to-scale and talent availability argument — building takes 12-18 months, market moves in 3.
 
 **Other full-stack players**: Limited credible regional competition at MNC scale in VN. Most full-stack claims are overstated — studio visits expose the gap.
 
@@ -206,7 +206,7 @@ region: ""
 
 ### §08 COMPETITIVE LANDSCAPE
 
-[Describe 3–5 competitors or alternatives and how Ecomobi differentiates]
+[Describe 3–5 competitors or alternatives and how VinaCapital differentiates]
 
 ### §09 ENGAGEMENT APPROACH
 
@@ -214,7 +214,7 @@ region: ""
 
 ### §10 SAMPLE COMPANIES
 
-- [Company 1 — why they fit, current social commerce maturity, Ecomobi connection]
+- [Company 1 — why they fit, current social commerce maturity, VinaCapital connection]
 - [Company 2]
 - [Company 3]
 - [Company 4]

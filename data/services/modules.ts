@@ -23,7 +23,7 @@ export const SERVICE_MODULES: Module[] = [
     status: 'active',
 
     strategicPositioning:
-      'The high-touch operations module. Livestream commerce requires physical infrastructure, trained human talent, and continuous operational depth — none of which can be shortcut. This module is where Ecomobi separates from agencies that rent capability rather than own it.',
+      'The high-touch operations module. Livestream commerce requires physical infrastructure, trained human talent, and continuous operational depth — none of which can be shortcut. This module is where VinaCapital separates from agencies that rent capability rather than own it.',
     whatItsFor:
       'Brands committed to livestream as a primary commerce channel. Whether running 2 streams a month or 200, this module covers facility access through to flagship event production.',
     audiencePainPoints:
@@ -51,14 +51,14 @@ export const SERVICE_MODULES: Module[] = [
     pillarId: 'P2',
     name: 'Affiliate Marketing',
     oneLiner:
-      "Multi-marketplace affiliate system connecting brands with Ecomobi's 1M+ creator network — across every major social commerce platform.",
+      "Multi-marketplace affiliate system connecting brands with VinaCapital's 1M+ creator network — across every major social commerce platform.",
     corePromise:
       'Build authentic purchase demand at scale — through a creator network that earns trust with audiences before it earns commission from brands.',
     demandRole: 'demand-conversion',
     status: 'active',
 
     strategicPositioning:
-      "The foundational module. Affiliate is where Ecomobi started — commission-based, performance-accountable, creator-native. Every other module compounds the affiliate engine's reach.",
+      "The foundational module. Affiliate is where VinaCapital started — commission-based, performance-accountable, creator-native. Every other module compounds the affiliate engine's reach.",
     whatItsFor:
       'Brands testing TikTok Shop, Shopee, or Lazada affiliate; brands scaling proven products through curated creator pools; MNCs running seasonal campaigns with hard GMV commits.',
     audiencePainPoints:
@@ -149,20 +149,20 @@ export const SERVICE_MODULES: Module[] = [
     pillarId: 'P5',
     name: 'Performance Boosting',
     oneLiner:
-      'The performance media operation — Spark Ads, GMV Max, Pub-U Live, and account optimization that makes every other Ecomobi service perform harder.',
+      'The performance media operation — Spark Ads, GMV Max, Pub-U Live, and account optimization that makes every other VinaCapital service perform harder.',
     corePromise:
       'Make every piece of winning content work harder and every livestream reach further — turning authentic intent into measurable, scalable GMV growth.',
     demandRole: 'demand-conversion',
     status: 'active',
 
     strategicPositioning:
-      'The amplification layer. Sold standalone to brands already spending on TikTok Ads with poor ROAS, or bundled with affiliate and livestream to multiply impact. This is where Ecomobi competes directly with media agencies — and wins on creator-integrated Spark Ads ROAS.',
+      'The amplification layer. Sold standalone to brands already spending on TikTok Ads with poor ROAS, or bundled with affiliate and livestream to multiply impact. This is where VinaCapital competes directly with media agencies — and wins on creator-integrated Spark Ads ROAS.',
     whatItsFor:
       'Brands burning budget on TikTok Ads with brand-made creative underperforming. Cross-border brands without local TikTok entity access. MNCs ready to replace incumbent media agencies.',
     audiencePainPoints:
       "Brand-made TikTok Ads underperform creator-led Spark Ads by 2-3x. Can't get local TikTok Ads account access for cross-border entry. ROAS plateaus and incumbent agency can't unlock the next level.",
     differentiators:
-      'Creator-integrated Spark Ads (using the same creators activated in Affiliate). Verified TikTok Business Center access for cross-border brands. Every $1M in managed ad spend = $100-150K Ecomobi revenue at zero incremental COGS.',
+      'Creator-integrated Spark Ads (using the same creators activated in Affiliate). Verified TikTok Business Center access for cross-border brands. Every $1M in managed ad spend = $100-150K VinaCapital revenue at zero incremental COGS.',
     toneAndStyle:
       'Performance media voice — ROAS-led, % uplift-led. Compete on numbers, not narrative.',
 

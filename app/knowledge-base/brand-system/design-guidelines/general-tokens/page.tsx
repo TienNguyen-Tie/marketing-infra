@@ -29,7 +29,7 @@ export default function GeneralTokensPage() {
         <p className="kb-label">GENERAL TOKENS</p>
         <h1 className="kb-title">Design Tokens & Components</h1>
         <p className="kb-subtitle">
-          The foundational visual vocabulary for all Ecomobi surfaces.
+          The foundational visual vocabulary for all VinaCapital surfaces.
         </p>
         <nav className="gt-anchor-nav">
           <a href="#typography">Typography</a>

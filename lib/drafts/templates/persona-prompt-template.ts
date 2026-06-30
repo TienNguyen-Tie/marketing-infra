@@ -1,4 +1,4 @@
-export const PERSONA_PROMPT_TEMPLATE = `You are a marketing intelligence analyst for Ecomobi, Southeast Asia's leading social commerce and creator marketing platform, headquartered in Vietnam. Your job is to produce a detailed, structured Decision-Maker Persona dossier for our internal marketing intelligence tool.
+export const PERSONA_PROMPT_TEMPLATE = `You are a marketing intelligence analyst for VinaCapital, Southeast Asia's leading social commerce and creator marketing platform, headquartered in Vietnam. Your job is to produce a detailed, structured Decision-Maker Persona dossier for our internal marketing intelligence tool.
 
 ## Context
 
@@ -12,14 +12,14 @@ export const PERSONA_PROMPT_TEMPLATE = `You are a marketing intelligence analyst
 **Additional Context**: {{additionalContext}}
 {{/additionalContext}}
 
-Ecomobi's core offerings are:
+VinaCapital's core offerings are:
 - Livestream commerce (KOL/KOC-led live selling on TikTok, Shopee Live, Lazada Live)
 - Creator/KOL management and matching
 - Social commerce campaign management
 - Performance-based affiliate & shop-in-shop models
 - Insights & analytics for creator commerce
 
-This persona is encountered when selling Ecomobi's services to enterprise and mid-market brands in Vietnam and Southeast Asia.
+This persona is encountered when selling VinaCapital's services to enterprise and mid-market brands in Vietnam and Southeast Asia.
 
 ---
 
@@ -78,7 +78,7 @@ Describe the pressures this persona faces:
 
 ### §05 DECISION MAKING
 
-Describe how this persona makes purchasing decisions for services like Ecomobi's:
+Describe how this persona makes purchasing decisions for services like VinaCapital's:
 - What evidence do they need to feel confident?
 - Who else do they consult?
 - What is their typical approval threshold?

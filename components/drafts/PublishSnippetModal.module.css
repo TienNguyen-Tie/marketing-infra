@@ -16,7 +16,7 @@
   width: min(720px, calc(100vw - 32px));
   max-height: calc(100dvh - 48px);
   background: #fff;
-  border-radius: 12px;
+  border-radius: 0;
   z-index: 301;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
 .closeBtn {
   width: 32px;
   height: 32px;
-  border-radius: 4px;
+  border-radius: 0;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -84,7 +84,7 @@
   font-family: monospace;
   background: #F3F4F6;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 0;
   font-size: 12px;
   color: #1A1A1A;
 }
@@ -92,7 +92,7 @@
 .snippetBox {
   background: #1A1A1A;
   color: #E5E7EB;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 16px;
   font-size: 11px;
   font-family: monospace;
@@ -116,10 +116,10 @@
 
 .btnPrimary {
   padding: 10px 20px;
-  background: #F43C34;
+  background: #D71920;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 13px;
   font-weight: 600;
   font-family: inherit;
@@ -137,8 +137,8 @@
   padding: 10px 20px;
   background: transparent;
   color: #444;
-  border: 0.5px solid #D0D0D0;
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   font-size: 13px;
   font-weight: 500;
   font-family: inherit;

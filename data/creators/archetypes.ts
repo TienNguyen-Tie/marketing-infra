@@ -2,7 +2,7 @@ import type { CreatorArchetype } from './types';
 
 /**
  * All Creator Archetypes — the recognized types of TAP creators
- * Ecomobi acquires, nurtures, and activates.
+ * VinaCapital acquires, nurtures, and activates.
  *
  * Seed populated 2026-05-20. Content depth is intentionally LIGHT
  * — required identity fields populated for every archetype, but
@@ -131,7 +131,7 @@ export const CREATOR_ARCHETYPES: CreatorArchetype[] = [
     populationTier: 'niche',
     status: 'proposed',
     internalNotes:
-      'Proposed archetype — flagged in CEO/sales conversation as a category Ecomobi wants to win client work in but currently under-served in the TAP network. Acquisition push needed.',
+      'Proposed archetype — flagged in CEO/sales conversation as a category VinaCapital wants to win client work in but currently under-served in the TAP network. Acquisition push needed.',
     typicalContentFormats: ['long-video', 'short-video'],
     marketsActive: ['vn', 'ph', 'id'],
     firstDefined: '2026-05-20',
@@ -151,7 +151,7 @@ export const CREATOR_ARCHETYPES: CreatorArchetype[] = [
       },
     ],
     openQuestions: [
-      'What hardware sample programs would Ecomobi need to offer to convert top-tier tech reviewers from YouTube-primary to TikTok-Shop-primary?',
+      'What hardware sample programs would VinaCapital need to offer to convert top-tier tech reviewers from YouTube-primary to TikTok-Shop-primary?',
       'Is the tech reviewer archetype viable in mid-band audiences (10K-100K), or only at macro?',
     ],
   },

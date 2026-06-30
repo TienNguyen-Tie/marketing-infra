@@ -27,7 +27,7 @@ export async function generateMetadata({
   const a = getArchetypeBySlug(archetypeSlug);
   if (!a) return { title: 'Archetype not found' };
   return {
-    title: `${a.name} — Creator Archetypes — Ecomobi`,
+    title: `${a.name} — Creator Archetypes — VinaCapital`,
     description: a.oneSentenceDefinition,
   };
 }

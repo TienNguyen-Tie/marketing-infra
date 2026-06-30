@@ -159,7 +159,7 @@ export default function ResearchCompanion({ open, onClose }: Props) {
                   {renderAnswer(ex.answer, ex.citationMap)}
                 </div>
                 <div className={styles.loggedNote}>
-                  <span className="material-icons-round" style={{ fontSize: 11, color: '#10B981' }}>check</span>
+                  <span className="material-icons-round" style={{ fontSize: 11, color: '#4A5570' }}>check</span>
                   <span className={styles.loggedText}>Logged to Research Queries</span>
                 </div>
               </div>

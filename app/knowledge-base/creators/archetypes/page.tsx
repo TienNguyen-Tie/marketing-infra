@@ -7,7 +7,7 @@ import ArchetypeGrid from './_components/ArchetypeGrid';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Creator Archetypes — Ecomobi Knowledge Base',
+  title: 'Creator Archetypes — VinaCapital Knowledge Base',
 };
 
 type SearchParams = { tier?: string };
